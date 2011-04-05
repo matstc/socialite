@@ -35,7 +35,7 @@ class AdminController < ApplicationController
   def send_test_email
     address = params[:test_email][:email]
     deliver_test_email address
-    redirect_to :confirmation_email_settings
+    redirect_to :email_settings
   end
 
   def deliver_test_email address
@@ -55,10 +55,10 @@ class AdminController < ApplicationController
     redirect_to :automatic_notifications, :notice => 'Settings saved.'
   end
 
-  def save_confirmation_email_settings
+  def save_email_settings
     AppSettings.update_settings params[:app_settings]
     setup_action_mailer
-    redirect_to :confirmation_email_settings, :notice => 'Settings saved.'
+    redirect_to :email_settings, :notice => 'Settings saved.'
   end
 
   def mark_comment_as_spam

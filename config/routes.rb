@@ -18,8 +18,8 @@ Socialite::Application.routes.draw do
   match 'admin/moderate/submissions', :to => "admin#moderate_submissions", :via => "get", :as => 'moderate_submissions'
   match 'admin/moderate/comments', :to => "admin#moderate_comments", :via => "get", :as => 'moderate_comments'
 
-  match 'admin/confirmation_email_settings', :to => "admin#confirmation_email_settings", :via => "get", :as => 'confirmation_email_settings'
-  match 'admin/save_confirmation_email_settings', :to => "admin#save_confirmation_email_settings", :via => "post", :as => 'save_confirmation_email_settings'
+  match 'admin/email_settings', :to => "admin#email_settings", :via => "get", :as => 'email_settings'
+  match 'admin/save_email_settings', :to => "admin#save_email_settings", :via => "post", :as => 'save_email_settings'
 
   match 'admin/automatic_notifications', :to => "admin#automatic_notifications", :via => "get", :as => 'automatic_notifications'
   match 'admin/save_automatic_notifications', :to => "admin#save_automatic_notifications", :via => "post", :as => 'save_automatic_notifications'

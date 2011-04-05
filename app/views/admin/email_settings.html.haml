@@ -1,8 +1,9 @@
-%h1 Confirmation email settings
-%p
-  You can help fight spam by automatically sending an email to new users asking them to click a link to confirm their account. 
+%h1 Email settings
+%p= "Here you can set up how #{app_name} will send emails."
+%p 
+  You should also help fight spam by automatically sending an email to new users asking them to click a link to confirm their account.
 
-= form_for AppSettings, :url => {:controller => 'admin', :action => 'save_confirmation_email_settings'}, :method => :post do |f|
+= form_for AppSettings, :url => {:controller => 'admin', :action => 'save_email_settings'}, :method => :post do |f|
   %p{:class => 'explanation'}
     Enable confirmation emails by checking the following box:
 
@@ -11,7 +12,7 @@
     = f.check_box :confirm_email_on_registration
 
   %p{:class => 'explanation'}
-    To send the confirmation emails, this application will use Gmail by default.
+    To send emails, this application will use Gmail by default.
     %br
     All you have to do is create a 
     %a{:href => 'http://www.gmail.com'} gmail account 
@@ -62,7 +63,11 @@
 %hr
 %h1 Send a test email
 = form_for :test_email, :url => {:controller => 'admin', :action => 'send_test_email'} do |f|
-  %p 
+  %p{:class => 'explanation'}
     After saving the settings, you should send a test email to your own email address to verify that everything works correctly:
-  = f.text_field :email
+    .field
+      = f.label :email, "Send test email to"
+      = f.text_field :email
+      .example e.g. your.email@example.com
+
   = f.submit 'Send test email'

@@ -81,23 +81,23 @@ describe AdminController do
       post :send_test_email, :test_email => {:email => "user@example.com"}
 
       flash[:notice].blank?.should == false
-      response.should redirect_to(:confirmation_email_settings)
+      response.should redirect_to(:email_settings)
     end
   end
 
-  describe "confirmation email settings" do
+  describe "email settings" do
     it "should consider a setting of '0' to be false" do 
-      post :save_confirmation_email_settings, :app_settings => {:smtp_tls => "0"}
+      post :save_email_settings, :app_settings => {:smtp_tls => "0"}
       AppSettings.smtp_tls.should == false
     end
 
     it "should consider a setting of '1' to be true" do 
-      post :save_confirmation_email_settings, :app_settings => {:smtp_tls => "1"}
+      post :save_email_settings, :app_settings => {:smtp_tls => "1"}
       AppSettings.smtp_tls.should == true
     end
 
     it "should consider a string like '123' for the port to be a number" do
-      post :save_confirmation_email_settings, :app_settings => {:smtp_port => "123"}
+      post :save_email_settings, :app_settings => {:smtp_port => "123"}
       AppSettings.smtp_port.should == 123
     end
   end
