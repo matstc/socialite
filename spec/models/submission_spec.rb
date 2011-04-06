@@ -2,6 +2,21 @@ require 'spec_helper'
 
 describe Submission do
 
+  it "should not count spam or deleted comments towards comment count" do
+    submission = ObjectMother.create_submission
+    comment = ObjectMother.create_comment :submission => submission, :is_spam => true
+    submission.comments.size.should == 0
+
+    comment = ObjectMother.create_comment :submission => submission
+    submission.reload
+    submission.comments.size.should == 1
+
+    deleted_user = ObjectMother.create_user :deleted => true
+    comment = ObjectMother.create_comment :submission => submission, :user => deleted_user
+    submission.reload
+    submission.comments.size.should == 1
+  end
+
   it "should allow blank urls" do
     submission = ObjectMother.create_submission :url => ""
     submission.url.should == ""
@@ -46,8 +61,8 @@ describe Submission do
   end
 
   it "should return only the top-level comments" do
-    parent_comment = Comment.new
-    child_comment = Comment.new(:parent => parent_comment)
+    parent_comment = Comment.new :user => User.new
+    child_comment = Comment.new(:parent => parent_comment, :user => User.new)
     submission = Submission.new(:comments => [parent_comment, child_comment])
     
     submission.top_level_comments.should eq([parent_comment])

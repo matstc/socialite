@@ -19,17 +19,6 @@ describe "submissions/show.html.haml" do
       rendered.should match(/Edit your submission/)
     end
 
-    it "should render spam or deleted comments with the deletion seal" do
-      deleted_user = ObjectMother.create_user :deleted => true
-      comment = ObjectMother.create_comment :user => deleted_user, :submission => @submission
-      @submission.comments.should include(comment)
-
-      render
-
-      rendered.should_not match(/#{comment.text}/)
-      rendered.should match(/-- deleted --/)
-    end
-
     it "should not render a link to mark as spam submission or comment" do
       user = ObjectMother.create_user
       comment = ObjectMother.create_comment :user => user, :submission => @submission

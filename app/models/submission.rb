@@ -4,7 +4,7 @@ class Submission < ActiveRecord::Base
   @@voting_momentum = 12096
 
   belongs_to :user
-  has_many :comments
+  has_many :all_comments, :class_name => 'Comment'
   has_many :votes
 
   validates :user, :presence => true
@@ -44,6 +44,14 @@ class Submission < ActiveRecord::Base
   def self.list
     # I could not find a way to default the value of :deleted to false so we fetch all users where :deleted is null or false
     Submission.joins(:user).where("is_spam = ? AND users.deleted IS NULL OR users.deleted = ?", false, false)
+  end
+
+  def comments
+    self.all_comments.reject {|comment| comment.spam_or_deleted?}
+  end
+
+  def comments= args
+    self.all_comments = args
   end
 
   def vote_up user_who_voted

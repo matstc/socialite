@@ -1,7 +1,7 @@
 class Comment < ActiveRecord::Base
   has_many :children, :class_name => "Comment", :foreign_key => "parent_id"
   belongs_to :parent, :class_name => "Comment"
-  belongs_to :submission, :counter_cache => true
+  belongs_to :submission
   belongs_to :user
   validates :user, :presence => true
   validates :text, :presence => true

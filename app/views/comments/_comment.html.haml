@@ -1,35 +1,32 @@
 %tr
   %td
     %span{:class => 'comment-signature'}= "#{comment.user} - #{time_ago_in_words_including_ago(comment.created_at)}"
-    - if comment.spam_or_deleted?
-      .deletion-seal -- deleted --
-    - else
-      = render :partial => 'comments/admin_links', :locals => {:comment => comment}
-      %div= comment.text
-      .reply-link
-        = link_to 'reply', "", :id => "reply-link-#{comment.id}", :href => "#"
+    = render :partial => 'comments/admin_links', :locals => {:comment => comment}
+    %div= comment.text
+    .reply-link
+      = link_to 'reply', "", :id => "reply-link-#{comment.id}", :href => "#"
+      :javascript
+        $(document).ready(function(){
+          $('#reply-link-#{comment.id}').bind('click', function(){
+            $('#reply-box-form-#{comment.id}').toggleClass('hidden');
+            return false;
+          });
+        });
+    .reply-box
+      = form_for :comment, :url => {:controller => :comments, :action => :create}, :remote => true, :method => :post, :html => {:class => "hidden", :id => "reply-box-form-#{comment.id}"} do |f|
+        %input{:type => :hidden, :name => "comment[submission_id]", :value => comment.submission.id}
+        %input{:type => :hidden, :name => "comment[parent_id]", :value => comment.id}
+        = f.text_area :text, :value => ""
+        = f.submit "post"
         :javascript
           $(document).ready(function(){
-            $('#reply-link-#{comment.id}').bind('click', function(){
-              $('#reply-box-form-#{comment.id}').toggleClass('hidden');
+            $('#reply-box-form-#{comment.id}').bind('ajax:success', function(obj, data){
+              $('#reply-box-form-#{comment.id}').addClass('hidden');
+              $('#reply-box-form-#{comment.id} textarea').attr("value","");
+              $("#child-comments-#{comment.id}").prepend(data);
               return false;
             });
           });
-      .reply-box
-        = form_for :comment, :url => {:controller => :comments, :action => :create}, :remote => true, :method => :post, :html => {:class => "hidden", :id => "reply-box-form-#{comment.id}"} do |f|
-          %input{:type => :hidden, :name => "comment[submission_id]", :value => comment.submission.id}
-          %input{:type => :hidden, :name => "comment[parent_id]", :value => comment.id}
-          = f.text_area :text, :value => ""
-          = f.submit "post"
-          :javascript
-            $(document).ready(function(){
-              $('#reply-box-form-#{comment.id}').bind('ajax:success', function(obj, data){
-                $('#reply-box-form-#{comment.id}').addClass('hidden');
-                $('#reply-box-form-#{comment.id} textarea').attr("value","");
-                $("#child-comments-#{comment.id}").prepend(data);
-                return false;
-              });
-            });
-      %table{:id => "child-comments-#{comment.id}", :class => "child-comments"}
-        - comment.children.each do |comment|
-          = render :partial => 'comments/comment', :locals => {:comment => comment}
+    %table{:id => "child-comments-#{comment.id}", :class => "child-comments"}
+      - comment.children.each do |comment|
+        = render :partial => 'comments/comment', :locals => {:comment => comment}
