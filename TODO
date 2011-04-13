@@ -1,8 +1,4 @@
 Add possibility to change the favicon from the admin section
-README
-  document how to install
-  document how to access the admin section
-  document how to change theme
 BLOG POSTS:
   default values in models: how we did it - how it does not work for booleans
   devise confirmation: how to turn on and off confirmable

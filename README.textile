@@ -44,9 +44,4 @@ You can seed the database with test data by running the command @rake seed@
 
 h2. Upcoming Features
 
-Here is a list of features we want to build soon:
-
-  * index page shows thumbnails of urls or videos or images (toggled on or off in the admin section?)
-  * the index page could be split into components where admins can inject custom html
-  * more powerful themes including images
-
+See !https://github.com/matstc/socialite/blob/master/TODO?raw=true!
