@@ -2,6 +2,20 @@ require 'spec_helper'
 
 describe ApplicationHelper do
 
+  describe "theme helpers" do
+    it "should resolve the directory for specified theme" do
+      theme_directory(:test).should == "public/stylesheets/themes/test"
+    end
+
+    it "should resolve the path to the theme file for specified theme" do
+      theme_file(:test).should == "public/stylesheets/themes/test/theme.css"
+    end
+
+    it "should resolve the directory storing all themes" do
+      themes_directory.should == "public/stylesheets/themes"
+    end
+  end
+
   describe "resolve submission url" do
     it "should replace blank with a link to the comments" do
       submission = ObjectMother.create_submission :url => "http://google.com"

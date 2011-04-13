@@ -9,7 +9,7 @@ class AdminController < ApplicationController
   end
 
   def modify_appearance
-    @themes = Dir['public/stylesheets/themes/*'].map { |a| File.basename(a) }
+    @themes = Dir["#{themes_directory}/*"].map { |a| File.basename(a) }
   end
 
   def save_appearance

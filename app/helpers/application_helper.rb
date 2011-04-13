@@ -15,6 +15,18 @@ module ApplicationHelper
     %{<span class="ui-icon ui-icon-#{name}"></span>}
   end
 
+  def theme_directory name
+    "#{themes_directory}/#{name}"
+  end
+
+  def theme_file name
+    "#{theme_directory name}/theme.css"
+  end
+
+  def themes_directory
+    "public/stylesheets/themes"
+  end
+
   # this is a customized version or devise_error_messages! in devise_helper.rb
   def error_messages!
     return "" if resource.errors.empty?
