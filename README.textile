@@ -3,35 +3,36 @@ h1. Welcome to Socialite
 Socialite is a social news website in a box.
 We want to make it ridiculously easy to spin off a new social news website.
 
-The goal is to build a web application that will act as a social news website (think digg, reddit, or hacker news). But Socialite is meant to be more like a CMS, similar in functionality to Pligg. It will be possible to customize the web application to change its look, its managed content, and its general behavior.
+The goal is to build a web application that will act as a social news website (think digg, reddit, or hacker news). But Socialite is meant to be more like a CMS, similar in functionality to Pligg. Some things can be customized like the name and logo, the CSS theme, or the content of the about page.
 
-!https://github.com/pmcfadden/socialite/blob/master/screenshot.png?raw=true!
+!https://github.com/matstc/socialite/blob/master/screenshot.png?raw=true!
 
 
 h2. To deploy your own instance of Socialite
 
-  # Clone this git repo
   # Install ruby and rubygems
   # Install the rails gem:
       @gem install rails@
   # Install the bundler gem:
       @gem install bundler@
+  # Clone this git repo:
+      @git clone git://github.com/matstc/socialite.git@
+  # Go down into your cloned repo:
+      @cd socialite@
   # Run the following rake command and give it a username and a password for the initial administrator:
       @rake production:initialize[username,password]@
   # Start the webserver
       @thin start -e production@
-  # Point your browser to "http://localhost:3000":http://localhost:3000 and set up your app through the admin section
+  # Point your browser to "http://localhost:3000":http://localhost:3000
+      @firefox http://localhost:3000@
+  # Sign into the app using your admin credentials and start customizing it
 
 
 h2. Upcoming Features
 
-Here is a list of features we will be building soon:
+Here is a list of features we want to build soon:
 
-  * add nice styling to all pages + images (JQueryUI theme roller?)
-  * admin section to change the style (choose among all JQuery themes?)
-  * make sure the index page still displays nicely even if the title or the description of the submission is very large
   * index page shows thumbnails of urls or videos or images (toggled on or off in the admin section?)
   * the index page could be split into components where admins can inject custom html
-  * a bookmarklet to submit posts from the bookmark toolbar
-  * show stats like users with highest karma and stuff
+  * more powerful themes including images
 
