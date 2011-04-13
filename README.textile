@@ -44,4 +44,4 @@ You can seed the database with test data by running the command @rake seed@
 
 h2. Upcoming Features
 
-See !https://github.com/matstc/socialite/blob/master/TODO?raw=true!
+See the "todo list":https://github.com/matstc/socialite/blob/master/TODO
