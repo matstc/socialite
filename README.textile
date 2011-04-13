@@ -10,7 +10,7 @@ The goal is to build a web application that will act as a social news website (t
 
 h2. To deploy your own instance of Socialite
 
-  # Install ruby and rubygems
+  # Install ruby and rubygems (see "download ruby":http://www.ruby-lang.org/en/downloads/ and "installing rubygems":http://docs.rubygems.org/read/chapter/3 )
   # Install the rails gem:
       @gem install rails@
   # Install the bundler gem:
@@ -25,7 +25,19 @@ h2. To deploy your own instance of Socialite
       @thin start -e production@
   # Point your browser to "http://localhost:3000":http://localhost:3000
       @firefox http://localhost:3000@
-  # Sign into the app using your admin credentials and start customizing it
+  # Sign into the app using your admin credentials and start customizing it through the admin section
+  # Done!
+
+
+h2. Contribute
+
+Socialite has no proper documentation available but you can have a look at the tests under the spec directory. Most of the features have accompanying tests so the tests serve as documentation. If you fork this project and request a pull, please include tests along with your new patch.
+
+To setup your box for development, just follow the steps above to deploy your own instance of Socialite, but make sure to run the server in development mode by omitting the @-e production@.
+
+You can run tests by running the command @rake spec@.
+
+You can also seed the database with test data by running the command @rake seed@.
 
 
 h2. Upcoming Features
