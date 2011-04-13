@@ -13,6 +13,21 @@ describe AdminController do
 
   end
 
+  describe "modify appearance" do
+    it "should build up a list of themes by looking at all the directories under public/stylesheets" do
+      get :modify_appearance
+      assigns[:themes].should =~ ["default", "dark"]
+    end
+  end
+
+  describe "save appearance" do
+    it "should save the new theme" do
+      post :save_appearance, :app_settings => {:theme => 'test-theme'}
+      flash[:notice].blank?.should == false
+      AppSettings.theme.should == 'test-theme'
+    end
+  end
+
   describe "save automatic notifications" do
     it "should update settings with the new recipient email or the new disabled state" do
       post :save_automatic_notifications, :app_settings => {:exception_notifier_recipient => "test-recipient"}

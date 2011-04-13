@@ -1,0 +1,4 @@
+a { color: #000; }
+a:visited { color: #555; }
+a:hover { color: #fff; background-color:#555; }
+a.vote-up:hover {color:none; background-color:transparent; border:1px solid #ffbb22;}

@@ -1,4 +1,3 @@
-STYLE 2 admin section to change the style (choose among a few JQuery UI themes?) 
 BLOG POSTS:
   default values in models: how we did it - how it does not work for booleans
   devise confirmation: how to turn on and off confirmable
@@ -7,6 +6,10 @@ AJAX ACTIONS (marking comment as spam - marking submission as spam - voting up) 
   for instance marking as spam should make the admin links red and show an undo link
   undoing marking as spam should make the admin links black again and it should say 'mark as spam' instead of 'no longer marked as spam'
   voting up should dim the post
+README
+  document how to install
+  document how to access the admin section
+  document how to change theme
 FAVICON why is the favicon not shown?
 
 

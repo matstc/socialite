@@ -1,0 +1,15 @@
+%h1 Modify appearance
+
+= form_for AppSettings, :url => {:controller => 'admin', :action => 'save_appearance'}, :method => 'post' do |f|
+  .explanation
+    Pick a theme to customize the look of your site.
+    %br
+    To fully customize the CSS, you can create a directory on the server -- underneath public/stylesheets/ -- and then create a file inside of it called theme.css.
+    %br
+    Then you should be able to come back here and select your new theme.
+  .field
+    = f.label :theme, "Choose a theme"
+    = f.select :theme, @themes
+
+  = f.submit "Save"
+

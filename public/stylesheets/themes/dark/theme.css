@@ -1,0 +1,15 @@
+a { color: #fff; }
+a:visited { color: #999; }
+a:hover { color: #000; background-color:#999; }
+a.vote-up:hover {color:none; background-color:transparent; border:1px solid #ffbb22;}
+
+body {background-color:black; color:#fff;}
+.top-nav-bar ul, .filters-menu ul {background-color: #222;}
+
+#comments-list tr {background-color:#222; margin:1em;}
+
+input, textarea {background-color:black; color:#fff;}
+
+.submission-description, .dim, .dim a, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#555;}
+
+table.list td {border-bottom:1px solid #222;}

@@ -8,6 +8,15 @@ class AdminController < ApplicationController
   def index
   end
 
+  def modify_appearance
+    @themes = Dir['public/stylesheets/themes/*'].map { |a| File.basename(a) }
+  end
+
+  def save_appearance
+      AppSettings.update_settings params[:app_settings]
+      redirect_to :modify_appearance, :notice => 'The theme was changed.'
+  end
+
   def moderate_comments
     @comments = Comment.order("created_at DESC").page params[:page]
   end
