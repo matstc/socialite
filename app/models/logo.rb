@@ -13,7 +13,9 @@ class Logo
 
       path = File.join("public/images", new_logo_file_name)
       Rails.logger.info "writing new logo file to: #{path}"
-      File.open(path, "wb") { |f| f.write(@image.read) }
+
+      data = @image.read
+      File.open(path, "wb") { |f| f.write(data) }
       return true
     rescue
       @errors.push $!.message

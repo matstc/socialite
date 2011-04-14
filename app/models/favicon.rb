@@ -10,10 +10,10 @@ class Favicon
   def save
     begin
       File.open(@path, "wb") { |f| f.write(@image.read) }
-      return true
+      true
     rescue
       @errors.push $!.message
-      return false
+      false
     end
   end
 end

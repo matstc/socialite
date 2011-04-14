@@ -64,12 +64,7 @@ describe SubmissionsController do
 
     it "should not allow fellow user to edit submission" do
       submission = ObjectMother.create_submission :user => ObjectMother.create_user
-      begin
-        get :edit, :id => submission.id
-      rescue RuntimeError
-        next
-      end
-      raise "Should have thrown a runtime error"
+      lambda { get :edit, :id => submission.id }.should raise_error
     end
 
     it "should always allow admin to edit submission" do

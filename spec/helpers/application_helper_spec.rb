@@ -2,6 +2,21 @@ require 'spec_helper'
 
 describe ApplicationHelper do
 
+  describe "error_messages!" do
+    it "should generate error messages" do
+      def resource
+        user = User.new
+        user.errors[:username] = "test-error"
+        user
+      end
+
+      def resource_name
+        "user"
+      end
+      error_messages!.should match /test-error/
+    end
+  end
+
   describe "theme helpers" do
     it "should resolve the directory for specified theme" do
       theme_directory(:test).should == "public/stylesheets/themes/test"

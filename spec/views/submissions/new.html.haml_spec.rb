@@ -5,8 +5,7 @@ describe "submissions/new.html.haml" do
     assign(:submission, stub_model(Submission,
       :title => "MyString",
       :url => "MyString",
-      :description => "MyText"
-    ).as_new_record)
+      :description => "MyText").as_new_record)
   end
 
   it "renders new submission form" do
