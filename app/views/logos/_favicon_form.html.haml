@@ -1,0 +1,14 @@
+= form_for :favicon, :method => "post", :url => favicon_path, :html => {:multipart => true} do |f|
+  %p 
+    The favicon is a small image that browsers usually display in the corner of the window or next to the location bar when users are visiting your site.
+
+  .field
+    = f.file_field :image
+
+  %p 
+    If you don't see your new favicon after uploading it, keep in mind that browsers cache the favicons for a long time.
+    %br
+    It is notoriously hard to force a browser to refresh the favicon cache. You might have to wait it out.
+
+  .actions
+    = f.submit 'Upload favicon'

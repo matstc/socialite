@@ -6,7 +6,7 @@ describe "users/best_of.html.haml" do
   it "renders the list of users for user that is not admin" do
     ObjectMother.create_user :username => "michael"
     ObjectMother.create_user :username => "jones"
-    assign(:users, User.page)
+    assign(:users, User.page(1))
     view.should_receive(:current_user_is_admin?).at_least(1).and_return false
     render
 
@@ -20,7 +20,7 @@ describe "users/best_of.html.haml" do
   it "renders a delete and edit link for admins" do
     ObjectMother.create_user :username => "michael"
     ObjectMother.create_user :username => "jones"
-    assign(:users, User.page)
+    assign(:users, User.page(1))
     view.should_receive(:current_user_is_admin?).at_least(1).and_return true
     render
 

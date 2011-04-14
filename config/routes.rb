@@ -45,6 +45,7 @@ Socialite::Application.routes.draw do
   scope "/admin" do
     match 'spammers', :controller => 'users', :action => 'spammers', :via => "get", :as => 'spammers'
     resource :logo, :only => [:new, :create]
+    resource :favicon, :only => [:create]
   end
 
   resources :users

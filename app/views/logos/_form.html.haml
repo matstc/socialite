@@ -1,12 +1,12 @@
 = form_for :logo, :method => "post", :url => logo_path, :html => {:multipart => true} do |f|
-  %p Make sure your logo is not much bigger than 100 pixels by 100 pixels.
+  %p The logo image is always displayed at the top left of your site.
+  .explanation
+    Make sure your logo is not much bigger than 100 pixels by 100 pixels.
 
-  = f.file_field :image
-
-  %br
-  %br
+  .field
+    = f.file_field :image
 
   %p If you still see the old logo after uploading your new one, try to delete your browser cache and refresh the page.
 
   .actions
-    = f.submit 'Upload'
+    = f.submit 'Upload logo'
