@@ -11,9 +11,11 @@ The goal is to build a web application that will act as a social news website (t
 h2. To deploy your own instance of Socialite
 
 h3. Installing on Ubuntu
+
 If you want to install Socialite on Ubuntu, you're in luck. Just run the "installer script":https://github.com/matstc/socialite/blob/master/install-ubuntu.sh
 
 h3. Installing on other systems
+
 Follow the instructions below. If you have any trouble installing the required gems, you might need to install development packages so that you can compile the native extensions. Make sure you have the equivalent of ruby-dev, g++, and libsqlite3-dev.
 
   # Install ruby and rubygems (see "download ruby":http://www.ruby-lang.org/en/downloads/ and "installing rubygems":http://docs.rubygems.org/read/chapter/3 )
