@@ -13,5 +13,3 @@ SCRIPT to install ruby/rake/bundler
 PRE-TRAIN the antispam filter in the production rake tasks
 RAKE TASK to clear the antispam filter
 RAKE TASK to train the antispam filter
-SALTS AND PEPPERS provide a way to randomize the salts and peppers and cookie secrets upon install
-

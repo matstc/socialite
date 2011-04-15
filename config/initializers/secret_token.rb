@@ -1,7 +1,2 @@
-# Be sure to restart your server when you modify this file.
-
-# Your secret key for verifying the integrity of signed cookies.
-# If you change this key, all old signed cookies will become invalid!
-# Make sure the secret is at least 30 characters and all random,
-# no regular words or you'll be exposed to dictionary attacks.
-Socialite::Application.config.secret_token = '403aa4e4de38ef7d72160461e677d63a82cbd0813eabc6f85867de528fb3f1dfb2e241631ed5f37eb54afc26942dee7e1018e7a89805f24e108c72f9072c36dc'
+# this secret token was generated automatically by the rake task 'production:secret'
+Socialite::Application.config.secret_token = '15205ad9786c2aaa929f94c7b02e926bdeaa200dd71107ac11ba5b7175079b489f19ad8668807023b4d4644ddf5c07c7adb9d1ff86abae2266e2563440eaa1fe'
