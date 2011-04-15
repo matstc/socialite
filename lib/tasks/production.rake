@@ -70,7 +70,7 @@ EOD
 
     puts "--"
     puts "Your production environment is now ready."
-    puts "You can start it by typing:\n\n> thin start -e production\n\n"
+    puts "You can start it by typing:\n\n  thin start -e production\n\n"
   end
 
 end

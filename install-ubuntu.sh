@@ -1,6 +1,6 @@
 #!/bin/bash
 echo 'This bash script will install Socialite on a box running Ubuntu.'
-echo 'You will need to run this script as root if you are missing required packages.'
+echo 'You will need to provide your sudo password if you are missing required packages.'
 echo ''
 
 # $1 = package name
@@ -9,7 +9,7 @@ function install_package {
     installed=$?
     if [ $installed -ne 0 ]; then
         echo "Installing the $1 package"
-        apt-get -y install $1 || exit 1
+        sudo apt-get -y install $1 || exit 1
     fi
 
     dpkg -S $1 >/dev/null
@@ -26,7 +26,7 @@ function install_app {
     installed=$?
     if [ $installed -ne 0 ]; then
         echo "Installing $1"
-        apt-get -y install $1 || exit 1
+        sudo apt-get -y install $1 || exit 1
     fi
 
     which $2 >/dev/null
@@ -43,30 +43,15 @@ function install_gem {
     installed=$?
     if [ $installed -ne 0 ]; then
         echo "Installing the $1 gem"
-        gem install $1 || exit 1
+        sudo gem install $1 || exit 1
     fi
 
-    ruby -e "require 'rubygems'; require '$1'" &>/dev/null
+    ruby -rubygems -e "require '$1'" &>/dev/null
     installed=$?
     if [ $installed -ne 0 ]; then
         echo "Could not load the $1 gem -- please install it." && exit 1
     fi
 }
-
-which apt-get >/dev/null
-apt_get_installed=$?
-which ruby >/dev/null
-ruby_installed=$?
-which gem >/dev/null
-gem_installed=$?
-which git >/dev/null
-git_installed=$?
-
-if [ $apt_get_installed -ne 0 ];then
-    if [ $ruby_installed -ne 0 || $git_installed -ne 0 || $gem_installed -ne 0 ]; then
-        echo 'apt-get is not on the path -- you might have to run this script as root.'; exit 1
-    fi
-fi
 
 install_app ruby ruby
 install_app rubygems gem
@@ -81,20 +66,31 @@ install_app git git
 which bundle >/dev/null
 gems_on_path=$?
 if [ $gems_on_path -ne 0 ];then
+    gem_paths=`ruby -rubygems -e 'puts Gem.path.map{|p| "#{p}/bin"}.join(":")'`
     echo ""
     echo "WARNING: The gem binaries were not found on the path. Make sure they are added to the path by running the following command:"
-    ruby -rubygems -e 'puts "> export PATH=$PATH:" + Gem.path.map{|p| "#{p}/bin"}.join(":")'
+    echo ""
+    echo "  export PATH=$PATH:$gem_paths"
+
+    export PATH=$PATH:$gem_paths
+    which bundle >/dev/null
+    if [ $? -ne 0 ];then
+        echo "Could not find the bundler gem on the path -- please install it." && exit 1
+    fi
 fi
 
 echo ""
 echo "All the pre-requisites for running your own instance of Socialite are now installed."
-echo "You should now clone the git repository by running the following command:"
-echo "> git clone git://github.com/matstc/socialite.git"
 echo ""
-echo "Then go into the new checkout and bundle up your app:"
-echo "> cd socialite"
-echo "> bundle"
+echo "Cloning the git repository"
+
+git clone git://github.com/matstc/socialite.git || exit 1
+cd socialite || exit 1
+bundle || exit 1
+
 echo ""
-echo "And then intialize your app (specify your own administrator username and password):"
-echo "> rake production:initialize[username,password]"
+echo "You should now initialize your app by going into `pwd` and running the following command."
+echo "Make sure to specify your own administrator username and password:"
+echo ""
+echo "  rake production:initialize[username,password]"
 echo ""
