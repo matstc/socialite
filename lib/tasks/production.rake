@@ -65,16 +65,12 @@ EOD
 
   desc 'Initializes the production database for first deployment'
   task :initialize, [:admin_username, :admin_password] do |t, args|
-    puts "Running the bundler"
-    IO.popen('bundle', 'r'){|pipe| puts pipe.read}
-    exit("Could not run the bundler. Stopping here.") if $? != 0
-
     Rake::Task['production:admin:create'].invoke(args['admin_username'], args['admin_password'])
     Rake::Task['production:secret'].invoke
 
     puts "--"
     puts "Your production environment is now ready."
-    puts "You can start it by typing:\n\n  thin start -e production\n\n"
+    puts "You can start it by typing:\n\n> thin start -e production\n\n"
   end
 
 end
