@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :username, :presence => true
+  validates_presence_of :username
+  validates_uniqueness_of :username
+
   validates :karma, :presence => true
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :karma, :deleted
