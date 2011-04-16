@@ -18,4 +18,4 @@
     .submission-info
       = render :partial => "users/posted_by", :locals => {:user => submission.user, :resource => submission}
       - description = whole_text ? submission.description : truncate(submission.description, :length => 100)
-      %div{:class => "submission-description #{whole_text ? 'pre-wrap' : ''}"}= description
+      %div{:class => "submission-description #{whole_text ? 'pre-line' : ''}"}<= description

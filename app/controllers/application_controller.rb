@@ -43,6 +43,7 @@ class ApplicationController < ActionController::Base
 
       # fake the environment of the previous request
       metaclass.send(:define_method, :request) { return current_request }
+      metaclass.send(:define_method, :response) { return IdentityProxy.new }
       metaclass.send(:define_method, :params) { return saved_params }
       # prevent rendering at all costs
       metaclass.send(:define_method, :render) {|*args| nil }
@@ -51,6 +52,7 @@ class ApplicationController < ActionController::Base
       flash[:notice] = flash[:pre_sign_in_notice] if flash[:pre_sign_in_notice]
     rescue
       logger.error "An error occurred trying to execute the saved POST request: #{$!}"
+      logger.error $!.backtrace.join "\n"
       flash[:alert] = $!.message
     ensure
       session[:pre_sign_in_post] = nil

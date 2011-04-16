@@ -2,7 +2,9 @@
   %td
     %span{:class => 'comment-signature'}= "#{comment.user} - #{time_ago_in_words_including_ago(comment.created_at)}"
     = render :partial => 'comments/admin_links', :locals => {:comment => comment}
-    %div= comment.text
+
+    .pre-line<= comment.text
+
     .reply-link
       = link_to 'reply', "", :id => "reply-link-#{comment.id}", :href => "#"
       :javascript

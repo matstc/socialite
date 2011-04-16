@@ -3,6 +3,7 @@
 .float-left {float:left;}
 .float-right {float:right;}
 .pre-wrap {white-space:pre-wrap;}
+.pre-line {white-space:pre-line;}
 .hidden {display:none;}
 .crossed-out {text-decoration: line-through;}
 
