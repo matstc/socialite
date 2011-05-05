@@ -7,3 +7,4 @@ tmp/
 *.swp
 test-antispam-memory
 coverage
+.idea
