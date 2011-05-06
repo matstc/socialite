@@ -2,10 +2,6 @@ Show an icon next to the link for some submissions where the file type is intere
 
 Allow admins to modify the algorithm for computing interestingness
 
-FIX: The colors of dim visited links is wrong
-
-FIX: The url label is too high
-
 Find a way to test the deployment process (install-ubuntu.sh script + rake production:initialize)
 
 Create a rake task to clear the antispam filter
