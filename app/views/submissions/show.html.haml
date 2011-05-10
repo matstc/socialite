@@ -1,13 +1,4 @@
-%table
-  = render :partial => 'submissions/header', :locals => {:submission => @submission, :index => nil, :whole_text => true}
-
-- if @submission.user == current_user
-  = link_to 'Edit your submission', edit_submission_path(@submission)
-- elsif current_user_is_admin?
-  = link_to 'Edit this submission', edit_submission_path(@submission)
-
-%br
-%br
+= render :partial => 'submissions/header', :locals => {:submission => @submission, :index => nil, :whole_text => true}
 
 = form_for :comment, :url => {:controller => :comments, :action => :create}, :remote => true, :method => :post, :html => {:id => 'post-comment-at-top'} do |f|
   %input{:type => :hidden, :name => "comment[submission_id]", :value => @submission.id}

@@ -59,17 +59,21 @@ table.list {width:auto;}
 
 .score-bracket, .site-title h1 {color:#995522;}
 td.vote-area {white-space:nowrap; width:50px; text-align:right; padding-right:10px;}
+td.rank {width:20px;}
 .vote-up {float:left; border:1px solid transparent;}
 .inner-center-pane {width:90%; text-align:left; margin:auto;}
 .center-pane {text-align:center;}
 
 .karma-indicator, .rank, .admin-links, .deletion-seal, .score {font-size:80%;}
 .submission-description, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#888;}
+.whole-description .submission-description {margin-top:1em; margin-bottom:1em; white-space:pre-line;}
+.whole-description {margin-bottom:2em;}
 .marked-as-spam .admin-links {color:red;}
 
-#comments-list tr {background-color:#eee; margin:1em;}
-#comments-list tr td {padding:0.2em 1em;}
+#comments-list > tbody > tr {background-color:#eee; margin:1em;}
+#comments-list > tbody > tr > td {padding:0.2em 1em 0.4em 1em;}
 #comments-list {width:100%;}
+.child-comments {margin-left:1em; border-collapse:collapse;}
 
 .reply-link, .comment-signature {font-size:80%;}
 
