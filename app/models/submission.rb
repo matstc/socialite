@@ -16,11 +16,6 @@ class Submission < ActiveRecord::Base
   # Here we order by interestingness.
   scope :ordered, lambda { {:order => "submissions.score * #{AppSettings.voting_momentum} - strftime('%s','now') + strftime('%s',submissions.created_at) DESC"} }
 
-  # since default_scope cannot take a lambda argument -- we make do here by overriding list and manually specifying the default scope as :ordered
-  def self.list
-    Submission.ordered.list
-  end
-
   # Interestingness is calculated by multiplying the number of votes by a coefficient.
   # The amount of time passed since creation is taken as a penalty.
   # Equivalent ruby code would go like this:
@@ -45,8 +40,9 @@ class Submission < ActiveRecord::Base
   end
 
   def self.list
-    # I could not find a way to default the value of :deleted to false so we fetch all users where :deleted is null or false
-    Submission.joins(:user).where("is_spam = ? AND users.deleted IS NULL OR users.deleted = ?", false, false)
+    # Since default_scope cannot take a lambda argument -- we make do here by overriding list and manually specifying the default scope as :ordered
+    # Also, I could not find a way to default the value of :deleted to false so we fetch all users where :deleted is null or false
+    Submission.ordered.joins(:user).where("is_spam = ? AND users.deleted IS NULL OR users.deleted = ?", false, false)
   end
 
   def comments

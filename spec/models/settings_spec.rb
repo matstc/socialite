@@ -12,5 +12,10 @@ describe AppSettings do
     AppSettings.b.should == 2
   end
 
+  it "should save smtp port and voting momentum as numbers" do
+    AppSettings.update_settings :smtp_port => "2", :voting_momentum => "2"
+    AppSettings.smtp_port.should == 2
+    AppSettings.voting_momentum.should == 2
+  end
 end
 

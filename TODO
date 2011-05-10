@@ -4,7 +4,7 @@ An admin dashboard that gives out links to recent spam stories and users
 
 Show an icon next to the link for some submissions where the file type is interesting (pdf, txt, image)
 
-Allow admins to modify the algorithm for computing interestingness
+Make editing the voting strategy more intuitive
 
 Find a way to test the deployment process (install-ubuntu.sh script + rake production:initialize)
 
