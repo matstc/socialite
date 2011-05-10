@@ -30,6 +30,9 @@ Socialite::Application.routes.draw do
   match 'admin/change_name', :to => "admin#change_name", :via => "get", :as => 'change_name'
   match 'admin/save_app_name', :to => "admin#save_app_name", :via => "post", :as => 'save_app_name'
 
+  match 'admin/tweak_voting_strategy', :to => "admin#tweak_voting_strategy", :via => "get", :as => 'tweak_voting_strategy'
+  match 'admin/save_voting_strategy', :to => "admin#save_voting_strategy", :via => "post", :as => 'save_voting_strategy'
+
   match 'admin/modify_appearance', :to => "admin#modify_appearance", :via => "get", :as => 'modify_appearance'
   match 'admin/save_appearance', :to => "admin#save_appearance", :via => "post", :as => 'save_appearance'
 

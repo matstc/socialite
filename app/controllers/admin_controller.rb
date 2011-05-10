@@ -12,6 +12,11 @@ class AdminController < ApplicationController
     @themes = Dir["#{themes_directory}/*"].map { |a| File.basename(a) }
   end
 
+  def save_voting_strategy
+      AppSettings.update_settings params[:app_settings]
+      redirect_to :tweak_voting_strategy, :notice => 'Settings saved.'
+  end
+
   def save_appearance
       AppSettings.update_settings params[:app_settings]
       redirect_to :modify_appearance, :notice => 'The theme was changed.'

@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 describe Comment do
+  it "should know how many replies a comment has" do
+    parent = ObjectMother.create_comment
+    first_child = ObjectMother.create_comment :parent => parent
+    parent.reload
+    parent.number_of_replies.should == 1
+
+    second_child = ObjectMother.create_comment :parent => parent
+    parent.number_of_replies.should == 2
+  end
+
   it "should not validate if text is empty" do
     comment = ObjectMother.new_comment :text => ""
     comment.save.should == false

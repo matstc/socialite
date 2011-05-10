@@ -26,4 +26,8 @@ class Comment < ActiveRecord::Base
   def to_s
     self.text
   end
+
+  def number_of_replies
+    self.children.size
+  end
 end

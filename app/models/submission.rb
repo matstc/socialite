@@ -1,8 +1,6 @@
 require 'uri'
 
 class Submission < ActiveRecord::Base
-  @@voting_momentum = 12096
-
   belongs_to :user
   has_many :all_comments, :class_name => 'Comment'
   has_many :votes
@@ -16,13 +14,18 @@ class Submission < ActiveRecord::Base
   paginates_per 20
 
   # Here we order by interestingness.
-  default_scope :order => "submissions.score * #{@@voting_momentum} - strftime('%s','now') + strftime('%s',submissions.created_at) DESC"
+  scope :ordered, lambda { {:order => "submissions.score * #{AppSettings.voting_momentum} - strftime('%s','now') + strftime('%s',submissions.created_at) DESC"} }
+
+  # since default_scope cannot take a lambda argument -- we make do here by overriding list and manually specifying the default scope as :ordered
+  def self.list
+    Submission.ordered.list
+  end
 
   # Interestingness is calculated by multiplying the number of votes by a coefficient.
   # The amount of time passed since creation is taken as a penalty.
   # Equivalent ruby code would go like this:
   def interestingness
-    self.score * @@voting_momentum - Time.now.to_i + created_at.to_i
+    self.score * AppSettings.voting_momentum - Time.now.to_i + created_at.to_i
   end
 
   def setup_default_values

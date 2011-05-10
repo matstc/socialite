@@ -78,12 +78,34 @@ describe Submission do
 
   it "should consider a week-old submission with 50 points to be as interesting as a new one" do
     now = Time.now
-    poor_submission = Submission.new(:created_at => now, :score => 0)
-    good_submission = Submission.new(:created_at => now, :score => 2)
-    old_submission = Submission.new(:created_at => now - 1.week, :score => 51)
+    poor_submission = ObjectMother.create_submission(:created_at => now, :score => 0)
+    good_submission = ObjectMother.create_submission(:created_at => now, :score => 2)
+    old_submission = ObjectMother.create_submission(:created_at => now - 1.week, :score => 51)
 
-    assert poor_submission.interestingness < old_submission.interestingness
-    assert good_submission.interestingness > old_submission.interestingness
+    poor_submission.interestingness.should be < old_submission.interestingness
+    good_submission.interestingness.should be > old_submission.interestingness
+
+    poor_submission.save!
+    good_submission.save!
+    old_submission.save!
+    Submission.ordered.all.should == [good_submission, old_submission, poor_submission]
+  end
+
+  it "should update interestingness when the voting momentum changes" do
+    AppSettings.voting_momentum = 24192
+    
+    now = Time.now
+    poor_submission = ObjectMother.create_submission(:created_at => now, :score => 0)
+    good_submission = ObjectMother.create_submission(:created_at => now, :score => 2)
+    old_submission = ObjectMother.create_submission(:created_at => now - 1.week, :score => 26)
+
+    poor_submission.interestingness.should be < old_submission.interestingness
+    good_submission.interestingness.should be > old_submission.interestingness
+
+    poor_submission.save!
+    good_submission.save!
+    old_submission.save!
+    Submission.ordered.all.should == [good_submission, old_submission, poor_submission]
   end
 
   it "should turn all urls into absolute urls" do

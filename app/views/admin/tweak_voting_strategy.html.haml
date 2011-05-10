@@ -1,0 +1,14 @@
+%h1 Tweak voting strategy
+
+= form_for AppSettings, :url => {:controller => 'admin', :action => 'save_voting_strategy'}, :method => 'post' do |f|
+  %p
+    Specify a voting momentum to apply when calculating a submission's interestingness.
+  .explanation
+    A momentum of 12096 will rank a week-old submission with 50 votes as interesting as a brand new submission
+  .field
+    = f.label :voting_momentum, "Voting momentum"
+    = f.text_field :voting_momentum
+
+  = f.submit "Save"
+
+

@@ -49,7 +49,7 @@ class Antispam
     scores = @bayes.classifications(stringable.to_s)
     sorted_scores = scores.sort_by{ |a| -a[1] }
     delta = sorted_scores[1][1].abs - sorted_scores[0][1].abs
-    puts "The classifier thinks stringable '#{stringable}' is '#{sorted_scores[0][0]}' with a certainty of #{delta}"
+    Rails::logger.info "The classifier thinks stringable '#{stringable}' is '#{sorted_scores[0][0]}' with a certainty of #{delta}"
     # Sometimes we would get delta = 0 (Fixnum) so we have to cast to float:
     delta = delta.to_f if delta.respond_to? :to_f
     delta.nan? ? 0 : delta
