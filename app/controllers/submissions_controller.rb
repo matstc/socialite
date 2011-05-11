@@ -17,38 +17,20 @@ class SubmissionsController < ApplicationController
     flash[:pre_sign_in_notice] = "Thanks, your vote was acknowledged."
     render :text => "({id: #{@submission.id}, score: #{@submission.score} })"
   end
-    
+
   # GET /submissions
-  # GET /submissions.xml
   def index
     @submissions = Submission.list.page params[:page]
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @submissions }
-    end
   end
 
   # GET /submissions/1
-  # GET /submissions/1.xml
   def show
     @submission = Submission.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @submission }
-    end
   end
 
   # GET /submissions/new
-  # GET /submissions/new.xml
   def new
     @submission = Submission.new params[:submission]
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @submission }
-    end
   end
 
   # GET /submissions/1/edit
@@ -66,7 +48,6 @@ class SubmissionsController < ApplicationController
   end
 
   # POST /submissions
-  # POST /submissions.xml
   def create
     values = params[:submission].merge({:user => current_user})
     @submission = Submission.new(values)
@@ -76,17 +57,13 @@ class SubmissionsController < ApplicationController
       flash[:alert] = "Your submission was flagged as spam. Don't worry though. An administrator should allow your submission to be published soon."
       @submission.mark_as_spam
     else
-       Antispam.new.train_as_content @submission
+      Antispam.new.train_as_content @submission
     end
 
-    respond_to do |format|
-      if @submission.save
-        format.html { redirect_to(@submission, :notice => 'Your submission was received. Thanks.') }
-        format.xml  { render :xml => @submission, :status => :created, :location => @submission }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @submission.errors, :status => :unprocessable_entity }
-      end
+    if @submission.save
+      redirect_to(@submission, :notice => 'Your submission was received. Thanks.')
+    else
+      render :action => "new"
     end
   end
 
@@ -95,14 +72,10 @@ class SubmissionsController < ApplicationController
   def update
     @submission = Submission.find(params[:id])
 
-    respond_to do |format|
-      if @submission.update_attributes(params[:submission])
-        format.html { redirect_to(@submission, :notice => 'Submission was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @submission.errors, :status => :unprocessable_entity }
-      end
+    if @submission.update_attributes(params[:submission])
+      redirect_to(@submission, :notice => 'Submission was successfully updated.')
+    else
+      render :action => "edit"
     end
   end
 
@@ -112,9 +85,6 @@ class SubmissionsController < ApplicationController
     @submission = Submission.find(params[:id])
     @submission.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(submissions_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(submissions_url)
   end
 end
