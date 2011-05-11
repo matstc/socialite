@@ -9,3 +9,10 @@ class Hash
     collect {|k, v| "#{k} => #{v}"}.join ", "
   end
 end
+
+def without_warnings &block
+  verbosity = $-v
+  $-v = nil
+  yield
+  $-v = verbosity
+end

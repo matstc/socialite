@@ -2,6 +2,8 @@
 %html
   %head
     %link{:rel => "icon", :href => "/favicon.ico", :type => "image/x-icon"}
+    = auto_discovery_link_tag(:rss, popular_page_rss_url, {:title => "RSS Feed"})
+
     %title
       = app_name
     = stylesheet_link_tag :all

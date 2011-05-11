@@ -2,6 +2,8 @@ Socialite::Application.routes.draw do
 
   devise_for :users
 
+  match 'submissions.rss', :to => 'submissions#index', :via => "get", :format => 'rss', :as => 'popular_page_rss'
+
   match 'submissions/:id/vote_up', :to => 'submissions#vote_up', :via => "post", :defaults => { :format => 'js'}, :as => 'vote_up'
   match 'about', :to => "application#about", :via => "get", :as => 'about'
   match 'users/best_of', :to => "users#best_of", :via => "get", :as => "best_of_users"
