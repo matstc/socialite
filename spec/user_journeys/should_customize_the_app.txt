@@ -5,3 +5,5 @@ Change the icon
 Make sure the icon changed to the new one
 Modify the about page including some html
 Make sure the new content is displayed correctly
+Customize your profile blurb
+Make sure the blurb displays correctly

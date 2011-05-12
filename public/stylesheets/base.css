@@ -68,6 +68,7 @@ td.rank {width:20px;}
 
 .footer, .karma-indicator, .rank, .admin-links, .deletion-seal, .score {font-size:80%;}
 .submission-description, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#888;}
+.profile-text {white-space:pre-line;}
 .whole-description .submission-description {margin-top:1em; margin-bottom:1em; white-space:pre-line;}
 .whole-description {margin-bottom:2em;}
 .marked-as-spam .admin-links {color:red;}

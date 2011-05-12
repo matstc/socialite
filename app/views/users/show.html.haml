@@ -5,8 +5,8 @@
   - if @user.profile_text.blank?
     %p You did not provide a profile blurb.
 
-  %p= @user.profile_text
+  %p{:class => 'profile-text'}= @user.profile_text
   %p= link_to "Edit blurb", edit_user_path(@user)
 
 - else
-  %p= @user.profile_text.blank? ? "This user did not provide a profile blurb." : @user.profile_text
+  %p{:class => 'profile-text'}= @user.profile_text.blank? ? "This user did not provide a profile blurb." : @user.profile_text
