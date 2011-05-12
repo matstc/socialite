@@ -33,7 +33,7 @@ $(document).ready(function(){
       $(elem).prepend('<span class="ui-icon ui-icon-stop float-left bullet"></span>');
     });
 
-    $('h1').add('h2').each(function(idx, elem){
+    $('h1').add('h2').not("#error_explanation h2").each(function(idx, elem){
       $(elem).prepend('<span class="ui-icon ui-icon-grip-diagonal-se float-left prefixed-icon"></span>');
     });
 

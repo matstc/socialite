@@ -100,10 +100,36 @@ describe UsersController do
         assigns(:user).should be(@mock_user)
       end
 
-      it "redirects to the users list" do
+      it "redirects to the user profile" do
         User.stub(:find) { @mock_user }
         put :update, :id => "1", :user => {}
-        response.should redirect_to(users_path)
+        response.should redirect_to(user_path(@mock_user))
+      end
+
+      it "does not update the admin flag if the user is not admin" do
+        @mock_user.update_attribute :admin, false
+        User.stub(:find) {@mock_user}
+        put :update, :id => "1", :user => {:admin => "1"}
+
+        @mock_user.admin.should == false
+      end
+
+      it "does not update another user's attributes if the user is not admin" do
+        @mock_user.update_attribute :admin, false
+        @other_user = ObjectMother.create_user :username => "another_user"
+        User.stub(:find) {@other_user}
+
+        lambda { put :update, :id => @other_user.id, :user => {:username => "wacko"} }.should raise_error
+      end
+
+      it "should not allow a non-admin user to a update his username" do
+        @mock_user.update_attribute :admin, false
+        @mock_user.update_attribute :username, "original"
+        User.stub(:find) {@mock_user}
+
+        put :update, :id => @mock_user.id, :user => {:username => "wacko", :profile_text => "new profile text"}
+        @mock_user.username.should == "original"
+        @mock_user.profile_text.should == "new profile text"
       end
     end
 

@@ -1,16 +1,21 @@
 = form_for @user do |f|
-  -if @user.errors.any?
+  - if @user.errors.any?
     #error_explanation
       %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
       %ul
         - @user.errors.full_messages.each do |msg|
           %li= msg
 
+  - if current_user_is_admin?
+    .field
+      = f.label :username
+      = f.text_field :username
+    .field
+      = f.label :admin
+      = f.check_box :admin
   .field
-    = f.label :username
-    = f.text_field :username
-  .field
-    = f.label :admin
-    = f.check_box :admin
+    .explanation You can provide a blurb of text if you want to tell other users about yourself.
+    = f.label :profile_text, "Profile blurb"
+    = f.text_area :profile_text
   .actions
     = f.submit 'Save'

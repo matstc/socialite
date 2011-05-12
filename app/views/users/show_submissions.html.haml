@@ -1,0 +1,4 @@
+= render :partial => 'users/profile_header', :locals => {:user => @user}
+= render :partial => "users/filters", :locals => {:user => @user}
+%p= "#{@user} posted #{pluralize @user.submissions.size, "submission"}"
+= render :partial => "submissions/list", :locals => {:submissions => Submission.page(params[:page]).where(:user_id => @user)}

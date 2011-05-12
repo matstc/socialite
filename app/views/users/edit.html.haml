@@ -1,3 +1,4 @@
-%h1 Editing user
+= render :partial => 'users/profile_header', :locals => {:user => @user}
+= render :partial => "users/filters", :locals => {:user => @user}
 
 = render 'form'

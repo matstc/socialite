@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110405184902) do
+ActiveRecord::Schema.define(:version => 20110512001708) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20110405184902) do
     t.string   "username"
     t.boolean  "admin"
     t.boolean  "deleted"
+    t.text     "profile_text"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

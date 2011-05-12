@@ -38,6 +38,7 @@ td {vertical-align:top;}
 
 div.field, div.actions { margin-bottom: 10px;}
 #notice { color: green;}
+.field_with_errors {display:inline;}
 .field_with_errors input { border:2px solid red;}
 #error_explanation { margin-bottom:2em;}
 #error_explanation h3 { font-size:100%; font-weight: bold; color: red;}

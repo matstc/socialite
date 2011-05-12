@@ -55,6 +55,7 @@ Socialite::Application.routes.draw do
 
   resources :users
   match 'users/:id/comments', :controller => 'users', :action => 'show_comments', :via => "get", :as => 'user_comments'
+  match 'users/:id/submissions', :controller => 'users', :action => 'show_submissions', :via => "get", :as => 'user_submissions'
 
   resources :submissions
   resources :comments

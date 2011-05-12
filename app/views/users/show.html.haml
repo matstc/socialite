@@ -1,4 +1,12 @@
 = render :partial => 'users/profile_header', :locals => {:user => @user}
 = render :partial => "users/filters", :locals => {:user => @user}
-%p= "#{@user} posted #{pluralize @user.submissions.size, "submission"}"
-= render :partial => "submissions/list", :locals => {:submissions => Submission.page(params[:page]).where(:user_id => @user)}
+
+- if current_user == @user
+  - if @user.profile_text.blank?
+    %p You did not provide a profile blurb.
+
+  %p= @user.profile_text
+  %p= link_to "Edit blurb", edit_user_path(@user)
+
+- else
+  %p= @user.profile_text.blank? ? "This user did not provide a profile blurb." : @user.profile_text

@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   validates :karma, :presence => true
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :karma, :deleted
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :karma, :deleted, :profile_text
 
   has_many :submissions
   has_many :comments
