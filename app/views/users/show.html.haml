@@ -5,7 +5,7 @@
         %p
           != icon 'alert'
           - if notification.is_for_a_top_level_comment
-            %span!= "User #{notification.comment.user} #{link_to("replied", link_to_comment(notification.comment))} to one of your submissions"
+            %span!= "User #{notification.comment.user} #{link_to("replied", link_to_comment(notification.comment))} to your submission #{link_to truncate(notification.comment.submission.title, :length => 40), submission_path(notification.comment.submission)}"
           - else
             %span!= "User #{notification.comment.user} #{link_to("replied", link_to_comment(notification.comment))} to one of your comments"
           %span{:class => 'actions'}

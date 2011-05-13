@@ -1,0 +1,10 @@
+Log in as a user (Bob)
+Submit a new story
+Log in as Sally and leave a comment on Bob's story
+Log in as Bob
+Verify that you received a notification for Sally's comment
+Reply to the comment
+Sign back in as Sally and make sure you receive a notification
+Reply to the comment and leave another top-level comment
+Log back in as Bob
+Verify that you received two new notifications -- for the top level comment and the reply
