@@ -72,7 +72,7 @@ class UsersController < ApplicationController
 
     if @user.update_attributes(params[:user])
       @user.update_attribute :admin, true if params[:user][:admin] == "1" and current_user_is_admin?
-      redirect_to(user_path(@user), :notice => 'User was successfully updated.')
+      redirect_to(user_path(@user), :notice => 'Your changes were saved.')
     else
       render :action => "edit"
     end
