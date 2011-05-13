@@ -19,4 +19,14 @@ describe ReplyNotificationController do
 
     lambda { delete :destroy, :id => notification.id }.should raise_error
   end
+
+  it "should delete all reply notifications of the current user" do
+    user = mock_user
+    own_notification = ObjectMother.create_reply_notification :user => user
+    other_notification = ObjectMother.create_reply_notification
+
+    delete :dismiss_all
+    ReplyNotification.all.include?(other_notification).should == true
+    ReplyNotification.all.include?(own_notification).should == false
+  end
 end

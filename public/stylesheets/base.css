@@ -11,12 +11,16 @@ body { background-color: #fff; color: #111; font-size:80%;}
 body, p, ol, ul, td { font-family: verdana, arial, helvetica, sans-serif;}
 img {border-style:none;}
 hr {margin-top:2em; background-color:#ddd; border-style:none;}
-h2, h1 {font-size:120%;}
+h2, h1, .title {font-size:120%;}
 textarea {height:100px; vertical-align:bottom; width:400px;}
 td {vertical-align:top;}
 
-ul.notifications li span.ui-icon {float:left; margin-right:0.5em;}
-ul.notifications {list-style-type:none; margin:0 0 2em 0; padding:0; color:#c70; font-weight:bold;}
+.notifications-box {margin-bottom:2em; padding:1em; border: 1px dashed #c70;}
+.notifications-box .title {font-weight:bold; margin-bottom:1em; color: #c70;}
+.notifications-box .ui-icon {float:left; margin-right:0.5em;}
+.notifications-box ul {list-style-type:none; margin:0; padding:0;}
+.notifications-box ul li {margin-bottom:0.8em;}
+.notifications-box .dismiss-all-link {margin-top:1.5em;}
 .top-nav-bar ul, .filters-menu ul {list-style-type: none; margin: 0 0 1em 0;}
 .top-nav-bar ul, .filters-menu ul {background-color: #eee;}
 .top-nav-bar li, .filters-menu li {display:inline; float:left; margin: 0 2em 0 0; padding:0;}
@@ -26,7 +30,7 @@ ul.notifications {list-style-type:none; margin:0 0 2em 0; padding:0; color:#c70;
 
 .bookmarklet a {color:none; background-color:none;}
 .bookmarklet a:hover {text-decoration:none; color:transparent; background-color:transparent;}
-.bookmarklet img {border: 3px dashed #ccc;}
+.bookmarklet img {border: 2px dashed #ccc;}
 
 .site-title {margin: 0.2em 0.5em 0 0; padding: 0; float:right;}
 .site-title h1 {margin: 0; padding:0; display:inline; font-size:105%;}

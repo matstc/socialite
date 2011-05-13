@@ -31,7 +31,7 @@ describe "users/show.html.haml" do
     assign(:user, user)
     render
 
-    assert_select "ul.notifications>li a", :text => /replied/, :count => 1
+    assert_select ".notifications-box ul>li a", :text => /replied/, :count => 1
   end
 
   it "should not display notifications of one user to another user" do

@@ -1,9 +1,12 @@
 - if @user == current_user and !@user.reply_notifications.empty?
-  %ul{:class => 'notifications'}
-    - @user.reply_notifications.each do |notification|
-      %li
-        %p
-          != icon 'alert'
+  .notifications-box
+    .title 
+      != icon 'alert'
+      Notifications
+
+    %ul{:class => 'cleared'}
+      - @user.reply_notifications.each do |notification|
+        %li
           - if notification.is_for_a_top_level_comment
             %span!= "User #{notification.comment.user} #{link_to("replied", link_to_comment(notification.comment))} to your submission #{link_to truncate(notification.comment.submission.title, :length => 40), submission_path(notification.comment.submission)}"
           - else
@@ -12,6 +15,9 @@
             [
             = link_to "dismiss", reply_notification_path(notification), :method => :delete
             ]
+    - if @user.reply_notifications.size > 1
+      .dismiss-all-link
+        = link_to "Dismiss all notifications", dismiss_all_notifications_path, :method => :delete
 
 = render :partial => 'users/profile_header', :locals => {:user => @user}
 = render :partial => "users/filters", :locals => {:user => @user}
