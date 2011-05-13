@@ -17,5 +17,14 @@ describe AppSettings do
     AppSettings.smtp_port.should == 2
     AppSettings.voting_momentum.should == 2
   end
+
+  it "should not allow voting momentum to be less than 2" do
+    AppSettings.update_settings :voting_momentum => "-1"
+    AppSettings.voting_momentum.should == 2
+    AppSettings.update_settings :voting_momentum => "0"
+    AppSettings.voting_momentum.should == 2
+    AppSettings.update_settings :voting_momentum => "1"
+    AppSettings.voting_momentum.should == 2
+  end
 end
 

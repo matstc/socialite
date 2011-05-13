@@ -76,11 +76,13 @@ describe Submission do
     assert that.interestingness < other.interestingness
   end
 
-  it "should consider a week-old submission with 50 points to be as interesting as a new one" do
+  it "should consider a week-old submission with 35 points to be as interesting as a new one" do
+    AppSettings.voting_momentum = 5
+    
     now = Time.now
     poor_submission = ObjectMother.create_submission(:created_at => now, :score => 0)
     good_submission = ObjectMother.create_submission(:created_at => now, :score => 2)
-    old_submission = ObjectMother.create_submission(:created_at => now - 1.week, :score => 51)
+    old_submission = ObjectMother.create_submission(:created_at => now - 1.week, :score => 36)
 
     poor_submission.interestingness.should be < old_submission.interestingness
     good_submission.interestingness.should be > old_submission.interestingness
@@ -92,12 +94,12 @@ describe Submission do
   end
 
   it "should update interestingness when the voting momentum changes" do
-    AppSettings.voting_momentum = 24192
+    AppSettings.voting_momentum = 10
     
     now = Time.now
     poor_submission = ObjectMother.create_submission(:created_at => now, :score => 0)
     good_submission = ObjectMother.create_submission(:created_at => now, :score => 2)
-    old_submission = ObjectMother.create_submission(:created_at => now - 1.week, :score => 26)
+    old_submission = ObjectMother.create_submission(:created_at => now - 1.week, :score => 71)
 
     poor_submission.interestingness.should be < old_submission.interestingness
     good_submission.interestingness.should be > old_submission.interestingness

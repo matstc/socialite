@@ -1,0 +1,14 @@
+%h1 Tweak algorithm for interestingness
+
+= form_for AppSettings, :url => {:controller => 'admin', :action => 'save_interestingness'}, :method => 'post' do |f|
+  %p
+    The voting momentum is the number of votes per day a submission must gather to keep up with brand new submissions.
+  .explanation
+    The minimum value is 2
+  .field
+    = f.label :voting_momentum, "Voting momentum"
+    = f.text_field :voting_momentum, :size => 6
+
+  = f.submit "Save"
+
+

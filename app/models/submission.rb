@@ -1,6 +1,8 @@
 require 'uri'
 
 class Submission < ActiveRecord::Base
+  SECONDS_PER_DAY = 86400
+
   belongs_to :user
   has_many :all_comments, :class_name => 'Comment'
   has_many :votes
@@ -14,13 +16,13 @@ class Submission < ActiveRecord::Base
   paginates_per 20
 
   # Here we order by interestingness.
-  scope :ordered, lambda { {:order => "submissions.score * #{AppSettings.voting_momentum} - strftime('%s','now') + strftime('%s',submissions.created_at) DESC"} }
+  scope :ordered, lambda { {:order => "submissions.score * #{SECONDS_PER_DAY / AppSettings.voting_momentum} - strftime('%s','now') + strftime('%s',submissions.created_at) DESC"} }
 
   # Interestingness is calculated by multiplying the number of votes by a coefficient.
   # The amount of time passed since creation is taken as a penalty.
   # Equivalent ruby code would go like this:
   def interestingness
-    self.score * AppSettings.voting_momentum - Time.now.to_i + created_at.to_i
+    self.score * (SECONDS_PER_DAY / AppSettings.voting_momentum) - Time.now.to_i + created_at.to_i
   end
 
   def setup_default_values

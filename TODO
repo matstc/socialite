@@ -1,8 +1,4 @@
-A notification for users to know that someone replied to their comments
-
 An admin dashboard that gives out links to recent spam stories and users
-
-Make editing the voting strategy more intuitive
 
 AJAX ACTIONS (marking comment as spam - marking submission as spam - voting up) should change the UI in the same way refreshing the page will
   for instance marking as spam should make the admin links red and show an undo link
