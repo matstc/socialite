@@ -20,7 +20,6 @@ td {vertical-align:top;}
 .notifications-box .ui-icon {float:left; margin-right:0.5em;}
 .notifications-box ul {list-style-type:none; margin:0; padding:0;}
 .notifications-box ul li {margin-bottom:1.8em;}
-.notifications-box .dismiss-all-link {margin-top:1.5em;}
 .notifications-box .notification-text {font-weight:bold;}
 .top-nav-bar ul, .filters-menu ul {list-style-type: none; margin: 0 0 1em 0;}
 .top-nav-bar ul, .filters-menu ul {background-color: #eee;}
@@ -74,14 +73,14 @@ td.rank {width:20px;}
 .inner-center-pane {width:90%; text-align:left; margin:auto;}
 .center-pane {text-align:center;}
 
-.footer, .karma-indicator, .rank, .admin-links, .actions, .deletion-seal, .score {font-weight:normal; font-size:80%;}
+.dismiss-all-link, .footer, .karma-indicator, .rank, .admin-links, .actions, .deletion-seal, .score {font-weight:normal; font-size:80%;}
 .submission-description, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#888;}
 .profile-text {white-space:pre-line;}
 .whole-description .submission-description {margin-top:1em; margin-bottom:1em; white-space:pre-line;}
 .whole-description {margin-bottom:2em;}
 .marked-as-spam .admin-links {color:red;}
 
-#comments-list > tbody > tr {background-color:#eee; margin:1em; border-bottom: 3px solid white;}
+#comments-list > tbody > tr {background-color:#eee; margin:1em; border-bottom: 5px solid white;}
 #comments-list > tbody > tr > td {padding:0.2em 1em 0.4em 1em;}
 #comments-list {width:100%; border-collapse: collapse;}
 .child-comments {margin-left:1.5em; border-collapse:collapse;}

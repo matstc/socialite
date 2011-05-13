@@ -4,9 +4,5 @@
       %td
         = render :partial => 'comments/single_comment', :locals => {:comment => comment}
 
-        %table{:id => "child-comments-#{comment.id}", :class => "child-comments"}
-          - comment.children.each do |comment|
-            = render :partial => 'comments/comment', :locals => {:comment => comment}
-
 = paginate comments
 

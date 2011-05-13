@@ -1,6 +1,11 @@
 - if user == current_user and !user.reply_notifications.empty?
   .notifications-box
-    %h2 Notifications
+    %h2 
+      %span Notifications
+      %span{:class => 'dismiss-all-link'}
+        [
+        = link_to "dismiss all notifications", dismiss_all_notifications_path, :method => :delete
+        ]
 
     %ul{:class => 'cleared'}
       - user.reply_notifications.each do |notification|
@@ -18,6 +23,3 @@
               ]
 
           = render :partial => 'comments/single_comment', :locals => {:comment => notification.comment}
-    .dismiss-all-link
-      = link_to "Dismiss all notifications", dismiss_all_notifications_path, :method => :delete
-
