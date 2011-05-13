@@ -27,6 +27,9 @@
           .site-title
             %span{:class => 'session-info'}
               - if !current_user.nil?
+                - if current_user.has_notifications?
+                  != link_to user_path(current_user) do
+                    != icon 'mail-closed'
                 = render :partial => 'users/user', :locals => {:user => current_user}
             %h1 
               = app_name

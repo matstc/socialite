@@ -1,6 +1,15 @@
 require 'spec_helper'
 
 describe User do
+  it "should know whether or not it has notifications" do
+    user = ObjectMother.create_user
+    user.has_notifications?.should == false
+    ObjectMother.create_reply_notification :user => user
+    user.reload
+
+    user.has_notifications?.should == true
+  end
+
   it "should not allow two users with the same username" do
     one = ObjectMother.create_user :username => "test-username"
     lambda { ObjectMother.create_user :email => 'unique-email@example.com', :username => one.username }.should raise_error

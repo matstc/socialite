@@ -4,10 +4,12 @@ describe "submissions/index.html.haml" do
   include Devise::TestHelpers
   include PaginationMocking
 
-  it "renders a list of submissions" do
+  before(:each) do
     submissions = mock_pagination_of([ObjectMother.create_submission(:title => "Title"), ObjectMother.create_submission(:title => "MyText")])
     assign(:submissions, submissions)
+  end
 
+  it "renders a list of submissions" do
     render
 
     assert_select "tr>td", :text => /Title/, :count => 1

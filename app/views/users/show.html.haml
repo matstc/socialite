@@ -1,4 +1,4 @@
-- if !@user.reply_notifications.empty?
+- if @user == current_user and !@user.reply_notifications.empty?
   %ul{:class => 'notifications'}
     - @user.reply_notifications.each do |notification|
       %li

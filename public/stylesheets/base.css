@@ -22,6 +22,7 @@ ul.notifications {list-style-type:none; margin:0 0 2em 0; padding:0; color:#c70;
 .top-nav-bar li, .filters-menu li {display:inline; float:left; margin: 0 2em 0 0; padding:0;}
 .top-nav-bar ul {padding: 0.2em 0.4em;}
 .session-info {float:left; margin-right:0.5em;}
+.session-info .ui-icon {float:left; margin-right:0.2em;}
 
 .bookmarklet a {color:none; background-color:none;}
 .bookmarklet a:hover {text-decoration:none; color:transparent; background-color:transparent;}

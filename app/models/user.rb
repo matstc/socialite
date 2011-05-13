@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
     self[:confirmed_at] ||= Time.now if !AppSettings.confirm_email_on_registration
   end
 
+  def has_notifications?
+    !reply_notifications.empty?
+  end
+
   def voted_for submission
     Vote.where(:user_id => self.id, :submission_id => submission.id).count > 0
   end
