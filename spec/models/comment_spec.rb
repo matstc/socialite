@@ -1,6 +1,30 @@
 require 'spec_helper'
 
 describe Comment do
+  it "should not create a reply notifcation when replying to your own comment" do
+    user = ObjectMother.create_user
+    submission = ObjectMother.create_submission
+    parent_comment = ObjectMother.create_comment :submission => submission, :user => user
+
+    user.reply_notifications.empty?.should == true
+    comment = ObjectMother.create_comment :submission => submission, :parent => parent_comment, :user => user
+    user.reload
+    user.reply_notifications.empty?.should == true
+  end
+
+  it "should create a reply notification when leaving a comment" do
+    user = ObjectMother.create_user
+    submission = ObjectMother.create_submission
+    parent_comment = ObjectMother.create_comment :submission => submission, :user => user
+
+    user.reply_notifications.empty?.should == true
+    comment = ObjectMother.create_comment :submission => submission, :parent => parent_comment
+    user.reload
+    user.reply_notifications.empty?.should == false
+    user.reply_notifications.first.user.should == user
+    user.reply_notifications.first.comment.should == parent_comment
+  end
+
   it "should know how many replies a comment has" do
     parent = ObjectMother.create_comment
     first_child = ObjectMother.create_comment :parent => parent

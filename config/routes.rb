@@ -53,6 +53,8 @@ Socialite::Application.routes.draw do
     resource :favicon, :only => [:create]
   end
 
+  resources :reply_notification, :only => [:destroy]
+
   resources :users
   match 'users/:id/comments', :controller => 'users', :action => 'show_comments', :via => "get", :as => 'user_comments'
   match 'users/:id/submissions', :controller => 'users', :action => 'show_submissions', :via => "get", :as => 'user_submissions'

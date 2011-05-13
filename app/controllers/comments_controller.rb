@@ -8,4 +8,5 @@ class CommentsController < ApplicationController
     flash[:pre_sign_in_notice] = "Thanks, your comment was received."
     set_html_as_content_type
   end
+
 end

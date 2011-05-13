@@ -7,6 +7,14 @@ class Comment < ActiveRecord::Base
   validates :text, :presence => true
   default_scope :order => "created_at DESC"
 
+  after_save :create_reply_notification
+
+  def create_reply_notification
+    if self.parent and self.parent.user != self.user
+      ReplyNotification.create! :user => self.parent.user, :comment => self.parent
+    end
+  end
+
   def has_parent
     !self.parent.nil?
   end

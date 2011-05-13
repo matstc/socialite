@@ -21,4 +21,16 @@ describe "users/show.html.haml" do
 
     assert_select "p", :text => /this is some profile text/, :count => 1
   end
+
+  it "should display reply notifications" do
+    user = ObjectMother.create_user
+    notification = ObjectMother.create_reply_notification :user => user
+    user.reload
+
+    @view.stub(:current_user) {user}
+    assign(:user, user)
+    render
+
+    assert_select "ul.notifications>li a", :text => /replied/, :count => 1
+  end
 end

@@ -46,6 +46,18 @@ class ObjectMother
     Submission.new options
   end
 
+  def self.create_reply_notification options={}
+    notification = new_reply_notification options
+    notification.save!
+    notification
+  end
+
+  def self.new_reply_notification options={}
+    options[:comment] ||= new_comment
+    options[:user] ||= new_user
+    ReplyNotification.new options
+  end
+
   def self.create_comment options={}
     comment = new_comment(options)
     comment.save!
@@ -53,6 +65,7 @@ class ObjectMother
   end
 
   def self.new_comment options={}
+    options[:submission] ||= new_submission
     options[:text] ||= 'test-text'
     options[:user] ||= random_user
     TestLogger.log "creating a test comment with options = #{options}"

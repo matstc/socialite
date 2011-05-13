@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 
   has_many :submissions
   has_many :comments
+  has_many :reply_notifications
 
   after_initialize :setup_default_values
 
