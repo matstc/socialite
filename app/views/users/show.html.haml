@@ -4,7 +4,7 @@
       %li
         %p
           != icon 'alert'
-          %span!= "User #{notification.comment.user} #{link_to("replied", submission_path(notification.comment.submission))} to one of your comments"
+          %span!= "User #{notification.comment.user} #{link_to("replied", link_to_comment(notification.comment))} to one of your comments"
           %span{:class => 'actions'}
             [
             = link_to "dismiss", reply_notification_path(notification), :method => :delete

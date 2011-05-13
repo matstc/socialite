@@ -2,6 +2,13 @@ require 'spec_helper'
 
 describe ApplicationHelper do
 
+  describe "link_to_comment" do
+    it "should link to the comment including the scrolling id" do
+      comment = ObjectMother.create_comment
+      link_to_comment(comment).should == "/submissions/#{comment.submission.id}#comment-#{comment.id}"
+    end
+  end
+
   describe "error_messages!" do
     it "should generate error messages" do
       def resource

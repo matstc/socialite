@@ -68,7 +68,7 @@ td.rank {width:20px;}
 .inner-center-pane {width:90%; text-align:left; margin:auto;}
 .center-pane {text-align:center;}
 
-.footer, .karma-indicator, .rank, .admin-links, .actions, .deletion-seal, .score {font-size:80%;}
+.footer, .karma-indicator, .rank, .admin-links, .actions, .deletion-seal, .score {font-weight:normal; font-size:80%;}
 .submission-description, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#888;}
 .profile-text {white-space:pre-line;}
 .whole-description .submission-description {margin-top:1em; margin-bottom:1em; white-space:pre-line;}
