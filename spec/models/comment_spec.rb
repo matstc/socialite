@@ -1,6 +1,28 @@
 require 'spec_helper'
 
 describe Comment do
+  it "should create a notification when leaving a comment on another user's submission" do
+    user = ObjectMother.create_user
+    submission = ObjectMother.create_submission :user => user
+
+    user.reply_notifications.empty?.should == true
+    comment = ObjectMother.create_comment :submission => submission
+    user.reload
+    user.reply_notifications.empty?.should == false
+    user.reply_notifications.first.comment.should == comment
+    user.reply_notifications.first.user.should == user
+  end
+
+  it "should not create a notification when leaving a comment on your own submission" do
+    user = ObjectMother.create_user
+    submission = ObjectMother.create_submission :user => user
+
+    user.reply_notifications.empty?.should == true
+    comment = ObjectMother.create_comment :submission => submission, :user => user
+    user.reload
+    user.reply_notifications.empty?.should == true
+  end
+
   it "should not create a reply notifcation when replying to your own comment" do
     user = ObjectMother.create_user
     submission = ObjectMother.create_submission

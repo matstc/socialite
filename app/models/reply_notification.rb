@@ -4,4 +4,8 @@ class ReplyNotification < ActiveRecord::Base
 
   validates :comment, :presence => true
   validates :user, :presence => true
+
+  def is_for_a_top_level_comment
+    ! self.comment.has_parent
+  end
 end
