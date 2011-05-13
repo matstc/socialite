@@ -1,12 +1,12 @@
 %span<
   = link_to pluralize(submission.comments.size, "comment"), submission_path(submission)
+
 - if current_user.try :admin
   %span{:class => "admin-links"}
     = "["
     %span{:id => "admin-links-#{submission.id}"}
       - if submission.is_spam?
-        = I18n.t 'marked_as_spam'
-        = link_to "undo", undo_mark_submission_as_spam_path(:id => submission.id), :method => :post, :remote => true, :class => "undo-mark-submission-as-spam-link"
+        = link_to "do not mark as spam", undo_mark_submission_as_spam_path(:id => submission.id), :method => :post, :remote => true, :class => "undo-mark-submission-as-spam-link"
       - else
         = link_to "mark as spam", mark_submission_as_spam_path(:id => submission.id), :method => :post, :remote => true, :class => "mark-submission-as-spam-link"
     = "]"

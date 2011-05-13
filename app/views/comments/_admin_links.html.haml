@@ -3,8 +3,7 @@
     = "["
     %span{:id => "admin-links-#{comment.id}"}
       - if comment.is_spam?
-        = I18n.t 'marked_as_spam'
-        = link_to "undo", undo_mark_comment_as_spam_path(:id => comment.id), :method => :post, :remote => true, :class => "undo-mark-comment-as-spam-link"
+        = link_to "do not mark as spam", undo_mark_comment_as_spam_path(:id => comment.id), :method => :post, :remote => true, :class => "undo-mark-comment-as-spam-link"
       - else
         = link_to "mark as spam", mark_comment_as_spam_path(:id => comment.id), :method => :post, :remote => true, :class => "mark-comment-as-spam-link"
     = "]"

@@ -1,15 +1,21 @@
 Log in as admin and enable confirmation emails
+Log out
 
+Go to a submission's page and try to leave a comment
+You should be redirected to a sign in page
+Go to the sign up page
 Sign up
+
 Check your email for confirmation email
 Resend confirmation instructions
 Check your email for confirmation instructions
 Try to sign in without confirming first
 Verify error message
-
 Sign up again using the same username and password
 Verify error message
 
-Confirm
+Confirm your account
+You should be redirected to the submission's page and your comment should display
+
 Sign out
-Sign in
+Sign in again

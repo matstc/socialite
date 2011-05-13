@@ -12,7 +12,11 @@
       = render :partial => "submissions/vote", :locals => {:submission => submission}
     %td
       - title = whole_text ? submission.title : truncate(submission.title, :length => 100)
-      %span{:class => 'submission-link'}= link_to title, resolve_submission_url(submission), {:rel => 'nofollow'}
+      %span{:class => 'spam-info'}
+        - if submission.is_spam?
+          [ spam ]
+      %span{:class => "submission-link #{submission.is_spam? ? 'crossed-out' : ''}"}
+        = link_to title, resolve_submission_url(submission), {:rel => 'nofollow'}
       = render :partial => "submissions/quick_links", :locals => {:submission => submission}
       /
         = "interestingness = #{submission.interestingness}"

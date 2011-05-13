@@ -1,3 +1,7 @@
+The comment count should only reflect the comments shown the submission page (currently, children to spam comments are counted too)
+
+Improve the language in the outgoing emails.
+
 An admin dashboard that gives out links to recent spam stories and users
 
 AJAX ACTIONS (marking comment as spam - marking submission as spam - voting up) should change the UI in the same way refreshing the page will

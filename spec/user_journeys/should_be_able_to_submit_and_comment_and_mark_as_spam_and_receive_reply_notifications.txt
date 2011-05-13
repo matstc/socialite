@@ -1,0 +1,20 @@
+Sign up as a new user
+Submit a new story
+Leave a comment on it
+
+Make sure your post appears in the list of new submissions
+Go to your profile and make sure your post and your comment appear there
+No notifications should display
+
+Sign up as yet a new user
+Go that story and leave a top level comment
+Also leave a reply to the original comment
+
+Sign back in as original user and make sure the proper notifications appear
+Go to them then dismiss the first one with the dismis link
+Dismiss all notifications
+
+Log in as admin and mark the original comment as spam
+Make sure the comment is no longer displayed on the submission's page
+Mark the submission as spam
+Make sure the submission is no longer displayed on the New page

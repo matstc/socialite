@@ -78,7 +78,7 @@ td.rank {width:20px;}
 .profile-text {white-space:pre-line;}
 .whole-description .submission-description {margin-top:1em; margin-bottom:1em; white-space:pre-line;}
 .whole-description {margin-bottom:2em;}
-.marked-as-spam .admin-links {color:red;}
+.spam-info {color:red;}
 
 #comments-list > tbody > tr {background-color:#eee; margin:1em; border-bottom: 5px solid white;}
 #comments-list > tbody > tr > td {padding:0.2em 1em 0.4em 1em;}
