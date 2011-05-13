@@ -26,9 +26,9 @@
       %td
       %td
       %td
-        - if @submission.user == current_user
-          = link_to 'Edit your submission', edit_submission_path(@submission)
+        - if submission.user == current_user
+          = link_to 'Edit your submission', edit_submission_path(submission)
         - elsif current_user_is_admin?
-          = link_to 'Edit this submission', edit_submission_path(@submission)
+          = link_to 'Edit this submission', edit_submission_path(submission)
 
 

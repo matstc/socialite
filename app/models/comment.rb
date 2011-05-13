@@ -10,11 +10,11 @@ class Comment < ActiveRecord::Base
   after_save :create_reply_notification
 
   def create_reply_notification
-    if self.parent and self.parent.user != self.user
-      ReplyNotification.create! :user => self.parent.user, :comment => self.parent
-    elsif not self.parent and self.submission.user != self.user
-      ReplyNotification.create! :user => self.submission.user, :comment => self
-    end
+    create_reply_notification_for(has_parent ? self.parent : self.submission)
+  end
+
+  def create_reply_notification_for resource
+    ReplyNotification.create!(:user => resource.user, :comment => self) if resource.user != self.user
   end
 
   def has_parent

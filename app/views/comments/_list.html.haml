@@ -2,16 +2,11 @@
   - comments.each_with_index do |comment, index|
     %tr{:class => resolve_class_for_coloring_comment(comment)}
       %td
-        %span{:class => 'comment-signature'}= "#{comment.user} - #{time_ago_in_words_including_ago(comment.created_at)} (#{pluralize(comment.number_of_replies, "reply")})"
-        = render :partial => 'comments/admin_links', :locals => {:comment => comment}
-
-        %div= comment.text
+        = render :partial => 'comments/single_comment', :locals => {:comment => comment}
 
         %table{:id => "child-comments-#{comment.id}", :class => "child-comments"}
           - comment.children.each do |comment|
             = render :partial => 'comments/comment', :locals => {:comment => comment}
-        %span
-          = link_to 'view submission', submission_path(comment.submission)
 
 = paginate comments
 

@@ -44,7 +44,7 @@ describe Comment do
     user.reload
     user.reply_notifications.empty?.should == false
     user.reply_notifications.first.user.should == user
-    user.reply_notifications.first.comment.should == parent_comment
+    user.reply_notifications.first.comment.should == comment
   end
 
   it "should know how many replies a comment has" do

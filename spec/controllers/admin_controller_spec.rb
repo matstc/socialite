@@ -13,6 +13,13 @@ describe AdminController do
 
   end
 
+  describe "save interestingness" do
+    it "should update settings with the new voting momentum" do
+      post :save_interestingness, :app_settings => {:voting_momentum => "123"}
+      AppSettings.voting_momentum.should == 123
+    end
+  end
+
   describe "modify appearance" do
     it "should build up a list of themes by looking at all the directories under public/stylesheets" do
       get :modify_appearance
