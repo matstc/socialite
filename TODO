@@ -1,3 +1,5 @@
+Provide a way to fully-delete users from the admin console (delete comments/submissions/notifications related to either of those)
+
 The comment count should only reflect the comments shown the submission page (currently, children to spam comments are counted too)
 
 Improve the language in the outgoing emails.
