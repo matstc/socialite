@@ -80,10 +80,11 @@ td.rank {width:20px;}
 .whole-description {margin-bottom:2em;}
 .marked-as-spam .admin-links {color:red;}
 
-#comments-list > tbody > tr {background-color:#eee; margin:1em;}
+#comments-list > tbody > tr {background-color:#eee; margin:1em; border-bottom: 3px solid white;}
 #comments-list > tbody > tr > td {padding:0.2em 1em 0.4em 1em;}
-#comments-list {width:100%;}
-.child-comments {margin-left:1em; border-collapse:collapse;}
+#comments-list {width:100%; border-collapse: collapse;}
+.child-comments {margin-left:1.5em; border-collapse:collapse;}
+.comment {margin-bottom:0.5em;}
 
 .reply-link, .comment-signature {font-size:80%;}
 
