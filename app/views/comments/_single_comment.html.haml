@@ -1,8 +1,10 @@
-%span{:class => 'spam-info'}
-  - if comment.is_spam?
-    [ spam ]
+%span{:class => 'comment-signature'}
+  %span{:class => 'spam-info'}
+    - if comment.is_spam?
+      [ spam ]
+  
+  %span= "#{comment.user} - #{time_ago_in_words_including_ago(comment.created_at)} (#{pluralize(comment.number_of_replies, "reply")})"
 
-%span{:class => 'comment-signature'}= "#{comment.user} - #{time_ago_in_words_including_ago(comment.created_at)} (#{pluralize(comment.number_of_replies, "reply")})"
 = render :partial => 'comments/admin_links', :locals => {:comment => comment}
 
 .pre-line<!= sanitize_html comment.text

@@ -75,4 +75,6 @@
                   }
                 });
               });
-        .site-logo= image_tag(AppSettings.logo_file)
+        .right-sidebar
+          = image_tag(AppSettings.logo_file)
+          = render :partial => 'comments/overview', :locals => {:comments => Comment.recent_comments}

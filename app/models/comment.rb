@@ -9,6 +9,10 @@ class Comment < ActiveRecord::Base
 
   after_save :create_reply_notification
 
+  def self.recent_comments
+    Comment.where("is_spam is ? or is_spam is ?", nil, false).limit(12).all
+  end
+
   def create_reply_notification
     create_reply_notification_for(has_parent ? self.parent : self.submission)
   end

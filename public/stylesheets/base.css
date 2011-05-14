@@ -29,6 +29,10 @@ td {vertical-align:top;}
 .session-info {float:left; margin-right:0.5em;}
 .session-info .ui-icon {float:left; margin-right:0.2em;}
 
+.comment-overview {text-align:left; padding-left:2em;}
+.comment-overview ul {list-style-type:none; margin: 0; padding-left:0;}
+.comment-overview ul li {margin-bottom:1.5em;}
+
 .bookmarklet a {color:none; background-color:none;}
 .bookmarklet a:hover {text-decoration:none; color:transparent; background-color:transparent;}
 .bookmarklet img {border: 2px dashed #ccc;}
@@ -36,8 +40,8 @@ td {vertical-align:top;}
 .site-title {margin: 0.2em 0.5em 0 0; padding: 0; float:right;}
 .site-title h1 {margin: 0; padding:0; display:inline; font-size:105%;}
 .center-pane {font-size: 90%;}
-.site-logo {width:150px; float:right; margin-left:-150px; text-align:right;}
-.layout-content {margin-right:150px;}
+.right-sidebar {width:250px; float:right; margin-left:-250px; text-align:right;}
+.layout-content {margin-right:250px;}
 .floating-wrapper {float:left; width:100%;}
 
 .prefixed-icon {margin-right:0.25em;}
@@ -74,7 +78,7 @@ td.rank {width:20px;}
 .inner-center-pane {width:90%; text-align:left; margin:auto;}
 .center-pane {text-align:center;}
 
-.dismiss-all-link, .footer, .karma-indicator, .rank, .admin-links, .actions, .deletion-seal, .score {font-weight:normal; font-size:80%;}
+.dismiss-all-link, .footer, .karma-indicator, .rank, .admin-links, .actions, .deletion-seal, .score, .reply-link, .comment-signature {font-weight:normal; font-size:80%;}
 .submission-description, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#888;}
 .profile-text {white-space:pre-line;}
 .whole-description .submission-description {margin-top:1em; margin-bottom:1em; white-space:pre-line;}
@@ -86,8 +90,6 @@ td.rank {width:20px;}
 #comments-list {width:100%; border-collapse: collapse;}
 .child-comments {margin-left:1.5em; border-collapse:collapse;}
 .comment {margin-bottom:0.5em;}
-
-.reply-link, .comment-signature {font-size:80%;}
 
 #post-comment-at-top {margin-bottom:1em;}
 

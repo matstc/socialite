@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe Comment do
+  it "should pull up the most recent comments that were not marked as spam" do
+    all_comments = []
+    20.times { all_comments << ObjectMother.create_comment }
+    all_comments << ObjectMother.create_comment(:is_spam => true)
+
+    Comment.recent_comments.should == all_comments.reverse[1,12]
+  end
+
   it "should create a notification when leaving a comment on another user's submission" do
     user = ObjectMother.create_user
     submission = ObjectMother.create_submission :user => user
