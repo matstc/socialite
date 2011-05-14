@@ -4,9 +4,10 @@ describe User do
   it "should destroy everything related to a user" do
     user = ObjectMother.create_user :username => 'short-lived'
     submission = ObjectMother.create_submission :user => user
+    spam_submission = ObjectMother.create_submission :user => user, :is_spam => true
     comment = ObjectMother.create_comment :user => user
     reply_to_comment = ObjectMother.create_comment :parent => comment
-    spam_reply_to_comment = ObjectMother.create_comment :parent => reply_to_comment
+    spam_reply_to_comment = ObjectMother.create_comment :parent => reply_to_comment, :is_spam => true
     other_person_comment = ObjectMother.create_comment :submission => submission
     notification_for_user = ObjectMother.create_reply_notification :user => user
     notification_triggered_by_user = ObjectMother.create_reply_notification :comment => comment
@@ -15,6 +16,7 @@ describe User do
 
     User.where(:id => user.id).all.should == []
     Submission.where(:id => submission.id).all.should == []
+    Submission.where(:id => spam_submission.id).all.should == []
     Comment.where(:id => comment.id).all.should == []
     Comment.where(:id => reply_to_comment.id).all.should == []
     Comment.where(:id => spam_reply_to_comment.id).all.should == []
