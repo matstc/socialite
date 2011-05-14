@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 
   after_initialize :setup_default_values
 
+  before_destroy :destroy_related_objects
+
   def self.find_spammers
     User.includes([:submissions, :comments]).group("users.id").where(["submissions.is_spam = ? or comments.is_spam = ?", true, true])
   end
@@ -28,6 +30,19 @@ class User < ActiveRecord::Base
   def setup_default_values
     self[:karma] ||= 0
     self[:confirmed_at] ||= Time.now if !AppSettings.confirm_email_on_registration
+  end
+
+  def destroy_related_objects
+    destroy_related_notifications
+
+    Comment.unscoped.where(:user_id => self).all.each do |comment|
+      comment.destroy_recursively
+    end
+
+    self.submissions.each do |submission|
+      Comment.unscoped.where(:submission_id => submission).delete_all
+    end
+    self.submissions.destroy_all
   end
 
   def has_notifications?
@@ -52,6 +67,10 @@ class User < ActiveRecord::Base
 
   def mark_as_deleted
     self.deleted = true
+    destroy_related_notifications
+  end
+
+  def destroy_related_notifications
     self.reply_notifications.destroy_all
     ReplyNotification.where(:comment_id => self.comments.map{|c|c.id}).destroy_all
   end

@@ -46,4 +46,10 @@ class Comment < ActiveRecord::Base
   def number_of_replies
     self.children.size
   end
+
+  def destroy_recursively
+      children = Comment.unscoped.where(:parent_id => self.id)
+      children.each {|child| child.destroy_recursively}
+      self.destroy
+  end
 end
