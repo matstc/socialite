@@ -22,8 +22,11 @@
         = "interestingness = #{submission.interestingness}"
       .submission-info
         = render :partial => "users/posted_by", :locals => {:user => submission.user, :resource => submission}
-        - description = whole_text ? submission.description : truncate(submission.description, :length => 140)
-        %div{:class => "submission-description"}<= description
+        %div{:class => "submission-description"}<
+        - if whole_text
+          != sanitize_html submission.description
+        - else 
+          = truncate(strip_tags(submission.description), :length => 140)
 
   - if whole_text and !current_user.nil?
     %tr

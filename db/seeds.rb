@@ -38,12 +38,11 @@ def create_users
   User.create!(users)
   User.all.first.update_attribute :admin, true
   User.all.each {|user| user.update_attribute :confirmed_at, Time.now}
-  User.all[1,6].each {|user| user.update_attribute :deleted, true }
 end
 
 def create_submissions
   default_sub = lambda {{:url => "example.com", :title => random_text, :description => random_text, :created_at => rand(9900).minutes.ago, :score => rand(80), :user => random_user}}
-  50.times do
+  25.times do
     Submission.create!([default_sub.call.merge :is_spam => false])
   end
   3.times do

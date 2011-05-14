@@ -3,6 +3,7 @@
     %tr{:class => resolve_class_for_coloring_comment(comment)}
       %td
         = render :partial => 'comments/single_comment', :locals => {:comment => comment}
+        = link_to 'view in context', link_to_comment(comment)
 
 = paginate comments
 

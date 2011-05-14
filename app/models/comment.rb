@@ -21,14 +21,6 @@ class Comment < ActiveRecord::Base
     !self.parent.nil?
   end
 
-  def deleted?
-    self.user.deleted?
-  end
-
-  def spam_or_deleted?
-    deleted? || is_spam?
-  end
-
   def mark_as_spam
     self.is_spam = true
   end

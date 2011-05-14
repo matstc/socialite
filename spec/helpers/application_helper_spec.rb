@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe ApplicationHelper do
 
+  describe "sanitize html" do
+    it "should only allow some tags to come through" do
+      sanitize_html("I <b>want</b> <i>this</i> to <a>not link</a>").should == "I <b>want</b> <i>this</i> to &lt;a&gt;not link&lt;/a&gt;"
+    end
+  end
+  
   describe "link_to_comment" do
     it "should link to the comment including the scrolling id" do
       comment = ObjectMother.create_comment

@@ -1,4 +1,23 @@
 module ApplicationHelper
+  def sanitize_html text
+    s = text.dup
+
+    # escaping html to html entities 
+    s = s.gsub('&', '&amp;').gsub('<', '&lt;').gsub('>', '&gt;') 
+
+    # allow blockquote
+    s.gsub!(/\n?&lt;blockquote&gt;\n*(.+?)\n*&lt;\/blockquote&gt;/im, "<blockquote>\\1</blockquote>") 
+
+    # other tags: b, i, em, strong, u 
+    %w(b i em strong u).each do |x|
+      s.gsub!(Regexp.new('&lt;(' + x + ')&gt;(.+?)&lt;/('+x+')&gt;',
+           Regexp::MULTILINE|Regexp::IGNORECASE), 
+           "<\\1>\\2</\\1>") 
+    end
+
+    s
+  end
+
   def link_to_comment comment
     "#{submission_path(comment.submission)}#comment-#{comment.id}"
   end
@@ -86,23 +105,23 @@ module ApplicationHelper
   end
 
   def setup_action_mailer
-      ActionMailer::Base.default_url_options[:host] = AppSettings.smtp_default_url_host
-      ActionMailer::Base.smtp_settings = {
-                        :address => AppSettings.smtp_address,
-                        :port => AppSettings.smtp_port,
-                        :domain => AppSettings.smtp_domain,
-                        :authentication => AppSettings.smtp_authentication,
-                        :user_name => AppSettings.smtp_authentication_username,
-                        :password => AppSettings.smtp_authentication_password,
-                        :tls => AppSettings.smtp_tls,
-                        :enable_starttls_auto => AppSettings.smtp_enable_starttls_auto,
-                        }
+    ActionMailer::Base.default_url_options[:host] = AppSettings.smtp_default_url_host
+    ActionMailer::Base.smtp_settings = {
+      :address => AppSettings.smtp_address,
+      :port => AppSettings.smtp_port,
+      :domain => AppSettings.smtp_domain,
+      :authentication => AppSettings.smtp_authentication,
+      :user_name => AppSettings.smtp_authentication_username,
+      :password => AppSettings.smtp_authentication_password,
+      :tls => AppSettings.smtp_tls,
+      :enable_starttls_auto => AppSettings.smtp_enable_starttls_auto,
+    }
 
   end
 
   def setup_exception_notifier
-      Socialite::Application.config.middleware.use ::ExceptionNotifierToggler
-      Socialite::Application.config.middleware.use ::ExceptionNotifier
+    Socialite::Application.config.middleware.use ::ExceptionNotifierToggler
+    Socialite::Application.config.middleware.use ::ExceptionNotifier
   end
 
 end

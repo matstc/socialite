@@ -43,12 +43,11 @@ class Submission < ActiveRecord::Base
 
   def self.list
     # Since default_scope cannot take a lambda argument -- we make do here by overriding list and manually specifying the default scope as :ordered
-    # Also, I could not find a way to default the value of :deleted to false so we fetch all users where :deleted is null or false
-    Submission.ordered.joins(:user).where("is_spam = ? AND users.deleted IS NULL OR users.deleted = ?", false, false)
+    Submission.ordered.joins(:user).where("is_spam = ?", false)
   end
 
   def comments
-    self.all_comments.reject {|comment| comment.spam_or_deleted?}
+    self.all_comments.reject {|comment| comment.is_spam?}
   end
 
   def comments= args
@@ -80,10 +79,6 @@ class Submission < ActiveRecord::Base
 
   def to_s
     "#{self.title} #{self.description}"
-  end
-
-  def deleted?
-    self.user.deleted?
   end
 
 end

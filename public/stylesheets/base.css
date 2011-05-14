@@ -7,6 +7,7 @@
 .hidden {display:none;}
 .crossed-out {text-decoration: line-through;}
 
+blockquote {margin:1em; font-style:italic;}
 body { background-color: #fff; color: #111; font-size:80%;}
 body, p, ol, ul, td { font-family: verdana, arial, helvetica, sans-serif;}
 img {border-style:none;}

@@ -1,4 +1,8 @@
-%p
-  Welcome #{@resource.email}!
-%p You can confirm your account through the link below:
+%h3 Welcome to #{AppSettings.app_name}, #{@resource.username}.
+
+%p Thanks for signing up. You can quickly confirm your account by clicking the link below:
 %p= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+%br
+
+%h3 What is #{AppSettings.app_name}?
+%p= AppSettings.about_page

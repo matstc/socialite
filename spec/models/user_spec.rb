@@ -74,7 +74,7 @@ describe User do
     User.find_spammers.all.should_not include(legit_user)
   end
 
-  it "should delete a user as well its submissions/comments/notifications" do
+  it "should destroy a user as well its submissions/comments/notifications" do
     user = ObjectMother.create_user :username => 'short-lived'
     submission = ObjectMother.create_submission :user => user
     comment = ObjectMother.create_comment :user => user

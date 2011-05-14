@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   validates :karma, :presence => true
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :karma, :deleted, :profile_text
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :karma, :profile_text
 
   has_many :submissions
   has_many :comments
@@ -50,10 +50,6 @@ class User < ActiveRecord::Base
 
   def to_s
     self.attributes['username']
-  end
-
-  def mark_as_deleted
-    self.deleted = true
   end
 
   def destroy_related_objects

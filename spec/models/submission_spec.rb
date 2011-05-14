@@ -2,17 +2,12 @@ require 'spec_helper'
 
 describe Submission do
 
-  it "should not count spam or deleted comments towards comment count" do
+  it "should not count spam towards comment count" do
     submission = ObjectMother.create_submission
     comment = ObjectMother.create_comment :submission => submission, :is_spam => true
     submission.comments.size.should == 0
 
     comment = ObjectMother.create_comment :submission => submission
-    submission.reload
-    submission.comments.size.should == 1
-
-    deleted_user = ObjectMother.create_user :deleted => true
-    comment = ObjectMother.create_comment :submission => submission, :user => deleted_user
     submission.reload
     submission.comments.size.should == 1
   end
@@ -38,16 +33,13 @@ describe Submission do
     best_of.should eq([best, second_best])
   end
 
-  it "should not pull the deleted or spam submissions" do
+  it "should not pull the spam submissions" do
     legit_submission = ObjectMother.create_submission :is_spam => false
     spam_submission = ObjectMother.create_submission :is_spam => true
-    deleted_user = ObjectMother.create_user :deleted => true
-    submission_from_deleted_user = ObjectMother.create_submission :user =>  deleted_user
 
     list = Submission.list
     list.should include(legit_submission)
     list.should_not include(spam_submission)
-    list.should_not include(submission_from_deleted_user)
   end
   
   it 'should start with a score of 0' do

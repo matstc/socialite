@@ -4,6 +4,6 @@
       %td= render :partial => 'users/user', :locals => {:user => user}
       - if current_user_is_admin?
         %td= link_to 'edit', edit_user_path(user)
-        %td= link_to 'delete', user_path(user), :confirm => 'Are you sure?', :method => :delete
+        %td= link_to 'delete', user_path(user), :confirm => 'Deleting a user cannot be undone.  Are you sure you want to go ahead?', :method => :delete
 
 = paginate users
