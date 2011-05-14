@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 
   after_initialize :setup_default_values
 
+  after_destroy :destroy_related_objects
+
   def self.find_spammers
     User.includes([:submissions, :comments]).group("users.id").where(["submissions.is_spam = ? or comments.is_spam = ?", true, true])
   end
@@ -52,6 +54,13 @@ class User < ActiveRecord::Base
 
   def mark_as_deleted
     self.deleted = true
+  end
+
+  def destroy_related_objects
+    self.reply_notifications.destroy_all
+    ReplyNotification.where(:comment_id => self.comments.map{|c|c.id}).destroy_all
+    self.submissions.destroy_all
+    self.comments.destroy_all
   end
 
 end

@@ -1,8 +1,12 @@
 Provide a way to fully-delete users from the admin console (delete comments/submissions/notifications related to either of those)
 
-The comment count should only reflect the comments shown the submission page (currently, children to spam comments are counted too)
-
 Improve the language in the outgoing emails.
+
+Allow basic html tags in comments and submission descriptions (i b blockquote)
+
+Show a list of recent comments on the right of the popular page
+
+The comment count should only reflect the comments shown the submission page (currently, children to spam comments are counted too)
 
 An admin dashboard that gives out links to recent spam stories and users
 
