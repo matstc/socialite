@@ -8,6 +8,6 @@ class ReplyNotification < ActiveRecord::Base
   default_scope :order => "created_at DESC"
 
   def is_for_a_top_level_comment
-    ! self.comment.has_parent
+    ! self.comment.has_parent?
   end
 end

@@ -93,12 +93,12 @@ class AdminController < ApplicationController
   end
   
   def undo_mark_comment_as_spam
-    submission = Comment.find params[:id]
+    submission = Comment.unscoped.find params[:id]
     undo_mark_resource_as_spam submission
   end
 
   def undo_mark_submission_as_spam
-    submission = Submission.find params[:id]
+    submission = Submission.unscoped.find params[:id]
     undo_mark_resource_as_spam submission
   end
 

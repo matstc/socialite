@@ -1,12 +1,19 @@
 require 'spec_helper'
 
 describe Comment do
-  it "should pull up the most recent comments that were not marked as spam" do
+  it "should still see its parent even if it's deleted or spam" do
+    parent = ObjectMother.create_comment :is_spam => true, :user => ObjectMother.create_user(:deleted => true)
+    comment = ObjectMother.create_comment :parent => parent
+    Comment.find(comment.id).has_parent?.should == true
+  end
+
+  it "should pull up the most recent comments that were not marked as spam and whose auther was not deleted" do
     all_comments = []
     20.times { all_comments << ObjectMother.create_comment }
     all_comments << ObjectMother.create_comment(:is_spam => true)
+    all_comments << ObjectMother.create_comment(:user => ObjectMother.create_user(:deleted => true))
 
-    Comment.recent_comments.should == all_comments.reverse[1,12]
+    Comment.recent_comments.should == all_comments.reverse[2,12]
   end
 
   it "should create a notification when leaving a comment on another user's submission" do

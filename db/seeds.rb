@@ -38,6 +38,7 @@ def create_users
   User.create!(users)
   User.all.first.update_attribute :admin, true
   User.all.each {|user| user.update_attribute :confirmed_at, Time.now}
+  User.all[1,6].each{|user| user.mark_as_deleted}
 end
 
 def create_submissions

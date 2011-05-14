@@ -147,7 +147,8 @@ describe UsersController do
     it "destroys the requested user" do
       user = ObjectMother.create_user
       delete :destroy, :id => user.id
-      User.exists?(user).should == false
+      user.reload
+      user.deleted?.should == true
       response.should redirect_to(users_path)
     end
   end

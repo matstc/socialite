@@ -74,18 +74,21 @@ describe User do
     User.find_spammers.all.should_not include(legit_user)
   end
 
-  it "should destroy a user as well its submissions/comments/notifications" do
+  it "should soft delete a user as well its submissions/comments/notifications" do
     user = ObjectMother.create_user :username => 'short-lived'
     submission = ObjectMother.create_submission :user => user
     comment = ObjectMother.create_comment :user => user
     notification_for_user = ObjectMother.create_reply_notification :user => user
     notification_triggered_by_user = ObjectMother.create_reply_notification :comment => comment
 
-    user.destroy
+    user.mark_as_deleted
+    user.save!
+    submission.reload
+    comment.reload
 
-    User.where(:id => user.id).all.should == []
-    Submission.where(:id => submission.id).all.should == []
-    Comment.where(:id => comment.id).all.should == []
+    user.deleted?.should == true
+    comment.deleted?.should == true
+    submission.deleted?.should == true
     ReplyNotification.where(:id => notification_for_user.id).all.should == []
     ReplyNotification.where(:id => notification_triggered_by_user.id).all.should == []
   end

@@ -9,15 +9,13 @@ class User < ActiveRecord::Base
 
   validates :karma, :presence => true
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :karma, :profile_text
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :karma, :profile_text, :deleted
 
   has_many :submissions
   has_many :comments
   has_many :reply_notifications
 
   after_initialize :setup_default_values
-
-  after_destroy :destroy_related_objects
 
   def self.find_spammers
     User.includes([:submissions, :comments]).group("users.id").where(["submissions.is_spam = ? or comments.is_spam = ?", true, true])
@@ -52,11 +50,10 @@ class User < ActiveRecord::Base
     self.attributes['username']
   end
 
-  def destroy_related_objects
+  def mark_as_deleted
+    self.deleted = true
     self.reply_notifications.destroy_all
     ReplyNotification.where(:comment_id => self.comments.map{|c|c.id}).destroy_all
-    self.submissions.destroy_all
-    self.comments.destroy_all
   end
 
 end

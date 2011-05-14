@@ -15,6 +15,8 @@ class Submission < ActiveRecord::Base
 
   paginates_per 20
 
+  default_scope :readonly => false, :joins => :user, :conditions => ["(is_spam is ? OR is_spam = ?) AND (users.deleted is ? OR users.deleted = ?)", nil, false, nil, false]
+
   # Here we order by interestingness.
   scope :ordered, lambda { {:order => "submissions.score * #{SECONDS_PER_DAY / AppSettings.voting_momentum} - strftime('%s','now') + strftime('%s',submissions.created_at) DESC"} }
 
@@ -34,20 +36,20 @@ class Submission < ActiveRecord::Base
   end
 
   def self.most_recent
-    Submission.unscoped.where(:is_spam => false).order("created_at DESC")
+    Submission.order("submissions.created_at DESC")
   end
 
   def self.best_of
-    Submission.unscoped.where(:is_spam => false).order("score DESC")
+    Submission.order("submissions.score DESC")
   end
 
   def self.list
     # Since default_scope cannot take a lambda argument -- we make do here by overriding list and manually specifying the default scope as :ordered
-    Submission.ordered.joins(:user).where("is_spam = ?", false)
+    Submission.ordered
   end
 
   def comments
-    self.all_comments.reject {|comment| comment.is_spam?}
+    self.all_comments.reject {|comment| comment.is_spam? || comment.deleted?}
   end
 
   def comments= args
@@ -70,11 +72,15 @@ class Submission < ActiveRecord::Base
   end
 
   def top_level_comments
-    self.comments.reject {|comment| comment.has_parent}
+    self.comments.reject {|comment| comment.has_parent?}
   end
 
   def mark_as_spam
     self.is_spam = true
+  end
+
+  def deleted?
+    self.user.deleted?
   end
 
   def to_s

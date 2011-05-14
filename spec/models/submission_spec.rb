@@ -10,6 +10,11 @@ describe Submission do
     comment = ObjectMother.create_comment :submission => submission
     submission.reload
     submission.comments.size.should == 1
+
+    deleted_user = ObjectMother.create_user :deleted => true
+    comment = ObjectMother.create_comment :submission => submission, :user => deleted_user
+    submission.reload
+    submission.comments.size.should == 1
   end
 
   it "should allow blank urls" do
