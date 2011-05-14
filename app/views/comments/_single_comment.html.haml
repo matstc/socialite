@@ -1,9 +1,11 @@
 %span{:class => 'comment-signature'}
-  %span{:class => 'spam-info'}
-    - if comment.is_spam?
+  - if comment.is_spam?
+    %span{:class => 'spam-info'}
       [ spam ]
   
-  %span= "#{comment.user} - #{time_ago_in_words_including_ago(comment.created_at)} (#{pluralize(comment.number_of_replies, "reply")})"
+  %span
+    = link_to comment.user, user_path(comment.user)
+    = " - #{time_ago_in_words_including_ago(comment.created_at)} (#{pluralize(comment.number_of_replies, "reply")})"
 
 = render :partial => 'comments/admin_links', :locals => {:comment => comment}
 
