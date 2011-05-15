@@ -25,7 +25,7 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions/1
   def show
-    @submission = Submission.unscoped.find(params[:id])
+    @submission = Submission.find(params[:id])
   end
 
   # GET /submissions/new

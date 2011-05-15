@@ -9,10 +9,10 @@ class Comment < ActiveRecord::Base
   after_save :create_reply_notification
   
   default_scope :order => "created_at DESC"
-  default_scope :readonly => false, :joins => [:user,:submission], :conditions => ["(submissions.is_spam is ? OR submissions.is_spam = ?) AND (comments.is_spam is ? OR comments.is_spam = ?) AND (users.deleted is ? OR users.deleted = ?)", nil, false, nil, false, nil, false]
+  scope :not_deleted_or_spam, :readonly => false, :joins => [:user,:submission], :conditions => ["(submissions.is_spam is ? OR submissions.is_spam = ?) AND (comments.is_spam is ? OR comments.is_spam = ?) AND (users.deleted is ? OR users.deleted = ?)", nil, false, nil, false, nil, false]
 
   def self.recent_comments
-    Comment.limit(12).all
+    Comment.not_deleted_or_spam.limit(12).all
   end
 
   def create_reply_notification
@@ -24,7 +24,7 @@ class Comment < ActiveRecord::Base
   end
 
   def has_parent?
-    !self.parent.nil? || !self.parent_id.nil? # looking for parent_id here because if we look only for parent.nil? then it might be nil just because parent is deleted or spam
+    !self.parent.nil?
   end
 
   def mark_as_spam
@@ -48,7 +48,7 @@ class Comment < ActiveRecord::Base
   end
 
   def destroy_recursively
-      children = Comment.unscoped.where(:parent_id => self.id)
+      children = Comment.where(:parent_id => self.id)
       children.each {|child| child.destroy_recursively}
       self.destroy
   end

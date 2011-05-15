@@ -79,6 +79,7 @@ td.rank {width:20px;}
 .center-pane {text-align:center;}
 
 .dismiss-all-link, .footer, .karma-indicator, .rank, .admin-links, .actions, .deletion-seal, .score, .reply-link, .comment-signature {font-weight:normal; font-size:80%;}
+.admin-links {white-space:nowrap;}
 .submission-description, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#888;}
 .profile-text {white-space:pre-line;}
 .whole-description .submission-description {margin-top:1em; margin-bottom:1em; white-space:pre-line;}

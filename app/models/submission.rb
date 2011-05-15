@@ -15,7 +15,7 @@ class Submission < ActiveRecord::Base
 
   paginates_per 20
 
-  default_scope :readonly => false, :joins => :user, :conditions => ["(is_spam is ? OR is_spam = ?) AND (users.deleted is ? OR users.deleted = ?)", nil, false, nil, false]
+  scope :not_deleted_or_spam, :readonly => false, :joins => :user, :conditions => ["(is_spam is ? OR is_spam = ?) AND (users.deleted is ? OR users.deleted = ?)", nil, false, nil, false]
 
   # Here we order by interestingness.
   scope :ordered, lambda { {:order => "submissions.score * #{SECONDS_PER_DAY / AppSettings.voting_momentum} - strftime('%s','now') + strftime('%s',submissions.created_at) DESC"} }
@@ -36,16 +36,16 @@ class Submission < ActiveRecord::Base
   end
 
   def self.most_recent
-    Submission.order("submissions.created_at DESC")
+    Submission.not_deleted_or_spam.order("submissions.created_at DESC")
   end
 
   def self.best_of
-    Submission.order("submissions.score DESC")
+    Submission.not_deleted_or_spam.order("submissions.score DESC")
   end
 
   def self.list
     # Since default_scope cannot take a lambda argument -- we make do here by overriding list and manually specifying the default scope as :ordered
-    Submission.ordered
+    Submission.not_deleted_or_spam.ordered
   end
 
   def comments

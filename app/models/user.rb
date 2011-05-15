@@ -35,13 +35,13 @@ class User < ActiveRecord::Base
   def destroy_related_objects
     destroy_related_notifications
 
-    Comment.unscoped.where(:user_id => self).all.each do |comment|
+    Comment.where(:user_id => self).all.each do |comment|
       comment.destroy_recursively
     end
 
-    all_submissions = Submission.unscoped.where(:user_id => self)
+    all_submissions = Submission.where(:user_id => self)
     all_submissions.all.each do |submission|
-      Comment.unscoped.where(:submission_id => submission).delete_all
+      Comment.where(:submission_id => submission).delete_all
     end
 
     all_submissions.delete_all
