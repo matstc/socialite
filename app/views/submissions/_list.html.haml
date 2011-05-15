@@ -1,5 +1,5 @@
 %table{:id => "submissions-list"}
   - submissions.each_with_index do |submission, index|
     = render :partial => 'submissions/header', :locals => {:submission => submission, :index => index}
-= paginate submissions
 
+= paginate submissions

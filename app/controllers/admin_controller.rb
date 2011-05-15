@@ -23,7 +23,7 @@ class AdminController < ApplicationController
   end
 
   def moderate_comments
-    @comments = Comment.order("created_at DESC").page params[:page]
+    @comments = Comment.unscoped.order("created_at DESC").page params[:page]
   end
 
   def moderate_submissions
