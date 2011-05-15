@@ -5,6 +5,7 @@ describe User do
     user = ObjectMother.create_user :username => 'short-lived'
     submission = ObjectMother.create_submission :user => user
     spam_submission = ObjectMother.create_submission :user => user, :is_spam => true
+    reply_to_spam_submission = ObjectMother.create_comment :submission => spam_submission
     comment = ObjectMother.create_comment :user => user
     reply_to_comment = ObjectMother.create_comment :parent => comment
     spam_reply_to_comment = ObjectMother.create_comment :parent => reply_to_comment, :is_spam => true
@@ -19,6 +20,7 @@ describe User do
     Submission.where(:id => spam_submission.id).all.should == []
     Comment.where(:id => comment.id).all.should == []
     Comment.where(:id => reply_to_comment.id).all.should == []
+    Comment.where(:id => reply_to_spam_submission.id).all.should == []
     Comment.where(:id => spam_reply_to_comment.id).all.should == []
     Comment.where(:id => other_person_comment.id).all.should == []
     ReplyNotification.where(:id => notification_for_user.id).all.should == []

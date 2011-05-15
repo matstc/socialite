@@ -39,10 +39,12 @@ class User < ActiveRecord::Base
       comment.destroy_recursively
     end
 
-    self.submissions.each do |submission|
+    all_submissions = Submission.unscoped.where(:user_id => self)
+    all_submissions.all.each do |submission|
       Comment.unscoped.where(:submission_id => submission).delete_all
     end
-    self.submissions.destroy_all
+
+    all_submissions.delete_all
   end
 
   def has_notifications?

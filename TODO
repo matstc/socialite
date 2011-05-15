@@ -1,3 +1,5 @@
+Do not use default scopes so much - remove it in Submission and Comment
+
 The comment count should only reflect the comments shown the submission page (currently, children to spam comments are counted too)
 
 An admin dashboard that gives out links to recent spam stories and users
