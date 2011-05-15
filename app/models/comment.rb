@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
   after_save :create_reply_notification
   
   default_scope :order => "created_at DESC"
-  default_scope :readonly => false, :joins => :user, :conditions => ["(is_spam is ? OR is_spam = ?) AND (users.deleted is ? OR users.deleted = ?)", nil, false, nil, false]
+  default_scope :readonly => false, :joins => [:user,:submission], :conditions => ["(submissions.is_spam is ? OR submissions.is_spam = ?) AND (comments.is_spam is ? OR comments.is_spam = ?) AND (users.deleted is ? OR users.deleted = ?)", nil, false, nil, false, nil, false]
 
   def self.recent_comments
     Comment.limit(12).all

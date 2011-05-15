@@ -35,7 +35,7 @@ describe SubmissionsController do
 
   describe "GET show" do
     it "assigns the requested submission as @submission" do
-      Submission.stub(:find).with("37") { @mock_submission }
+      Submission.unscoped.stub(:find).with("37") { @mock_submission }
       get :show, :id => "37"
       assigns(:submission).should be(@mock_submission)
     end
