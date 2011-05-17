@@ -29,9 +29,11 @@ describe Antispam do
   end
 
   it "should be very uncertain at the beginning and then have some certainty" do
-    @antispam.compute_uncertainty(@submission).should eq(0)
+    @antispam.compute_uncertainty(@submission)[1].should eq(-1/0.0)
     @antispam.train_as_spam(@submission)
-    @antispam.compute_uncertainty(@submission).should_not eq(0)
+    category, score = @antispam.compute_uncertainty(@submission)
+    category.should == 'Spam'
+    score.should be > (-1/0.0)
   end
 
   it "should untrain as spam and switch to content" do

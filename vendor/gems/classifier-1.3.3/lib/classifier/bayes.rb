@@ -65,10 +65,14 @@ class Bayes
 		@categories.each do |category, category_words|
 			score[category.to_s] = 0
 			total = category_words.values.inject(0) {|sum, element| sum+element}
-			text.word_hash.each do |word, count|
-				s = category_words.has_key?(word) ? category_words[word] : 0.1
-				score[category.to_s] += Math.log(s/total.to_f)
-			end
+            if total == 0
+              score[category.to_s] = -1/0.0 # -Infinity
+            else
+              text.word_hash.each do |word, count|
+                  s = category_words.has_key?(word) ? category_words[word] : 0.1
+                  score[category.to_s] += Math.log(s/total.to_f)
+              end
+            end
 		end
 		return score
 	end

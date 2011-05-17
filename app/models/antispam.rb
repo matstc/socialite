@@ -6,16 +6,15 @@ class Antispam
   end
 
   def is_spam? stringable
-    compute_uncertainty(stringable) > 1 and is_classified_as_spam? stringable
+    category, score = compute_uncertainty(stringable)
+    score > -5 and category == 'Spam'
   end
 
   def is_classified_as_content? stringable
-    compute_uncertainty stringable
     @bayes.classify(stringable.to_s) == 'Content'
   end
   
   def is_classified_as_spam? stringable
-    compute_uncertainty stringable
     @bayes.classify(stringable.to_s) == 'Spam'
   end
 
@@ -45,14 +44,12 @@ class Antispam
     @bayes.instance_variable_get :@total_words
   end
 
+  # returns [category, score]
   def compute_uncertainty stringable
     scores = @bayes.classifications(stringable.to_s)
-    sorted_scores = scores.sort_by{ |a| -a[1] }
-    delta = sorted_scores[1][1].abs - sorted_scores[0][1].abs
-    Rails::logger.info "The classifier thinks stringable '#{stringable}' is '#{sorted_scores[0][0]}' with a certainty of #{delta}"
-    # Sometimes we would get delta = 0 (Fixnum) so we have to cast to float:
-    delta = delta.to_f if delta.respond_to? :to_f
-    delta.nan? ? 0 : delta
+    winner, loser = scores.sort_by{ |a| -a[1] }
+    Rails::logger.info "The classifier thinks stringable '#{stringable}' is '#{winner[0]}' with a certainty of #{winner[1]} (#{loser[0]} = #{winner[1]})"
+    winner
   end
 
 end
