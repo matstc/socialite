@@ -18,6 +18,9 @@ class ObjectMother
   def self.create_user options={}
     user = new_user(options)
     user.save!
+    if options[:admin]
+      user.update_attribute :admin, true
+    end
     user
   end
 
@@ -44,6 +47,17 @@ class ObjectMother
     options[:user] ||= random_user
     TestLogger.log "creating test submission with options = #{options}"
     Submission.new options
+  end
+
+  def self.create_spam_notification options={}
+    notification = new_spam_notification options
+    notification.save!
+    notification
+  end
+
+  def self.new_spam_notification options={}
+    options[:submission] ||= new_submission
+    SpamNotification.new options
   end
 
   def self.create_reply_notification options={}

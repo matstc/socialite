@@ -56,6 +56,7 @@ class SubmissionsController < ApplicationController
       logger.warn "Submission was treated as spam"
       flash[:alert] = "Your submission was flagged as spam. Don't worry though. An administrator should allow your submission to be published soon."
       @submission.mark_as_spam
+      SpamNotification.new(:submission => @submission).save!
     else
       Antispam.new.train_as_content @submission
     end

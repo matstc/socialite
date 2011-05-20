@@ -1,26 +1,59 @@
-- if user == current_user and !user.reply_notifications.empty?
-  .notifications-box
-    %h2 
-      %span Notifications
-      %span{:class => 'dismiss-all-link'}
-        [
-        = link_to "dismiss all notifications", dismiss_all_notifications_path, :method => :delete
-        ]
+- if user == current_user
+  - if !@spam_notifications.blank?
+    .notifications-box
+      %h2 
+        %span Spam notifications
+        %span{:class => 'dismiss-all-link'}
+          [
+          = link_to "dismiss all spam notifications", dismiss_all_spam_notifications_path, :method => :delete
+          ]
 
-    %ul{:class => 'cleared'}
-      - user.reply_notifications.each do |notification|
-        %li
-          %div{:class => 'notification-text cleared'}
+      %ul{:class => 'cleared'}
+        - @spam_notifications.each do |notification|
+          %li
             %span
               != icon 'alert'
-              - if notification.is_for_a_top_level_comment
-                != "#{notification.comment.user} #{link_to("replied", link_to_comment(notification.comment))} to your submission"
+              - if notification.is_for_a_comment?
+                %div{:class => 'notification-text cleared'}
+                  != "A comment left by #{notification.comment.user} was classified as spam"
+                  %span{:class => 'actions'}
+                    [
+                    = link_to "dismiss", spam_notification_path(notification), :method => :delete
+                    ]
+                = render :partial => 'comments/single_comment', :locals => {:comment => notification.comment}
+                = link_to 'view related submission', link_to_comment(notification.comment)
               - else
-                != "#{notification.comment.user} #{link_to("replied", link_to_comment(notification.comment))} to one of your comments"
-            %span{:class => 'actions'}
-              [
-              = link_to "dismiss", reply_notification_path(notification), :method => :delete
-              ]
+                %div{:class => 'notification-text cleared'}
+                  != "A submission left by #{notification.submission.user} was classified as spam"
+                  %span{:class => 'actions'}
+                    [
+                    = link_to "dismiss", spam_notification_path(notification), :method => :delete
+                    ]
+                = render :partial => 'submissions/preview', :locals => {:submission => notification.submission}
 
-          = render :partial => 'comments/single_comment', :locals => {:comment => notification.comment}
-          = link_to 'view in context', link_to_comment(notification.comment)
+  - if !user.reply_notifications.empty?
+    .notifications-box
+      %h2 
+        %span Notifications
+        %span{:class => 'dismiss-all-link'}
+          [
+          = link_to "dismiss all notifications", dismiss_all_notifications_path, :method => :delete
+          ]
+
+      %ul{:class => 'cleared'}
+        - user.reply_notifications.each do |notification|
+          %li
+            %div{:class => 'notification-text cleared'}
+              %span
+                != icon 'alert'
+                - if notification.is_for_a_top_level_comment
+                  != "#{notification.comment.user} #{link_to("replied", link_to_comment(notification.comment))} to your submission"
+                - else
+                  != "#{notification.comment.user} #{link_to("replied", link_to_comment(notification.comment))} to one of your comments"
+              %span{:class => 'actions'}
+                [
+                = link_to "dismiss", reply_notification_path(notification), :method => :delete
+                ]
+
+            = render :partial => 'comments/single_comment', :locals => {:comment => notification.comment}
+            = link_to 'view in context', link_to_comment(notification.comment)

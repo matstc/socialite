@@ -54,7 +54,9 @@ Socialite::Application.routes.draw do
   end
 
   resources :reply_notification, :only => [:destroy]
+  resources :spam_notification, :only => [:destroy]
   match 'reply_notifications/dismiss_all', :to => 'reply_notification#dismiss_all', :via => "delete", :as => 'dismiss_all_notifications'
+  match 'spam_notifications/dismiss_all', :to => 'spam_notification#dismiss_all', :via => "delete", :as => 'dismiss_all_spam_notifications'
 
   resources :users
   match 'users/:id/comments', :controller => 'users', :action => 'show_comments', :via => "get", :as => 'user_comments'

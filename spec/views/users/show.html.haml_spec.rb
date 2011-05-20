@@ -1,6 +1,18 @@
 require 'spec_helper'
 
 describe "users/show.html.haml" do
+  it "should display spam notifications to admins" do
+    user = ObjectMother.create_user :admin => true
+    spam_notitication1 = ObjectMother.create_spam_notification :comment => ObjectMother.create_comment
+    spam_notitication2 = ObjectMother.create_spam_notification :submission => ObjectMother.create_submission
+    @view.stub(:current_user){user}
+    assign(:user, user)
+    assign(:spam_notifications, [spam_notitication1, spam_notitication2])
+
+    render
+
+    assert_select ".notifications-box ul>li div", :text => /spam/, :count => 2
+  end
 
   it "should indicate that the profile text was not provided" do
     user = ObjectMother.create_user :profile_text => nil

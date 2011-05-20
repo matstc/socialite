@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def has_notifications?
-    !reply_notifications.empty?
+    !reply_notifications.empty? or (self.try(:admin) and SpamNotification.count > 0)
   end
 
   def voted_for submission

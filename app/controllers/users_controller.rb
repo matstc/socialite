@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
+    @spam_notifications = SpamNotification.all if current_user == @user and current_user_is_admin?
   end
   alias :show_comments :show
   alias :show_submissions :show

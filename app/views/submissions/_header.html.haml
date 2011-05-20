@@ -1,4 +1,5 @@
 - whole_text ||= false
+- index ||= false
 
 %table{:class => "#{whole_text ? 'whole-description' : ''}"}
   %tr{:class => resolve_class_for_coloring_submission(submission)}
@@ -11,22 +12,7 @@
     %td{:class => 'vote-area'}
       = render :partial => "submissions/vote", :locals => {:submission => submission}
     %td
-      - title = whole_text ? submission.title : truncate(submission.title, :length => 100)
-      %span{:class => 'spam-info'}
-        - if submission.is_spam?
-          [ spam ]
-      %span{:class => "submission-link #{submission.is_spam? ? 'crossed-out' : ''}"}
-        = link_to title, resolve_submission_url(submission), {:rel => 'nofollow'}
-      = render :partial => "submissions/quick_links", :locals => {:submission => submission}
-      /
-        = "interestingness = #{submission.interestingness}"
-      .submission-info
-        = render :partial => "users/posted_by", :locals => {:user => submission.user, :resource => submission}
-        %div{:class => "submission-description"}<
-          - if whole_text
-            != sanitize_html submission.description
-          - else 
-            = truncate(strip_tags(submission.description), :length => 140)
+      = render :partial => "submissions/preview", :locals => {:submission => submission}
 
   - if whole_text and !current_user.nil?
     %tr

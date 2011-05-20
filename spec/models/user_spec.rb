@@ -27,13 +27,31 @@ describe User do
     ReplyNotification.where(:id => notification_triggered_by_user.id).all.should == []
   end
 
-  it "should know whether or not it has notifications" do
+  it "should know whether or not it has reply notifications" do
     user = ObjectMother.create_user
-    user.has_notifications?.should == false
+    user.has_notifications?.should == nil
     ObjectMother.create_reply_notification :user => user
     user.reload
 
     user.has_notifications?.should == true
+  end
+
+  it "should know whether or not it has spam notifications" do
+    user = ObjectMother.create_user :admin => true
+    user.has_notifications?.should == false
+    ObjectMother.create_spam_notification
+    user.reload
+
+    user.has_notifications?.should == true
+  end
+
+  it "should not have spam notifications as normal user" do
+    user = ObjectMother.create_user
+    user.has_notifications?.should == nil
+    ObjectMother.create_spam_notification
+    user.reload
+
+    user.has_notifications?.should == nil
   end
 
   it "should not allow two users with the same username" do

@@ -7,6 +7,8 @@ describe UsersController do
     @mock_user = mock_user :admin => true
   end
 
+  describe ""
+
   describe "spammers" do
     it "assigns the spammers to @users" do
       spammer = ObjectMother.create_user
@@ -37,6 +39,19 @@ describe UsersController do
       User.stub(:find).with("37") { @mock_user }
       get :show, :id => "37"
       assigns(:user).should be(@mock_user)
+    end
+
+    it "renders spam notifications to admins" do
+      spam_notification = ObjectMother.create_spam_notification
+      get :show, :id => @mock_user.id
+      assigns(:spam_notifications).should == [spam_notification]
+    end
+
+    it "does not show spam notifications to non-admins" do
+      current_user = mock_user 
+      spam_notification = ObjectMother.create_spam_notification
+      get :show, :id => current_user.id
+      assigns(:spam_notifications).should == nil
     end
   end
 
