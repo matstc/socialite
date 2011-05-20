@@ -22,6 +22,7 @@
                     ]
                 = render :partial => 'comments/single_comment', :locals => {:comment => notification.comment}
                 = link_to 'view related submission', link_to_comment(notification.comment)
+
               - else
                 %div{:class => 'notification-text cleared'}
                   != "A submission left by #{notification.submission.user} was classified as spam"

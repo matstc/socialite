@@ -18,3 +18,6 @@ Log in as admin and mark the original comment as spam
 Make sure the comment is no longer displayed on the submission's page
 Mark the submission as spam
 Make sure the submission is no longer displayed on the New page
+Go to the spam notifications on your profile page as admin
+Dismiss them
+Make sure all spam notifications are gone and the message icon is also gone

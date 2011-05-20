@@ -1,5 +1,3 @@
-An admin dashboard that gives out links to recent spam stories and users
-
 Make sure the grapevine does not show comments that children of spam comments
 The comment count should only reflect the comments shown the submission page (currently, children to spam comments are counted too)
 
