@@ -39,4 +39,12 @@ $(document).ready(function(){
 
     $('body').append('<div class="cleared"></div><br>');
 
+    $("a[href$='.pdf']").each(function(idx, elem){
+      $(elem).after('<span class="extension-hint">[pdf]</span>');
+    });
+
+    $("a[href$='.jpg'], a[href$='.gif'], a[href$='.png'], a[href$='.bmp']").each(function(idx, elem){
+      $(elem).after('<span class="extension-hint">[image]</span>');
+    });
+
 });

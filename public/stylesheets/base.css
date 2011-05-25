@@ -16,6 +16,11 @@ h2, h1, .title {font-size:120%;}
 textarea {height:100px; vertical-align:bottom; width:400px;}
 td {vertical-align:top;}
 
+/*
+a[href$='.pdf'] {background: url(/images/page_white_acrobat.png) top right no-repeat; padding-right: 1.7em;}
+a[href$='.png'], a[href$='.jpg'], a[href$='.gif'], a[href$='.bmp'] {background: url(/images/pictures.png) top right no-repeat; padding-right: 1.7em;}
+*/
+
 .notifications-box {margin-bottom:2em; padding:1em; border: 1px dashed #c70;}
 .notifications-box .title {font-weight:bold; margin-bottom:1em; color: #c70;}
 .notifications-box .ui-icon {float:left; margin-right:0.5em;}
@@ -78,9 +83,10 @@ td.rank {width:20px;}
 .inner-center-pane {width:90%; text-align:left; margin:auto;}
 .center-pane {text-align:center;}
 
-.dismiss-all-link, .footer, .karma-indicator, .rank, .admin-links, .actions, .deletion-seal, .score, .reply-link, .comment-signature {font-weight:normal; font-size:80%;}
+.extension-hint {margin-left:0.5em;}
+.extension-hint, .dismiss-all-link, .footer, .karma-indicator, .rank, .admin-links, .actions, .deletion-seal, .score, .reply-link, .comment-signature {font-weight:normal; font-size:80%;}
 .admin-links {white-space:nowrap;}
-.submission-description, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#888;}
+.extension-hint, .submission-description, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#888;}
 .profile-text {white-space:pre-line;}
 .whole-description .submission-description {margin-top:1em; margin-bottom:1em; white-space:pre-line;}
 .whole-description {margin-bottom:2em;}
