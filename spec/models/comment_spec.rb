@@ -1,19 +1,52 @@
 require 'spec_helper'
 
 describe Comment do
+  it "should be an orphan if any ancestor is spam or deleted even if the oldest ancestor is not spam" do
+    great_grand_parent = ObjectMother.create_comment
+    grand_parent = ObjectMother.create_comment :parent => great_grand_parent, :is_spam => true, :user => ObjectMother.create_user(:deleted => true)
+    parent = ObjectMother.create_comment :parent => grand_parent
+    comment = ObjectMother.create_comment :parent => parent
+    Comment.find(comment.id).is_orphan?.should == true
+  end
+
+  it "should be an orphan if any ancestor is spam or deleted" do
+    grand_parent = ObjectMother.create_comment :is_spam => true, :user => ObjectMother.create_user(:deleted => true)
+    parent = ObjectMother.create_comment :parent => grand_parent
+    comment = ObjectMother.create_comment :parent => parent
+    Comment.find(comment.id).is_orphan?.should == true
+  end
+
+  it "should be an orphan if the parent is spam or deleted" do
+    parent = ObjectMother.create_comment :is_spam => true, :user => ObjectMother.create_user(:deleted => true)
+    comment = ObjectMother.create_comment :parent => parent
+    Comment.find(comment.id).is_orphan?.should == true
+  end
+
   it "should still see its parent even if it's deleted or spam" do
     parent = ObjectMother.create_comment :is_spam => true, :user => ObjectMother.create_user(:deleted => true)
     comment = ObjectMother.create_comment :parent => parent
     Comment.find(comment.id).has_parent?.should == true
   end
 
-  it "should pull up the most recent comments that were not marked as spam and whose auther was not deleted" do
-    all_comments = []
-    20.times { all_comments << ObjectMother.create_comment }
-    all_comments << ObjectMother.create_comment(:is_spam => true)
-    all_comments << ObjectMother.create_comment(:user => ObjectMother.create_user(:deleted => true))
+  describe "recent comments" do
+    it "should only include comments that were not marked as spam and whose author was not deleted" do
+      all_comments = []
+      20.times { all_comments << ObjectMother.create_comment }
+      all_comments << ObjectMother.create_comment(:is_spam => true)
+      all_comments << ObjectMother.create_comment(:user => ObjectMother.create_user(:deleted => true))
 
-    Comment.recent_comments.should == all_comments.reverse[2,12]
+      Comment.recent_comments.should == all_comments.reverse[2,12]
+    end
+
+    it "should not pull up orphan comments" do
+      all_comments = []
+      20.times { all_comments << ObjectMother.create_comment }
+      parent = ObjectMother.create_comment(:is_spam => true)
+      all_comments << parent
+      all_comments << ObjectMother.create_comment(:parent => parent)
+
+      Comment.recent_comments.should == all_comments.reverse[2,12]
+    end
   end
 
   it "should create a notification when leaving a comment on another user's submission" do

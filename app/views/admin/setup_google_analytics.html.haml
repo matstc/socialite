@@ -1,0 +1,14 @@
+%h1 Setup Google analytics
+
+= form_for AppSettings, :url => {:controller => 'admin', :action => 'save_google_analytics'}, :method => 'post' do |f|
+  %p
+    = link_to "Google Analytics", 'http://www.google.com/analytics/'
+    can help you track various statistics about the traffic on your site. You'll need to create an account and paste the tracking code that Google gives you into the box below to start gathering analytics data.
+  %p The piece of code will be inserted into all the pages of your app.
+
+  .field
+    .explanation= "Copy the code snippet from Google analytics into this box. The snippet should include the <script> tag."
+    = f.text_area :google_analytics_script, :class => 'edit_html'
+
+  = f.submit "Save changes"
+

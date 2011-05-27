@@ -14,3 +14,4 @@ AppSettings.defaults['from_email'] = 'no-reply@example.com'
 AppSettings.defaults['exception_notifier_enabled'] = false
 AppSettings.defaults['theme'] = 'default'
 AppSettings.defaults['voting_momentum'] = 5
+AppSettings.defaults['google_analytics_script'] = ''

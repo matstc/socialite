@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe Submission do
+  it "should not list orphan comments" do
+    submission = ObjectMother.create_submission
+    parent = ObjectMother.create_comment :submission => submission, :is_spam => true
+    comment = ObjectMother.create_comment :submission => submission, :parent => parent
+
+    submission.reload
+    submission.comments.size.should == 0
+  end
 
   it "should not count spam towards comment count" do
     submission = ObjectMother.create_submission

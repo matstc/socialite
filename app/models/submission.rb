@@ -49,7 +49,7 @@ class Submission < ActiveRecord::Base
   end
 
   def comments
-    self.all_comments.reject {|comment| comment.is_spam? || comment.deleted?}
+    self.all_comments.reject {|comment| comment.is_orphan?}
   end
 
   def comments= args

@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
   scope :not_deleted_or_spam, :readonly => false, :joins => [:user,:submission], :conditions => ["(submissions.is_spam is ? OR submissions.is_spam = ?) AND (comments.is_spam is ? OR comments.is_spam = ?) AND (users.deleted is ? OR users.deleted = ?)", nil, false, nil, false, nil, false]
 
   def self.recent_comments
-    Comment.not_deleted_or_spam.limit(12).all
+    Comment.not_deleted_or_spam.limit(20).all.select{|c| !c.is_orphan?}[0,12]
   end
 
   def create_reply_notification
@@ -37,6 +37,16 @@ class Comment < ActiveRecord::Base
 
   def deleted_or_spam?
     deleted? || self.is_spam
+  end
+
+  def is_orphan?
+    return true if deleted_or_spam?
+
+    if has_parent?
+      return self.parent.is_orphan?
+    end
+
+    false
   end
 
   def to_s

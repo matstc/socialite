@@ -30,6 +30,9 @@ Socialite::Application.routes.draw do
   match 'admin/change_name', :to => "admin#change_name", :via => "get", :as => 'change_name'
   match 'admin/save_app_name', :to => "admin#save_app_name", :via => "post", :as => 'save_app_name'
 
+  match 'admin/setup_google_analytics', :to => "admin#setup_google_analytics", :via => "get", :as => 'setup_google_analytics'
+  match 'admin/save_google_analytics', :to => "admin#save_google_analytics", :via => "post", :as => 'save_google_analytics'
+
   match 'admin/tweak_interestingness', :to => "admin#tweak_interestingness", :via => "get", :as => 'tweak_interestingness'
   match 'admin/save_interestingness', :to => "admin#save_interestingness", :via => "post", :as => 'save_interestingness'
 

@@ -1,8 +1,5 @@
 Test comments as spam
 
-Make sure the grapevine does not show comments that children of spam comments
-The comment count should only reflect the comments shown the submission page (currently, children to spam comments are counted too)
-
 Figure out a way to calculate confidence for the bayes classifier
 
 AJAX ACTIONS (marking comment as spam - marking submission as spam - voting up) should change the UI in the same way refreshing the page will

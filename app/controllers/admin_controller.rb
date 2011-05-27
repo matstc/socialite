@@ -12,6 +12,11 @@ class AdminController < ApplicationController
     @themes = Dir["#{themes_directory}/*"].map { |a| File.basename(a) }
   end
 
+  def save_google_analytics
+      AppSettings.update_settings params[:app_settings]
+      redirect_to :setup_google_analytics, :notice => 'Settings saved.'
+  end
+
   def save_interestingness
       AppSettings.update_settings params[:app_settings]
       redirect_to :tweak_interestingness, :notice => 'Settings saved.'
