@@ -2,8 +2,6 @@ Socialite::Application.routes.draw do
 
   devise_for :users
 
-  match 'submissions.rss', :to => 'submissions#index', :via => "get", :format => 'rss', :as => 'popular_page_rss'
-
   match 'submissions/:id/vote_up', :to => 'submissions#vote_up', :via => "post", :defaults => { :format => 'js'}, :as => 'vote_up'
   match 'about', :to => "application#about", :via => "get", :as => 'about'
   match 'users/best_of', :to => "users#best_of", :via => "get", :as => "best_of_users"
@@ -63,6 +61,10 @@ Socialite::Application.routes.draw do
   match 'users/:id/submissions', :controller => 'users', :action => 'show_submissions', :via => "get", :as => 'user_submissions'
 
   resources :submissions
+
+  # keep this line below the declaration of submissions as resources to keep RSS out of pagination
+  match 'submissions.rss', :to => 'submissions#index', :via => "get", :format => 'rss', :as => 'popular_page_rss'
+
   resources :comments
 
   # The priority is based upon order of creation:
