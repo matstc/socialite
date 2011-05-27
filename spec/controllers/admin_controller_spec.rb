@@ -13,6 +13,13 @@ describe AdminController do
 
   end
 
+  describe "save google analytics script" do
+    it "should update settings with the new google analytics script" do
+      post :save_google_analytics, :app_settings => {:google_analytics_script => "<script>!</script>"}
+      AppSettings.google_analytics_script.should == "<script>!</script>"
+    end
+  end
+
   describe "save interestingness" do
     it "should update settings with the new voting momentum" do
       post :save_interestingness, :app_settings => {:voting_momentum => "123"}
