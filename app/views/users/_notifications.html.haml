@@ -30,7 +30,7 @@
                     [
                     = link_to "dismiss", spam_notification_path(notification), :method => :delete
                     ]
-                = render :partial => 'submissions/preview', :locals => {:submission => notification.submission}
+                = render :partial => 'submissions/body', :locals => {:submission => notification.submission}
 
   - if !user.reply_notifications.empty?
     .notifications-box

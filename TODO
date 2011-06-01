@@ -1,11 +1,6 @@
-Test comments as spam
+Test what happens when comments are considered spam by the antispam engine
 
 Figure out a way to calculate confidence for the bayes classifier
-
-AJAX ACTIONS (marking comment as spam - marking submission as spam - voting up) should change the UI in the same way refreshing the page will
-  for instance marking as spam should make the admin links red and show an undo link
-  undoing marking as spam should make the admin links black again and it should say 'mark as spam' instead of 'no longer marked as spam'
-  voting up should dim the post
 
 Make the themes more powerful by changing images too -- not just css file.
 

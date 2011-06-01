@@ -1,4 +1,4 @@
-= render :partial => 'submissions/header', :locals => {:submission => @submission, :index => nil, :whole_text => true}
+= render :partial => 'submissions/single_submission', :locals => {:submission => @submission, :index => nil, :whole_text => true}
 
 = form_for :comment, :url => {:controller => :comments, :action => :create}, :remote => true, :method => :post, :html => {:id => 'post-comment-at-top'} do |f|
   %input{:type => :hidden, :name => "comment[submission_id]", :value => @submission.id}

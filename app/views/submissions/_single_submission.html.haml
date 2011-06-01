@@ -12,7 +12,7 @@
     %td{:class => 'vote-area'}
       = render :partial => "submissions/vote", :locals => {:submission => submission}
     %td
-      = render :partial => "submissions/preview", :locals => {:submission => submission}
+      = render :partial => "submissions/body", :locals => {:submission => submission, :whole_text => whole_text}
 
   - if whole_text and !current_user.nil?
     %tr
