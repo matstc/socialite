@@ -7,12 +7,17 @@ class Comment < ActiveRecord::Base
   validates :text, :presence => true
 
   after_save :create_reply_notification
+  before_save :trim
   
   default_scope :order => "created_at DESC"
   scope :not_deleted_or_spam, :readonly => false, :joins => [:user,:submission], :conditions => ["(submissions.is_spam is ? OR submissions.is_spam = ?) AND (comments.is_spam is ? OR comments.is_spam = ?) AND (users.deleted is ? OR users.deleted = ?)", nil, false, nil, false, nil, false]
 
   def self.recent_comments
     Comment.not_deleted_or_spam.limit(20).all.select{|c| !c.is_orphan?}[0,12]
+  end
+
+  def trim
+    self.text.gsub!(/[\r\n]*$/,"")
   end
 
   def create_reply_notification

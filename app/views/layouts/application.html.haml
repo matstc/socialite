@@ -5,7 +5,7 @@
     = auto_discovery_link_tag(:rss, popular_page_rss_url, {:title => "RSS Feed"})
 
     %title
-      = app_name
+      = page_title
     = stylesheet_link_tag :all
     = stylesheet_link_tag "themes/#{theme}/theme.css"
     = stylesheet_link_tag 'jquery-ui/humanity/jquery-ui-1.8.11.custom.css'
@@ -37,9 +37,9 @@
             %li
               = link_to_unless_current_action "Popular", root_path
             %li
-              = link_to_unless_current_action 'New', new_path
+              = link_to_unless_current_action 'Most recent', new_path
             %li
-              = link_to_unless_current_action 'Submit a new story', new_submission_path
+              = link_to_unless_current_action 'Submit a story', new_submission_path
             %li
               = link_to_unless_current_action 'Best of', best_of_submissions_path
             %li

@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe Comment do
+  it "should remove carriage returns from the end of a comment" do
+    comment = ObjectMother.create_comment :text => "this is a test.\r\n\r\n"
+    comment.text.should == "this is a test."
+  end
+
   it "should be an orphan if any ancestor is spam or deleted even if the oldest ancestor is not spam" do
     great_grand_parent = ObjectMother.create_comment
     grand_parent = ObjectMother.create_comment :parent => great_grand_parent, :is_spam => true, :user => ObjectMother.create_user(:deleted => true)

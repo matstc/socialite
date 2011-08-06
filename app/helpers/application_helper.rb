@@ -1,4 +1,17 @@
 module ApplicationHelper
+  def set_page_title value
+    @content_for_title = value.to_s
+  end
+
+  def page_title
+    (@content_for_title + " | " if @content_for_title).to_s + app_name
+  end
+
+  def h1_and_page_title value
+    set_page_title value
+    content_tag(:h1){value}
+  end
+
   def sanitize_html text
     s = text.dup
 

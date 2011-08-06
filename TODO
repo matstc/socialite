@@ -1,6 +1,3 @@
-Replace the double carriage returns in comments with single carriage returns. Truncate all carriage returns at the end of a comment or submission description.
-e.g.: http://www.octopusnews.com/submissions/43#comment-34
-
 Make the grapevine look more modern and less cast aside.
 
 Improve the UI of comment thread so that it is clearer where a comment ends and where one begins and what comment is a reply to what.

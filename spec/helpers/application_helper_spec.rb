@@ -2,6 +2,14 @@ require 'spec_helper'
 
 describe ApplicationHelper do
 
+  describe "page title" do
+    it "should concatenate the page title and the application name" do
+      helper.page_title.should == app_name
+      helper.set_page_title "test title"
+      helper.page_title.should == "test title | #{app_name}"
+    end
+  end
+
   describe "sanitize html" do
     it "should only allow some tags to come through" do
       sanitize_html("I <b>want</b> <i>this</i> to <a>not link</a>").should == "I <b>want</b> <i>this</i> to &lt;a&gt;not link&lt;/a&gt;"

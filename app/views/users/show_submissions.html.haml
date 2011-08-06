@@ -1,3 +1,5 @@
+- set_page_title "#{@user}'s submissions"
+
 = render :partial => 'users/profile_header', :locals => {:user => @user}
 = render :partial => "users/filters", :locals => {:user => @user}
 %p= "#{@user} posted #{pluralize @user.submissions.size, "submission"}"
