@@ -30,7 +30,7 @@ describe AdminController do
   describe "modify appearance" do
     it "should build up a list of themes by looking at all the directories under public/stylesheets" do
       get :modify_appearance
-      assigns[:themes].should =~ ["default", "dark"]
+      assigns[:themes].should =~ ["default", "dark", "dusk"]
     end
   end
 

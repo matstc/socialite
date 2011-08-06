@@ -1,3 +1,5 @@
+.ui-widget {font-family:Verdana;}
+
 .cleared:after {content: ".";display: block; height: 0; clear: both; visibility: hidden;}
 
 .float-left {float:left;}

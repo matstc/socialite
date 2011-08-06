@@ -1,0 +1,12 @@
+a { color: #333; }
+a:visited { color: #555; }
+a:hover { color: #fff; background-color:#555; }
+a.vote-up:hover {color:none; background-color:transparent; border:1px solid #ffbb22;}
+
+a.vote-up:hover {color:none; background-color:transparent; border:1px solid #039;}
+.score-bracket {color:#039;}
+.site-title h1 {color:#003366; font-family:Georgia; line-height:1.4em;}
+.bookmarklet img {border-color:#039;}
+
+.top-nav-bar ul, .filters-menu ul {background-color: #f2f2FF; padding:5px 5px 3px 5px;}
+.site-title {margin-top:0.4em;}

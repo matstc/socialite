@@ -6,12 +6,12 @@
 
     %title
       = page_title
-    = stylesheet_link_tag :all
-    = stylesheet_link_tag "themes/#{theme}/theme.css"
     = stylesheet_link_tag "jquery-ui/#{theme}/jquery-ui.custom.css"
     = javascript_include_tag 'jquery-ui/jquery-1.5.1.min.js'
     = javascript_include_tag 'rails.js'
     = javascript_include_tag 'application.js'
+    = stylesheet_link_tag :all
+    = stylesheet_link_tag "themes/#{theme}/theme.css"
     = csrf_meta_tag
   %body
     <!--[if IE]>
