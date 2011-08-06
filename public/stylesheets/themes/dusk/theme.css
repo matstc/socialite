@@ -5,7 +5,7 @@ a.vote-up:hover {color:none; background-color:transparent; border:1px solid #ffb
 
 a.vote-up:hover {color:none; background-color:transparent; border:1px solid #039;}
 .score-bracket {color:#039;}
-.site-title h1 {color:#003366; font-family:Georgia; line-height:1.4em;}
+.site-title h1 {color:#003366; line-height:1.4em;}
 .bookmarklet img {border-color:#039;}
 
 .top-nav-bar ul, .filters-menu ul {background-color: #f2f2FF; padding:5px 5px 3px 5px;}
