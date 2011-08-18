@@ -19,5 +19,16 @@ describe CommentsController do
         assigns(:comment).should be(@mock_comment)
       end
     end
+
+    describe "with duplicate params" do
+      it "warns user that the comment was a duplicate" do
+        Comment.stub(:new).with({'these' => 'params', "user" => @current_user}) { @mock_comment }
+        @mock_comment.should_receive(:save!).and_raise(ActiveRecord::RecordInvalid.new(@mock_comment))
+
+        post :create, :format => 'js', :comment => {'these' => 'params'}
+
+        assert_response 409
+      end
+    end
   end
 end

@@ -13,6 +13,7 @@ describe User do
     notification_for_user = ObjectMother.create_reply_notification :user => user
     notification_triggered_by_user = ObjectMother.create_reply_notification :comment => comment
 
+    user.reload
     user.destroy
 
     User.where(:id => user.id).all.should == []
@@ -125,6 +126,7 @@ describe User do
     notification_for_user = ObjectMother.create_reply_notification :user => user
     notification_triggered_by_user = ObjectMother.create_reply_notification :comment => comment
 
+    user.reload
     user.mark_as_deleted
     user.save!
     submission.reload

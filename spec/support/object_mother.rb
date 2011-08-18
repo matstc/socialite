@@ -80,7 +80,7 @@ class ObjectMother
 
   def self.new_comment options={}
     options[:submission] ||= new_submission
-    options[:text] ||= 'test-text'
+    options[:text] ||= "test-text-#{Time.now.to_f}"
     options[:user] ||= random_user
     TestLogger.log "creating a test comment with options = #{options}"
     Comment.new options

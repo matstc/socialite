@@ -47,4 +47,7 @@ $(document).ready(function(){
       $(elem).after('<span class="extension-hint">[image]</span>');
     });
 
+    $(document).ajaxError(function(xhr, status, error){
+      $(".alert").html(status.responseText);
+    });
 });

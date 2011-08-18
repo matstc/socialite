@@ -5,3 +5,8 @@ en:
   hello: "Hello world"
   marked_as_spam: "marked as spam"
   no_longer_marked_as_spam: "no longer marked as spam"
+  activerecord:
+    errors:
+      models:
+        comment:
+          taken: "We think you tried to submit the same comment twice. Refresh the page and you should see your comment."

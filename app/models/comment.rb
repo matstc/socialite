@@ -1,13 +1,16 @@
 class Comment < ActiveRecord::Base
   has_many :children, :class_name => "Comment", :foreign_key => "parent_id"
+
   belongs_to :parent, :class_name => "Comment"
   belongs_to :submission
   belongs_to :user
+
   validates :user, :presence => true
   validates :text, :presence => true
+  validates_uniqueness_of :text, :scope => [:submission_id, :parent_id, :user_id]
 
-  after_save :create_reply_notification
-  before_save :trim
+  after_create :create_reply_notification
+  before_create :trim
   
   default_scope :order => "created_at DESC"
   scope :not_deleted_or_spam, :readonly => false, :joins => [:user,:submission], :conditions => ["(submissions.is_spam is ? OR submissions.is_spam = ?) AND (comments.is_spam is ? OR comments.is_spam = ?) AND (users.deleted is ? OR users.deleted = ?)", nil, false, nil, false, nil, false]

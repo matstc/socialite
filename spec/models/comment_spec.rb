@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe Comment do
+  it "should not allow two identical comments to be submitted by the same user within a minute of one another" do
+    options = {:text => "test-comment4236786", :user => ObjectMother.create_user, :submission => ObjectMother.create_submission}
+    ObjectMother.create_comment options
+
+    options_for_non_duplicate = options.dup
+    options_for_non_duplicate[:text] = "This is an older comment which should not be compared for duplicity!"
+    ObjectMother.create_comment options_for_non_duplicate
+
+    lambda {ObjectMother.create_comment options}.should raise_error
+  end
+
   it "should remove carriage returns from the end of a comment" do
     comment = ObjectMother.create_comment :text => "this is a test.\r\n\r\n"
     comment.text.should == "this is a test."
