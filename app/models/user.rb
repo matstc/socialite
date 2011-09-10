@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :submissions
   has_many :comments
   has_many :reply_notifications
+  has_many :authentications
 
   after_initialize :setup_default_values
 
@@ -75,6 +76,10 @@ class User < ActiveRecord::Base
   def destroy_related_notifications
     self.reply_notifications.destroy_all
     ReplyNotification.where(:comment_id => self.comments.map{|c|c.id}).destroy_all
+  end
+
+  def linked_to? provider
+    ! self.authentications.find_by_provider(:twitter).nil?
   end
 
 end

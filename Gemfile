@@ -34,3 +34,8 @@ group :development, :test do
 end
 
 gem 'haml-rails', :group => :development
+
+gem 'omniauth' # try the following command line on ubuntu if you have trouble installing the nokogori gem (a dependency of omniauth) and its native extensions: sudo apt-get install libxslt1-dev
+gem 'twitter'
+
+gem 'bitly'

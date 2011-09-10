@@ -15,3 +15,5 @@ AppSettings.defaults['exception_notifier_enabled'] = false
 AppSettings.defaults['theme'] = 'default'
 AppSettings.defaults['voting_momentum'] = 5
 AppSettings.defaults['google_analytics_script'] = ''
+AppSettings.defaults['twitter_consumer_key'] = nil
+AppSettings.defaults['twitter_consumer_secret'] = nil

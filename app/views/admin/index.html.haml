@@ -4,14 +4,18 @@
   %li= link_to 'Moderate submissions and comments', moderate_submissions_path
   %li= link_to 'Manage users', users_path
 
-%h3 Setup
+%h3 Customization
 %ul{:class => 'bulleted'}
-  %li= link_to 'Setup email settings', email_settings_path
-  %li= link_to 'Setup automatic notifications on error', automatic_notifications_path
   %li= link_to 'Change the name of your app', change_name_path
   %li= link_to 'Modify the about page', modify_about_page_path
-  %li= link_to 'Setup Google analytics', setup_google_analytics_path
   %li= link_to 'Upload a new logo or favicon', new_logo_path
   %li= link_to 'Modify appearance', modify_appearance_path
+
+%h3 Setup
+%ul{:class => 'bulleted'}
+  %li= link_to 'Email settings', email_settings_path
+  %li= link_to 'Automatic notifications on error', automatic_notifications_path
+  %li= link_to 'Google analytics', setup_google_analytics_path
+  %li= link_to 'Twitter', setup_twitter_path
   %li= link_to 'Tweak algorithm for interestingness', tweak_interestingness_path
 

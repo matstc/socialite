@@ -15,6 +15,7 @@ body, p, ol, ul, td { font-family: verdana, arial, helvetica, sans-serif;}
 img {border-style:none;}
 hr {margin-top:2em; background-color:#ddd; border-style:none;}
 h2, h1, .title {font-size:120%;}
+h3 {margin-top:2em;}
 textarea {height:100px; vertical-align:bottom; width:400px;}
 td {vertical-align:top;}
 
@@ -39,6 +40,7 @@ a[href$='.png'], a[href$='.jpg'], a[href$='.gif'], a[href$='.bmp'] {background: 
 .comment-overview {text-align:left; padding-left:1em; border-left:1px #eee solid;}
 .comment-overview ul {list-style-type:none; margin: 0; padding-left:0;}
 .comment-overview ul li {margin-bottom:1.5em;}
+.comment-overview h3 {margin-top:0;}
 
 .bookmarklet a {color:none; background-color:none;}
 .bookmarklet a:hover {text-decoration:none; color:transparent; background-color:transparent;}

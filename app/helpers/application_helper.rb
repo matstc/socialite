@@ -137,4 +137,24 @@ module ApplicationHelper
     Socialite::Application.config.middleware.use ::ExceptionNotifier
   end
 
+  def setup_omniauth
+    if !AppSettings.twitter_consumer_key.blank? and !AppSettings.twitter_consumer_secret.blank? 
+      Socialite::Application.config.middleware.use OmniAuth::Builder do
+        provider :twitter, AppSettings.twitter_consumer_key, AppSettings.twitter_consumer_secret
+      end
+
+      Rails.logger.info("Initialized the twitter provider.")
+
+      Socialite::Application.config.twitter_enabled = true
+
+    else
+      Rails.logger.info("We did not initialize the twitter provider since no consumer key or no consumer secret were provided.")
+    end
+  end
+
+  def twitter_enabled?
+    Socialite::Application.config.twitter_enabled ||= false
+    Socialite::Application.config.twitter_enabled
+  end
+
 end

@@ -12,6 +12,12 @@ class AdminController < ApplicationController
     @themes = Dir["#{themes_directory}/*"].map { |a| File.basename(a) }
   end
 
+  def save_twitter
+      AppSettings.update_settings params[:app_settings]
+      flash[:alert] = "You have to restart your app for this change to take effect."
+      redirect_to :setup_twitter, :notice => 'The Twitter settings were saved.'
+  end
+
   def save_google_analytics
       AppSettings.update_settings params[:app_settings]
       redirect_to :setup_google_analytics, :notice => 'Settings saved.'

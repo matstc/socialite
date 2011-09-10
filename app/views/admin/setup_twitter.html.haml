@@ -1,0 +1,20 @@
+= h1_and_page_title 'Setup Twitter'
+
+= form_for AppSettings, :url => {:controller => 'admin', :action => 'save_twitter'}, :method => 'post' do |f|
+  %p
+    != "To allow your users to link their #{app_name} account with Twitter, you first need to #{link_to 'register your app with Twitter', 'http://dev.twitter.com/apps'}."
+  %p
+    Once that is done, fill out the following form.
+
+  .field
+    .explanation= "Copy the consumer key that Twitter assigned to your application in the following box."
+    = f.label :consumer_key
+    = f.text_field :twitter_consumer_key
+
+  .field
+    .explanation= "And copy the consumer secret here."
+    = f.label :consumer_secret
+    = f.text_field :twitter_consumer_secret
+
+  = f.submit "Save changes"
+

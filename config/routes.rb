@@ -30,6 +30,9 @@ Socialite::Application.routes.draw do
   match 'admin/change_name', :to => "admin#change_name", :via => "get", :as => 'change_name'
   match 'admin/save_app_name', :to => "admin#save_app_name", :via => "post", :as => 'save_app_name'
 
+  match 'admin/setup_twitter', :to => "admin#setup_twitter", :via => "get", :as => 'setup_twitter'
+  match 'admin/save_twitter', :to => "admin#save_twitter", :via => "post", :as => 'save_twitter'
+
   match 'admin/setup_google_analytics', :to => "admin#setup_google_analytics", :via => "get", :as => 'setup_google_analytics'
   match 'admin/save_google_analytics', :to => "admin#save_google_analytics", :via => "post", :as => 'save_google_analytics'
 
@@ -64,6 +67,10 @@ Socialite::Application.routes.draw do
   match 'users/:id/submissions', :controller => 'users', :action => 'show_submissions', :via => "get", :as => 'user_submissions'
 
   resources :submissions
+
+  resources :authentications, :only => [:destroy]
+  match '/auth/:provider/callback' => 'authentications#create'
+  match '/auth/failure' => 'authentications#failed'
 
   # keep this line below the declaration of submissions as resources to keep RSS out of pagination
   match 'submissions.rss', :to => 'submissions#index', :via => "get", :format => 'rss', :as => 'popular_page_rss'

@@ -63,6 +63,7 @@ class SubmissionsController < ApplicationController
 
     if @submission.save
       redirect_to(@submission, :notice => 'Your submission was received. Thanks.')
+      Tweet.new(current_user).update(@submission.title, submission_url(@submission), flash)
     else
       render :action => "new"
     end

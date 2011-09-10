@@ -11,5 +11,24 @@
   %p{:class => 'profile-text'}= @user.profile_text
   %p= link_to "Edit blurb", edit_user_path(@user)
 
+  - if twitter_enabled?
+    - if current_user.linked_to?(:twitter)
+      %h3= image_tag "twitter.png"
+      %p
+        .explanation
+          = "You linked your account with Twitter. Your submissions will be automatically published as tweets."
+          %br
+          = "To unlink your account from Twitter, click the following link:"
+        = link_to "Unlink your account from Twitter", current_user.authentications.find_by_provider(:twitter), :confirm => "You are about to unlink your account from Twitter. Are you sure you want to continue?", :method => :delete
+
+    - else
+      %h3= image_tag "twitter.png"
+      .explanation
+        = "You can authorize access to your Twitter account and we will automatically tweet the stories you submit to #{app_name}."
+        %br
+        = "To enable this feature, click the following link and follow the instructions:"
+
+      = link_to "Link #{app_name} with your Twitter account", "/auth/twitter"
+
 - else
   %p{:class => 'profile-text'}= @user.profile_text.blank? ? "This user did not provide a profile blurb." : @user.profile_text
