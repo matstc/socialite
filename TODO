@@ -1,10 +1,12 @@
+Write tests for all the twitter stuff - make sure all the exceptions are properly handled.
+
+Test what happens when comments are considered spam by the antispam engine
+
 Make it easy to submit via mobile phones
 
 Allow editing of comments for a few minutes after they were posted.
 
 Allow users to list the submissions they voted up in the past.
-
-Test what happens when comments are considered spam by the antispam engine
 
 Figure out a way to calculate confidence for the bayes classifier
 
