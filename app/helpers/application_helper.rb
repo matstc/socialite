@@ -153,7 +153,7 @@ module ApplicationHelper
   end
 
   def twitter_enabled?
-    defined? Socialite::Application.config.twitter_enabled and Socialite::Application.config.twitter_enabled
+    Socialite::Application.config.respond_to?(:twitter_enabled) and Socialite::Application.config.twitter_enabled
   end
 
 end
