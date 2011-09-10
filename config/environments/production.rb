@@ -20,6 +20,7 @@ Socialite::Application.configure do
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
+  config.logger = Logger.new(config.paths.log.first, 20, 5242880)
 
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
