@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
     end
 
     all_submissions.delete_all
+    self.authentications.destroy_all
   end
 
   def has_notifications?

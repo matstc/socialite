@@ -12,6 +12,7 @@ describe User do
     other_person_comment = ObjectMother.create_comment :submission => submission
     notification_for_user = ObjectMother.create_reply_notification :user => user
     notification_triggered_by_user = ObjectMother.create_reply_notification :comment => comment
+    authentication = Authentication.create :user_id => user.id
 
     user.reload
     user.destroy
@@ -26,6 +27,7 @@ describe User do
     Comment.where(:id => other_person_comment.id).all.should == []
     ReplyNotification.where(:id => notification_for_user.id).all.should == []
     ReplyNotification.where(:id => notification_triggered_by_user.id).all.should == []
+    Authentication.where(:id => authentication.id).should == []
   end
 
   it "should know whether or not it has reply notifications" do
