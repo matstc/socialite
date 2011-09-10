@@ -22,12 +22,18 @@ class Antispam
     @bayes.untrain(:content, stringable.to_s)
     @bayes.train(:spam, stringable.to_s)
     @madeleine.take_snapshot
+
+    Rails::logger.info("Switching to spam. We would now classify the stringable as follows.")
+    compute_uncertainty stringable
   end
 
   def switch_to_content stringable
     @bayes.untrain(:spam, stringable.to_s)
     @bayes.train(:content, stringable.to_s)
     @madeleine.take_snapshot
+
+    Rails::logger.info("Switching to content. We would now classify the stringable as follows.")
+    compute_uncertainty stringable
   end
 
   def train_as_spam stringable

@@ -1,8 +1,6 @@
-Write tests for all the twitter stuff - make sure all the exceptions are properly handled.
-
-Test what happens when comments are considered spam by the antispam engine
-
 Make it easy to submit via mobile phones
+
+Mark comments as spam automatically
 
 Allow editing of comments for a few minutes after they were posted.
 
