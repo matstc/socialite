@@ -13,6 +13,14 @@ describe AdminController do
 
   end
 
+  describe "save twitter" do
+    it "should update settings with the twitter consumer token and secret" do
+      post :save_twitter, :app_settings => {:twitter_consumer_key => "key", :twitter_consumer_secret => "secret"}
+      AppSettings.twitter_consumer_key.should == "key"
+      AppSettings.twitter_consumer_secret.should == "secret"
+    end
+  end
+
   describe "save google analytics script" do
     it "should update settings with the new google analytics script" do
       post :save_google_analytics, :app_settings => {:google_analytics_script => "<script>!</script>"}

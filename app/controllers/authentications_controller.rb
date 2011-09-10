@@ -3,6 +3,13 @@ class AuthenticationsController < ApplicationController
 
   def create
     auth = request.env["omniauth.auth"]
+
+    if auth.blank?
+      flash[:alert] = "We could not link your Twitter account. The response we received from the Twitter service was unexpected. Please try again in a few minutes."
+      redirect_to user_url(current_user)
+      return
+    end
+    
     authentication = current_user.authentications.find_by_provider_and_uid(auth['provider'], auth['uid'])
     authentication = Authentication.new({:user_id => current_user.id, :provider => auth['provider'], :uid => auth['uid']}) if authentication.nil?
     authentication.update_attributes! auth['credentials']

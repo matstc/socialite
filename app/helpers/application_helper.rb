@@ -143,7 +143,7 @@ module ApplicationHelper
         provider :twitter, AppSettings.twitter_consumer_key, AppSettings.twitter_consumer_secret
       end
 
-      Rails.logger.info("Initialized the twitter provider.")
+      Rails.logger.info("Initialized the twitter provider in the middleware.")
 
       Socialite::Application.config.twitter_enabled = true
 

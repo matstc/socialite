@@ -2,6 +2,13 @@ require 'spec_helper'
 
 describe ApplicationHelper do
 
+  it "should enable the twitter provider in the middleware" do
+    AppSettings['twitter_consumer_key'] = 'key'
+    AppSettings['twitter_consumer_secret'] = 'secret'
+    helper.setup_omniauth
+    Socialite::Application.config.twitter_enabled.should == true
+  end
+
   describe "page title" do
     it "should concatenate the page title and the application name" do
       helper.page_title.should == app_name
