@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  has_many :children, :class_name => "Comment", :foreign_key => "parent_id"
+  has_many :all_children, :class_name => "Comment", :foreign_key => "parent_id"
 
   belongs_to :parent, :class_name => "Comment"
   belongs_to :submission
@@ -21,6 +21,10 @@ class Comment < ActiveRecord::Base
 
   def trim
     self.text.gsub!(/[\r\n]*\Z/,"").gsub!(/([\r\n]){3,}/,"\n\n")
+  end
+
+  def children
+    self.all_children.reject {|c| c.is_orphan?}
   end
 
   def create_reply_notification
@@ -66,8 +70,7 @@ class Comment < ActiveRecord::Base
   end
 
   def destroy_recursively
-      children = Comment.where(:parent_id => self.id)
-      children.each {|child| child.destroy_recursively}
+      all_children.each {|child| child.destroy_recursively}
       self.destroy
   end
 end

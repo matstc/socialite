@@ -49,6 +49,15 @@ describe Comment do
     Comment.find(comment.id).has_parent?.should == true
   end
 
+  it "should not list spam comments as children" do
+    parent = ObjectMother.create_comment
+    spam_comment = ObjectMother.create_comment :parent => parent, :is_spam => true
+    relevant_comment = ObjectMother.create_comment :parent => parent
+    parent.reload
+
+    parent.children.should == [relevant_comment]
+  end
+
   describe "recent comments" do
     it "should only include comments that were not marked as spam and whose author was not deleted" do
       all_comments = []
@@ -123,6 +132,7 @@ describe Comment do
     parent.number_of_replies.should == 1
 
     second_child = ObjectMother.create_comment :parent => parent
+    parent.reload
     parent.number_of_replies.should == 2
   end
 
