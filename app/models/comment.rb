@@ -20,7 +20,7 @@ class Comment < ActiveRecord::Base
   end
 
   def trim
-    self.text.gsub!(/[\r\n]*$/,"")
+    self.text.gsub!(/[\r\n]*\Z/,"").gsub!(/([\r\n]){3,}/,"\n\n")
   end
 
   def create_reply_notification

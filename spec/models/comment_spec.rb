@@ -13,8 +13,13 @@ describe Comment do
   end
 
   it "should remove carriage returns from the end of a comment" do
-    comment = ObjectMother.create_comment :text => "this is a test.\r\n\r\n"
+    comment = ObjectMother.create_comment :text => "this is a test.\r\n\r\n\r\n"
     comment.text.should == "this is a test."
+  end
+
+  it "should allow only two new lines in the middle of a comment" do
+    comment = ObjectMother.create_comment :text => "first line\r\n\r\n\r\n\r\nsecond line\r\n"
+    comment.text.should == "first line\n\nsecond line"
   end
 
   it "should be an orphan if any ancestor is spam or deleted even if the oldest ancestor is not spam" do
