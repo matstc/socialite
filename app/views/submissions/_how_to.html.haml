@@ -1,0 +1,30 @@
+%h1{:class => 'margintop'} How to submit articles
+%p!= "To submit articles to #{app_name}:"
+%ul{:class => 'bulleted'}
+  %li!= "Go to the #{link_to 'Submit a story', new_submission_path} page and fill out the form."
+  %li!= "Your article will appear right away on the #{link_to 'Most Recent', new_path} page."
+  %li!= "That's it! Thanks for sharing."
+
+%h3 Bookmarklet
+%p You can drag the following bookmarklet to your bookmarks toolbar. When you find yourself reading something interesting for #{app_name}, just click the new bookmark and it will take you to the submission page with the url and title already filled out.
+.bookmarklet
+  = link_to bookmarklet_url do
+    = image_tag AppSettings.logo_file, :title => "Submit to #{app_name}", :alt => "Submit to #{app_name}"
+
+:javascript
+  $(document).ready(function(){
+    $('.bookmarklet a').click(function(){
+      alert('Drag this image to your bookmarks toolbar.');
+      return false;
+    });
+  });
+
+%h3 Button
+%p= "To add a button to your own site and allow your users to submit your page to #{app_name}, you can use the following code."
+
+%p
+  != button_html
+.code
+  = button_html
+
+

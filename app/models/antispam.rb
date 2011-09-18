@@ -7,7 +7,7 @@ class Antispam
 
   def is_spam? stringable
     category, score = compute_uncertainty(stringable)
-    score > -5 and category == 'Spam'
+    trained_entries > 30 and category == 'Spam'
   end
 
   def is_classified_as_content? stringable

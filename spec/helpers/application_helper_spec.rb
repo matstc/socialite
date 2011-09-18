@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe ApplicationHelper do
 
+  it "should escape the site name when generating the html for the button" do
+    AppSettings['app_name'] = '<">'
+    helper.button_html.should =~ /&lt;&quot;&gt;/
+  end
+
   it "should enable the twitter provider in the middleware" do
     AppSettings['twitter_consumer_key'] = 'key'
     AppSettings['twitter_consumer_secret'] = 'secret'

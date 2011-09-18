@@ -8,6 +8,8 @@
 .pre-line {white-space:pre-line;}
 .hidden {display:none;}
 .crossed-out {text-decoration: line-through;}
+.code {background-color:#ddd; font-family:Courier; padding:1em;}
+.margintop {margin-top:4em;}
 
 blockquote {margin:1em; font-style:italic;}
 body { background-color: #fff; color: #111; font-size:80%;}

@@ -1,17 +1,5 @@
 = h1_and_page_title 'Submit a story'
 
 = render 'form'
-%hr
-%h1 Bookmarklet
-%p You can drag the following bookmarklet to your bookmarks toolbar. When you find yourself reading something interesting to #{app_name}, just click the new bookmark and it will take you to this page with the url and title already filled out.
-.bookmarklet
-  = link_to bookmarklet_url do
-    = image_tag AppSettings.logo_file, :title => "Submit to #{app_name}", :alt => "Submit to #{app_name}"
 
-:javascript
-  $(document).ready(function(){
-    $('.bookmarklet a').click(function(){
-      alert('Drag this image to your bookmarks toolbar.');
-      return false;
-    });
-  });
+= render :partial => 'how_to'

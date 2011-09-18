@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def button_html
+    %{<a href="#{new_submission_url}" onclick="window.location = '#{new_submission_url}?submission[url]=' + encodeURIComponent(window.location) + '&submission[title]=' + encodeURIComponent(document.title); return false"><img width="32px" src="#{root_url}images/#{AppSettings.logo_file}" alt="Submit to #{html_escape app_name}" border="0" /> </a>}
+  end
+
   def set_page_title value
     @content_for_title = value.to_s
   end
@@ -22,7 +26,7 @@ module ApplicationHelper
     s.gsub!(/\n?&lt;blockquote&gt;\n*(.+?)\n*&lt;\/blockquote&gt;/im, "<blockquote>\\1</blockquote>") 
 
     # other tags: b, i, em, strong, u 
-    %w(b i em strong u).each do |x|
+    %w(b i em strong u ul li ol).each do |x|
       s.gsub!(Regexp.new('&lt;(' + x + ')&gt;(.+?)&lt;/('+x+')&gt;',
            Regexp::MULTILINE|Regexp::IGNORECASE), 
            "<\\1>\\2</\\1>") 
