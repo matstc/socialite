@@ -52,16 +52,16 @@ class SubmissionsController < ApplicationController
     values = params[:submission].merge({:user => current_user})
     @submission = Submission.new(values)
 
-    if Antispam.new.is_spam? @submission
-      logger.warn "Submission was treated as spam"
-      flash[:alert] = "Your submission was flagged as spam. Don't worry though. An administrator should allow your submission to be published soon."
-      @submission.mark_as_spam
-      SpamNotification.new(:submission => @submission).save!
-    else
-      Antispam.new.train_as_content @submission
-    end
-
     if @submission.save
+      if Antispam.new.is_spam? @submission
+        logger.warn "Submission was treated as spam"
+        flash[:alert] = "Your submission was flagged as spam. Don't worry though. An administrator should allow your submission to be published soon."
+        @submission.mark_as_spam
+        SpamNotification.new(:submission => @submission).save!
+      else
+        Antispam.new.train_as_content @submission
+      end
+
       redirect_to(@submission, :notice => 'Your submission was received. Thanks.')
       Tweet.new(current_user).update(@submission.title, submission_url(@submission), flash)
     else

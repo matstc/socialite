@@ -113,6 +113,14 @@ describe SubmissionsController do
         @mock_spam_notification.should_receive :save!
         post :create, :submission => {}
       end
+
+      it "does not save a spam notification unless the submission was actually valid and saved" do
+        invalid_submission = mock_submission
+        invalid_submission.stub!(:save).and_return(false)
+        Submission.stub(:new).with({"user" => @current_user}) {invalid_submission}
+        SpamNotification.stub(:new) {raise "SpamNotification#new should not have been called"}
+        post :create, :submission => {}
+      end
     end
 
   end
