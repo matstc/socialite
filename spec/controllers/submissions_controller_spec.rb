@@ -108,6 +108,7 @@ describe SubmissionsController do
       it "should mark a spam submission as such and create a spam notification" do
         Submission.stub(:new).with({"user" => @current_user}) {@mock_submission}
         @mock_submission.should_receive :mark_as_spam
+        @mock_submission.should_receive :save!
         @mock_spam_notification = mock(SpamNotification)
         SpamNotification.stub(:new).with({:submission => @mock_submission}) {@mock_spam_notification}
         @mock_spam_notification.should_receive :save!
