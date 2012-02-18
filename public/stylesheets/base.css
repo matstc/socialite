@@ -1,4 +1,5 @@
-.ui-widget {font-family:ubuntu, verdana;}
+.ui-widget, input, textarea {font-family:ubuntu, verdana;}
+input, textarea {padding:0.3em 1px; border-radius:3px;}
 
 .cleared:after {content: ".";display: block; height: 0; clear: both; visibility: hidden;}
 
@@ -20,11 +21,6 @@ h2, h1, .title {font-size:120%;}
 h3 {margin-top:2em;}
 textarea {height:100px; vertical-align:bottom; width:400px;}
 td {vertical-align:top;}
-
-/*
-a[href$='.pdf'] {background: url(/images/page_white_acrobat.png) top right no-repeat; padding-right: 1.7em;}
-a[href$='.png'], a[href$='.jpg'], a[href$='.gif'], a[href$='.bmp'] {background: url(/images/pictures.png) top right no-repeat; padding-right: 1.7em;}
-*/
 
 .notifications-box {margin-bottom:2em; padding:1em; border: 1px dashed #c70;}
 .notifications-box .title {font-weight:bold; margin-bottom:1em; color: #c70;}
@@ -59,7 +55,7 @@ a[href$='.png'], a[href$='.jpg'], a[href$='.gif'], a[href$='.bmp'] {background: 
 .collapsible {margin-top:2em;}
 .collapsible-content {margin-top:1em;}
 
-div.field, div.actions { margin-bottom: 10px;}
+div.field, div.actions { margin-bottom: 18px;}
 #notice { color: green;}
 .field_with_errors {display:inline;}
 .field_with_errors input { border:2px solid red;}
@@ -90,13 +86,13 @@ td.rank {width:20px;}
 .center-pane {text-align:center;}
 
 .extension-hint {margin-left:0.5em;}
-.extension-hint, .dismiss-all-link, .footer, .karma-indicator, .rank, .admin-links, .actions, .deletion-seal, .score, .reply-link, .comment-signature {font-weight:normal; font-size:80%;}
+.extension-hint, .dismiss-all-link, .footer, .karma-indicator, .rank, .admin-links, .deletion-seal, .score, .reply-link, .comment-signature {font-weight:normal; font-size:80%;}
 .admin-links {white-space:nowrap;}
 .extension-hint, .submission-description, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#888;}
 .profile-text {white-space:pre-line;}
 .whole-description .submission-description {margin-top:1em; margin-bottom:1em; white-space:pre-line;}
 .whole-description {margin-bottom:2em;}
-.single-submission {margin-bottom:1em;}
+.single-submission {margin-bottom:1em; width:100%;}
 .spam-info {color:red;}
 
 #comments-list > tbody > tr {background-color:#eee; margin:1em; border-bottom: 5px solid white;}
@@ -112,3 +108,4 @@ td.rank {width:20px;}
 
 #submission_description {width:80%; height:200px;}
 #submission_url {width:80%;}
+#submission_title {width:40%;}

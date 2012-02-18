@@ -3,6 +3,7 @@
 = form_for AppSettings, :url => {:controller => 'admin', :action => 'save_app_name'}, :method => 'post' do |f|
   .field
     = f.label :app_name, "The current name of your app is"
+    %br
     = f.text_field :app_name
 
   = f.submit "Save"
