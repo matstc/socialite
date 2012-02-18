@@ -13,6 +13,15 @@ describe AdminController do
 
   end
 
+  describe "signing in as a deleted user" do
+	it "should sign the user out and redirect to root url" do
+	  controller.current_user.mark_as_deleted
+	  get :index
+	  response.location.should == root_url
+	  warden.authenticated?(:user).should == false
+	end
+  end
+
   describe "save twitter" do
     it "should update settings with the twitter consumer token and secret" do
       post :save_twitter, :app_settings => {:twitter_consumer_key => "key", :twitter_consumer_secret => "secret"}

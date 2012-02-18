@@ -9,7 +9,12 @@ class ApplicationController < ActionController::Base
   end
 
   def verify_user_is_not_deleted
-    raise "The account '#{current_user}' was deleted" if user_signed_in? and current_user.deleted?
+	if user_signed_in? and current_user.deleted?
+	  logger.info "The account '#{current_user}' was deleted but someone tried to access it" 
+	  flash[:alert] = "It looks like your account was deleted. You were probably mistaken for a spammer. Please contact us or register a new account."
+	  sign_out current_user
+	  redirect_to root_url
+	end
   end
 
   def sign_in_then_redirect
