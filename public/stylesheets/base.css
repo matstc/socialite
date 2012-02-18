@@ -29,7 +29,8 @@ td {vertical-align:top;}
 .notifications-box ul li {margin-bottom:1.8em;}
 .notifications-box .notification-text {font-weight:bold;}
 .top-nav-bar ul, .filters-menu ul {list-style-type: none; margin: 0 0 1em 0;}
-.top-nav-bar ul, .filters-menu ul {background-color: #eee; border-radius:12px;}
+.top-nav-bar ul, .filters-menu ul {background-color: #eee;}
+.top-nav-bar ul {border-radius:12px;}
 .top-nav-bar li, .filters-menu li {display:inline; float:left; margin: 0 2em 0 0; padding:0;}
 .top-nav-bar ul {padding: 0.8em 1.5em 0.6em 1.5em;}
 .session-info {margin-right:0.5em; float:left;}
@@ -88,7 +89,7 @@ td.rank {width:20px;}
 .extension-hint {margin-left:0.5em;}
 .extension-hint, .dismiss-all-link, .footer, .karma-indicator, .rank, .admin-links, .deletion-seal, .score, .reply-link, .comment-signature {font-weight:normal; font-size:80%;}
 .admin-links {white-space:nowrap;}
-.extension-hint, .submission-description, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#888;}
+.extension-hint, .submission-description, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#666;}
 .profile-text {white-space:pre-line;}
 .whole-description .submission-description {margin-top:1em; margin-bottom:1em; white-space:pre-line;}
 .whole-description {margin-bottom:2em;}

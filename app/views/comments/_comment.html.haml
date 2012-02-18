@@ -17,8 +17,10 @@
         = form_for :comment, :url => {:controller => :comments, :action => :create}, :remote => true, :method => :post, :html => {:class => "hidden", :id => "reply-box-form-#{comment.id}"} do |f|
           %input{:type => :hidden, :name => "comment[submission_id]", :value => comment.submission.id}
           %input{:type => :hidden, :name => "comment[parent_id]", :value => comment.id}
-          = f.text_area :text, :value => ""
-          = f.submit "reply"
+          .field
+            = f.text_area :text, :value => ""
+          .actions
+            = f.submit "Reply"
           :javascript
             $(document).ready(function(){
               $('#reply-box-form-#{comment.id}').bind('ajax:success', function(obj, data){

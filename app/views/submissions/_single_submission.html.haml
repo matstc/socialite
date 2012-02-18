@@ -1,5 +1,6 @@
 - whole_text ||= false
 - index ||= false
+- show_comment_form ||= false
 
 %table{:class => "single-submission #{whole_text ? 'whole-description' : ''}"}
   %tr{:class => resolve_class_for_coloring_submission(submission)}
@@ -20,8 +21,32 @@
       %td
       %td
         - if submission.user == current_user
-          = link_to 'Edit your submission', edit_submission_path(submission)
+          .actions
+            = link_to 'Edit your submission', edit_submission_path(submission)
         - elsif current_user_is_admin?
-          = link_to 'Edit this submission', edit_submission_path(submission)
+          .actions
+            = link_to 'Edit this submission', edit_submission_path(submission)
 
+  - if show_comment_form
+    %tr
+      %td
+      %td
+      %td
+        = form_for :comment, :url => {:controller => :comments, :action => :create}, :remote => true, :method => :post, :html => {:id => 'post-comment-at-top'} do |f|
+          %input{:type => :hidden, :name => "comment[submission_id]", :value => @submission.id}
+          .field
+            = f.text_area :text
+          .actions
+            = f.submit "Reply"
+          :javascript
+            $(document).ready(function(){
 
+              $('#post-comment-at-top').bind('ajax:beforeSend', function(xhr, settings){
+                return $(this).find("textarea").attr('value') !== "";
+              });
+
+              $('#post-comment-at-top').bind('ajax:success', function(obj, data){
+                $("#comments-list tbody").prepend(data);
+                $(this).remove();
+              });
+            });
