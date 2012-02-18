@@ -1,4 +1,4 @@
-.ui-widget {font-family:Verdana;}
+.ui-widget {font-family:ubuntu, verdana;}
 
 .cleared:after {content: ".";display: block; height: 0; clear: both; visibility: hidden;}
 
@@ -12,8 +12,8 @@
 .margintop {margin-top:4em;}
 
 blockquote {margin:1em; font-style:italic;}
-body { background-color: #fff; color: #111; font-size:80%;}
-body, p, ol, ul, td { font-family: verdana, arial, helvetica, sans-serif;}
+body { background-color: #fff; color: #111; font-size:90%;}
+body, p, ol, ul, td { font-family: ubuntu, verdana, arial, helvetica, sans-serif;}
 img {border-style:none;}
 hr {margin-top:2em; background-color:#ddd; border-style:none;}
 h2, h1, .title {font-size:120%;}
@@ -33,9 +33,9 @@ a[href$='.png'], a[href$='.jpg'], a[href$='.gif'], a[href$='.bmp'] {background: 
 .notifications-box ul li {margin-bottom:1.8em;}
 .notifications-box .notification-text {font-weight:bold;}
 .top-nav-bar ul, .filters-menu ul {list-style-type: none; margin: 0 0 1em 0;}
-.top-nav-bar ul, .filters-menu ul {background-color: #eee;}
+.top-nav-bar ul, .filters-menu ul {background-color: #eee; border-radius:12px;}
 .top-nav-bar li, .filters-menu li {display:inline; float:left; margin: 0 2em 0 0; padding:0;}
-.top-nav-bar ul {padding: 0.2em 0.4em;}
+.top-nav-bar ul {padding: 0.6em 1em;}
 .session-info {float:left; margin-right:0.5em;}
 .session-info .ui-icon {float:left; margin-right:0.2em;}
 
@@ -49,7 +49,7 @@ a[href$='.png'], a[href$='.jpg'], a[href$='.gif'], a[href$='.bmp'] {background: 
 .bookmarklet img {border: 2px dashed #ccc;}
 
 .site-title {margin: 0.2em 0.5em 0 0; padding: 0; float:right;}
-.site-title h1 {margin: 0; padding:0; display:inline; font-size:110%;}
+.site-title h1 {margin: 0; padding:0.3em 0.6em 0 0; font-size:110%;}
 .center-pane {font-size: 90%;}
 .right-sidebar {width:250px; float:right; margin-left:-250px; text-align:right;}
 .layout-content {margin-right:250px;}
@@ -96,6 +96,7 @@ td.rank {width:20px;}
 .profile-text {white-space:pre-line;}
 .whole-description .submission-description {margin-top:1em; margin-bottom:1em; white-space:pre-line;}
 .whole-description {margin-bottom:2em;}
+.single-submission {margin-bottom:1em;}
 .spam-info {color:red;}
 
 #comments-list > tbody > tr {background-color:#eee; margin:1em; border-bottom: 5px solid white;}

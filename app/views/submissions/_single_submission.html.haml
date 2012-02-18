@@ -1,7 +1,7 @@
 - whole_text ||= false
 - index ||= false
 
-%table{:class => "#{whole_text ? 'whole-description' : ''}"}
+%table{:class => "single-submission #{whole_text ? 'whole-description' : ''}"}
   %tr{:class => resolve_class_for_coloring_submission(submission)}
     %td{:class => 'rank'}
       - if index
