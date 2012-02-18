@@ -42,7 +42,7 @@ def create_users
 end
 
 def create_submissions
-  default_sub = lambda {{:url => "example.com", :title => random_text, :description => random_text, :created_at => rand(9900).minutes.ago, :score => rand(80), :user => random_user}}
+  default_sub = lambda {{:url => "example#{rand(500)}.com", :title => random_text, :description => random_text, :created_at => rand(9900).minutes.ago, :score => rand(80), :user => random_user}}
   25.times do
     Submission.create!([default_sub.call.merge :is_spam => false])
   end
