@@ -110,3 +110,6 @@ td.rank {width:20px;}
 #submission_description {width:80%; height:200px;}
 #submission_url {width:80%;}
 #submission_title {width:40%;}
+
+.pagination {font-size: 120%; margin-top:1em;}
+.pagination > span {padding-right:0.5em;}

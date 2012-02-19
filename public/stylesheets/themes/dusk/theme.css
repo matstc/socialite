@@ -1,9 +1,9 @@
 a { color: #333; }
+a:hover {color: #333 !important;}
+.filters-menu a:visited, .top-nav-bar a:visited {color: #333;}
 a:visited { color: #888; }
-a:hover { background-color:#dadada; }
+a:hover { background-color:#dadada;}
 a.vote-up:hover {color:none; background-color:transparent; border:1px solid #ffbb22;}
-
-.filters-menu a:visited, .filters-menu a:hover, .top-nav-bar a:visited, .top-nav-bar a:hover {color: #333;}
 
 #submissions-list .dim, 
 #submissions-list .dim a, 
@@ -15,7 +15,6 @@ a.vote-up:hover {color:none; background-color:transparent; border:1px solid #ffb
 }
 
 #submissions-list .dim .submission-link a {color:#bbb;}
-#submissions-list a:hover, #submissions-list .dim a:hover, .admin-links a:hover, .submission-link a:hover {color:#333;}
 .top-nav-bar ul li a:hover, .filters-menu ul li a:hover {background-color: #ddd;}
 
 .extension-hint, .submission-description, .rank, .reply-link, .comment-signature {color:#888;}
