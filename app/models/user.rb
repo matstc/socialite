@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   has_many :reply_notifications
   has_many :authentications
 
+  paginates_per 50
+
+  default_scope :order => "username"
+
   after_initialize :setup_default_values
 
   before_destroy :destroy_related_objects

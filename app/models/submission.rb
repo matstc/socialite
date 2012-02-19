@@ -15,6 +15,8 @@ class Submission < ActiveRecord::Base
 
   paginates_per 20
 
+  scope :ordered_by_created_date, :order => "created_at DESC"
+
   scope :not_deleted_or_spam, :readonly => false, :joins => :user, :conditions => ["(is_spam is ? OR is_spam = ?) AND (users.deleted is ? OR users.deleted = ?)", nil, false, nil, false]
 
   # Here we order by interestingness.
