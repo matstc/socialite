@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
   alias :show_comments :show
   alias :show_submissions :show
+  alias :show_votes :show
 
   def spammers
     @users = User.find_spammers.page params[:page]

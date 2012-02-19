@@ -1,0 +1,7 @@
+- set_page_title "#{@user}'s votes"
+
+= render :partial => 'users/profile_header', :locals => {:user => @user}
+= render :partial => "users/filters", :locals => {:user => @user}
+%p= "#{@user} voted up #{pluralize @user.votes.size, "submissions"}"
+= render :partial => "submissions/list", 
+  :locals => {:submissions => Submission.ordered_by_created_date.page(params[:page]).where(:id => [@user.votes.map{|v| v.submission_id}])}
