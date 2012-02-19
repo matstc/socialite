@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_admin!, :except => [:show, :show_comments, :show_submissions, :edit, :update, :best_of]
+  before_filter :require_admin!, :except => [:show, :show_comments, :show_submissions, :show_votes, :edit, :update, :best_of]
 
   def best_of
     @users = User.highest_karma_users.page params[:page]
