@@ -34,7 +34,7 @@ $(document).ready(function(){
     });
 
     $('h1').add('h2').not("#error_explanation h2").each(function(idx, elem){
-      $(elem).prepend('<span class="ui-icon ui-icon-grip-diagonal-se float-left prefixed-icon"></span>');
+      $(elem).prepend('<span class="ui-icon ui-icon-carat-1-e float-left prefixed-icon"></span>');
     });
 
     $('body').append('<div class="cleared"></div><br>');

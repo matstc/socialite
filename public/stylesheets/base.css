@@ -1,4 +1,5 @@
 .ui-widget, input, textarea {font-family:ubuntu, verdana;}
+.ui-icon {margin-top:2px;}
 input, textarea {padding:0.3em 1px; border-radius:3px;}
 
 .cleared:after {content: ".";display: block; height: 0; clear: both; visibility: hidden;}
