@@ -9,6 +9,7 @@ input, textarea {padding:0.3em 1px; border-radius:3px;}
 .pre-wrap {white-space:pre-wrap;}
 .pre-line {white-space:pre-line;}
 .hidden {display:none;}
+.show-on-tiny {display:none !important;}
 .crossed-out {text-decoration: line-through;}
 .code {background-color:#ddd; font-family:Courier; padding:1em;}
 .margintop {margin-top:4em;}

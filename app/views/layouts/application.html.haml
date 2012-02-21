@@ -11,9 +11,11 @@
     = javascript_include_tag 'rails.js'
     = javascript_include_tag 'application.js'
     = stylesheet_link_tag "base.css"
-    = stylesheet_link_tag "narrow.css", :media => 'screen and (max-device-width: 620px), screen and (max-width: 620px)'
+    = stylesheet_link_tag "smaller.css", :media => 'screen and (max-width: 620px)'
+    = stylesheet_link_tag "tiny.css", :media => 'screen and (max-width: 340px)'
     = stylesheet_link_tag "themes/#{theme}/theme.css"
     = csrf_meta_tag
+    <meta name="viewport" content="width=device-width">
   %body
     <!--[if IE]>
     %style{:type => "text/css"}
@@ -36,17 +38,19 @@
           %ul{:class => "cleared"}
             %li
               = link_to_unless_current_action "Popular", root_path
-            %li{:class => 'hide-on-narrow'}
+            %li{:class => 'hide-on-smaller'}
               = link_to_unless_current_action 'Most recent', new_path
-            %li
+            %li{:class => 'show-on-tiny'}
+              = link_to_unless_current_action 'Submit', new_submission_path
+            %li{:class => 'hide-on-tiny'}
               = link_to_unless_current_action 'Submit a story', new_submission_path
-            %li{:class => 'hide-on-narrow'}
+            %li{:class => 'hide-on-smaller'}
               = link_to_unless_current_action 'Best of', best_of_submissions_path
-            %li{:class => 'hide-on-narrow'}
+            %li{:class => 'hide-on-smaller'}
               = link_to_unless_current_action "About", about_path
-            %li{:class => 'hide-on-narrow'}
+            %li{:class => 'hide-on-smaller'}
               = link_to_unless_current_action "Stats", statistics_path
-            %li{:class => 'hide-on-narrow'}
+            %li{:class => 'hide-on-smaller'}
               = link_to "RSS Feed", popular_page_rss_path
             - if current_user.try :admin
               %li
