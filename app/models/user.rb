@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   end
 
   def self.highest_karma_users
-    User.order('karma DESC').limit(10)
+    User.unscoped.where('karma != 0').order('karma DESC').limit(20)
   end
 
   def setup_default_values

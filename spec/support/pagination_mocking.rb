@@ -9,6 +9,9 @@ module PaginationMocking
     def ary.limit_value
       1
     end
+	def ary.page *args
+	  self
+	end
     ary
   end
 end

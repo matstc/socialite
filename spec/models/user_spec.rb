@@ -1,6 +1,15 @@
 require 'spec_helper'
 
 describe User do
+  it "should filter out users with 0 karma when fetching the best users" do
+    worst = ObjectMother.create_user :karma => 0
+    best = ObjectMother.create_user :karma => 1
+	best_users = User.highest_karma_users.all
+	best_users.size.should == 1
+	best_users.include?(worst).should == false
+	best_users.include?(best).should == true
+  end
+  
   it "should destroy everything related to a user" do
     user = ObjectMother.create_user :username => 'short-lived'
     submission = ObjectMother.create_submission :user => user

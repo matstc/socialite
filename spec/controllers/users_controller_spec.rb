@@ -4,7 +4,7 @@ describe UsersController do
   include ControllerMocking
 
   before(:each) do
-    @mock_user = mock_user :admin => true
+    @mock_user = mock_user :admin => true, :karma => 1
   end
 
   describe ""

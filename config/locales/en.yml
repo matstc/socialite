@@ -10,3 +10,6 @@ en:
       models:
         comment:
           taken: "We think you tried to submit the same comment twice. Refresh the page and you should see your comment."
+  views:
+    pagination:
+      previous: "&lsaquo; Previous"

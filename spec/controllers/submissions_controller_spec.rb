@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe SubmissionsController do
   include ControllerMocking
+  include PaginationMocking
 
   before(:each) do
     @current_user = mock_user
@@ -11,15 +12,15 @@ describe SubmissionsController do
 
   describe "most recent" do
     it "assigns submissions by calling most recent" do
-      Submission.stub(:page) { [@mock_submission] }
+      Submission.stub(:most_recent) { mock_pagination_of([@mock_submission])}
       get :most_recent
-      assigns(:submissions).should eq([@mock_submission])
+      assigns(:submissions).should == [@mock_submission]
     end
   end
 
   describe "best of" do
     it "assigns submissions by calling best of" do
-      Submission.stub(:page) { [@mock_submission] }
+      Submission.stub(:best_of) { mock_pagination_of([@mock_submission])}
       get :best_of
       assigns(:submissions).should eq([@mock_submission])
     end
@@ -27,7 +28,7 @@ describe SubmissionsController do
 
   describe "GET index" do
     it "assigns first page of submissions as @submissions" do
-      Submission.stub(:page) { [@mock_submission] }
+      Submission.stub(:list) { mock_pagination_of([@mock_submission])}
       get :index
       assigns(:submissions).should eq([@mock_submission])
     end
@@ -107,6 +108,7 @@ describe SubmissionsController do
     describe "creating a spam submission" do
       it "should mark a spam submission as such and create a spam notification" do
         Submission.stub(:new).with({"user" => @current_user}) {@mock_submission}
+        @mock_submission.stub(:save) {true}
         @mock_submission.should_receive :mark_as_spam
         @mock_submission.should_receive :save!
         @mock_spam_notification = mock(SpamNotification)
@@ -141,7 +143,7 @@ describe SubmissionsController do
       end
 
       it "redirects to the submission" do
-        Submission.stub(:find) { @mock_submission }
+        Submission.stub(:find) { @mock_submission.stub(:update_attributes => true); @mock_submission }
         put :update, :id => "1"
         response.should redirect_to(submission_url(@mock_submission))
       end

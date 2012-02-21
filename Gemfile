@@ -15,7 +15,7 @@ gem 'hpricot', :group => :development
 gem 'ruby_parser', :group => :development
 gem 'haml'
 gem "rails-settings", :path => "vendor/gems/rails-settings"
-gem 'kaminari' #pagination
+gem 'kaminari', '0.13'  #pagination
 gem 'thin'
 
 # spam filtering
@@ -28,7 +28,7 @@ gem 'madeleine'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '2.8'
   gem 'ruby-debug'
   gem 'rcov'
 end

@@ -30,10 +30,10 @@ td {vertical-align:top;}
 .notifications-box ul li {margin-bottom:1.8em;}
 .notifications-box .notification-text {font-weight:bold;}
 .top-nav-bar ul, .filters-menu ul {list-style-type: none; margin: 0 0 1em 0;}
-.top-nav-bar ul, .filters-menu ul {background-color: #eee;}
-.top-nav-bar ul {border-radius:12px;}
+.top-nav-bar ul, .filters-menu ul, .pagination {background-color: #eee;}
+.top-nav-bar ul, .pagination {border-radius:12px;}
 .top-nav-bar li, .filters-menu li {display:inline; float:left; margin: 0 2em 0 0; padding:0;}
-.top-nav-bar ul {padding: 0.8em 1.5em 0.6em 1.5em;}
+.top-nav-bar ul, .pagination {padding: 0.6em 1.5em 0.6em 1.5em;}
 .session-info {margin-right:0.5em; float:left;}
 .session-info .ui-icon {float:left; margin-right:0.2em;}
 
@@ -46,7 +46,7 @@ td {vertical-align:top;}
 .bookmarklet a:hover {text-decoration:none; color:transparent; background-color:transparent;}
 .bookmarklet img {border: 2px dashed #ccc;}
 
-.site-title {margin: 0.8em 1.5em 0 0; padding: 0; float:right;}
+.site-title {margin: 0.5em 1.5em 0 0; padding: 0; float:right;}
 .site-title h1 {margin: 0; padding:0; font-size:110%; display:inline-block;}
 .center-pane {font-size: 90%;}
 .right-sidebar {width:250px; float:right; margin-left:-250px; text-align:right;}

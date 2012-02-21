@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_filter :require_admin!, :except => [:show, :show_comments, :show_submissions, :show_votes, :edit, :update, :best_of]
 
   def best_of
-    @users = User.highest_karma_users.page params[:page]
+	# here is a trick so the view can happily paginate... but a single page
+	@users = Kaminari::paginate_array(User.highest_karma_users.all).page(1).per(100)
   end
 
   def update_profile_text
