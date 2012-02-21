@@ -92,7 +92,7 @@ td.rank {width:20px;}
 .admin-links {white-space:nowrap;}
 .extension-hint, .submission-description, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#666;}
 .profile-text {white-space:pre-line;}
-.whole-description .submission-description {margin-top:1em; margin-bottom:1em; white-space:pre-line;}
+.whole-description .submission-description {margin-top:1em; margin-bottom:1em; padding-right:1em; white-space:pre-line;}
 .whole-description {margin-bottom:2em;}
 .single-submission {margin-bottom:1em; width:100%;}
 .spam-info {color:red;}
