@@ -1,6 +1,6 @@
 .ui-widget, input, textarea {font-family:ubuntu, verdana;}
 .ui-icon {margin-top:2px;}
-input, textarea {padding:0.3em 1px; border-radius:3px;}
+input, textarea {padding:0.3em 1px; border-radius:3px; font-size:100%;}
 a {white-space:nowrap;}
 
 .cleared:after {content: ".";display: block; height: 0; clear: both; visibility: hidden;}
@@ -108,7 +108,7 @@ td.rank {width:20px;}
 #post-comment-at-top {margin-bottom:1em;}
 
 .submission-link {font-weight:bold; font-size:110%; margin-right:0.5em;}
-.submission-link a {text-decoration:none;}
+.submission-link a {text-decoration:none; white-space:inherit;}
 
 #submission_description {width:80%; height:200px;}
 #submission_url {width:80%;}
