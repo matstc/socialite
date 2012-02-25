@@ -29,8 +29,8 @@ gem 'madeleine'
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'rspec-rails', '2.8'
-  gem 'linecache', '0.45'
-  gem 'ruby-debug'
+  #gem 'linecache', '0.45'
+  #gem 'ruby-debug'
   gem 'rcov'
 end
 

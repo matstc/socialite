@@ -1,5 +1,5 @@
 .layout-content {margin-right:auto;}
 .comment-overview {border-style:none;}
-.right-sidebar {float:left; margin-left:auto; margin-top:3em;}
-.right-sidebar img {display:none;}
+.right-sidebar {float:left; margin-left:auto; margin-top:3em;position:static; padding-top: 1em;}
 .hide-on-smaller {display:none !important;}
+

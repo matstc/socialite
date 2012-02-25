@@ -1,4 +1,4 @@
-AppSettings.defaults['logo_file'] = 'initial_logo.jpg'
+AppSettings.defaults['logo_file'] = 'initial_logo.png'
 AppSettings.defaults['app_name'] = 'Socialite'
 AppSettings.defaults['about_page'] = 'Modify what is displayed here from the admin section.'
 AppSettings.defaults['confirm_email_on_registration'] = false

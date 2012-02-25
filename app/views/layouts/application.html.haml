@@ -6,6 +6,7 @@
 
     %title
       = page_title
+
     = stylesheet_link_tag "jquery-ui/#{theme}/jquery-ui.custom.css"
     = javascript_include_tag 'jquery-ui/jquery-1.5.1.min.js'
     = javascript_include_tag 'rails.js'
@@ -15,7 +16,9 @@
     = stylesheet_link_tag "tiny.css", :media => 'screen and (max-width: 340px)'
     = stylesheet_link_tag "themes/#{theme}/theme.css"
     = csrf_meta_tag
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Ubuntu"
     <meta name="viewport" content="width=device-width">
+
   %body
     <!--[if IE]>
     %style{:type => "text/css"}
@@ -84,9 +87,9 @@
                 });
               });
         .right-sidebar
-          = image_tag(AppSettings.logo_file)
           .comment-overview
-            %h3 The grapevine
+            .header
+              = image_tag(AppSettings.logo_file)
             .updatable
               = render :partial => 'comments/overview', :locals => {:comments => Comment.recent_comments}
 

@@ -1,4 +1,4 @@
-.ui-widget, input, textarea {font-family:ubuntu, verdana;}
+.ui-widget, input, textarea {font-family:Ubuntu, verdana;}
 .ui-icon {margin-top:2px;}
 input, textarea {padding:0.3em 1px; border-radius:3px; font-size:100%;}
 a {white-space:nowrap;}
@@ -18,7 +18,7 @@ a {white-space:nowrap;}
 
 blockquote {margin:1em; font-style:italic;}
 body { background-color: #fff; color: #111; font-size:90%;}
-body, p, ol, ul, td { font-family: ubuntu, verdana, arial, helvetica, sans-serif;}
+body, p, ol, ul, td { font-family: Ubuntu, verdana, arial, helvetica, sans-serif;}
 img {border-style:none;}
 hr {margin-top:2em; background-color:#ddd; border-style:none;}
 h2, h1, .title {font-size:120%;}
@@ -26,26 +26,29 @@ h3 {margin-top:2em;}
 textarea {height:100px; vertical-align:bottom; width:400px;}
 td {vertical-align:top;}
 
-.notifications-box {margin-bottom:2em; padding:1em; border: 1px dashed #c70;}
+.notifications-box {margin-right:2em; margin-bottom:2em; padding:1em 2em; border: 1px dashed #c70;}
 .notifications-box .title {font-weight:bold; margin-bottom:1em; color: #c70;}
 .notifications-box .ui-icon {float:left; margin-right:0.5em;}
 .notifications-box ul {list-style-type:none; margin:0; padding:0;}
 .notifications-box ul li {margin-bottom:1.8em;}
 .notifications-box .notification-text {font-weight:bold;}
-.top-nav-bar ul.menu, .filters-menu ul, .session-info ul {list-style-type: none; margin: 0 0 1em 0;}
+.top-nav-bar ul.menu, .filters-menu ul, .pagination {font-size:120%;}
+.top-nav-bar ul.menu, .filters-menu ul, .session-info ul {list-style-type: none; margin: 0 0 1em 0; z-index:5; position:relative;}
 .top-nav-bar ul.menu, .filters-menu ul, .pagination {background-color: #eee;}
-.top-nav-bar ul.menu, .pagination {border-radius:12px; clear:both;}
+.top-nav-bar ul.menu, .pagination {border-radius:8px; box-shadow: 0px 2px 2px #aaa; clear:both;}
+.filters-menu ul {padding:0.2em;}
 .top-nav-bar ul.menu li, .filters-menu li, .session-info ul li {display:inline; float:left; margin: 0 2em 0 0; padding:0;}
 .top-nav-bar ul.menu, .pagination {padding: 0.6em 1.5em 0.6em 1.5em;}
 .session-info ul li {margin:0; padding: 0 0.5em; border-left: 1px solid #ccc;}
 .session-info ul li:first-child {border-style:none;}
-.session-info ul {float:right; margin:0;}
+.session-info ul {float:right; margin:0 1.2em 0 0;}
 .session-info {margin: 0; padding: 0;}
 .session-info h1 {margin: 0; padding:0; font-size:110%; display:inline-block;}
 
 .ui-icon {float:left; margin-right:0.2em;}
 
-.comment-overview {text-align:left; padding-left:1em; border-left:1px #eee solid;}
+.comment-overview {text-align:left; padding-left:1em;}
+.comment-overview .header {text-align:center; margin-bottom:1em;}
 .comment-overview ul {list-style-type:none; margin: 0; padding-left:0;}
 .comment-overview ul li {margin-bottom:1.5em;}
 .comment-overview h3 {margin-top:0;}
@@ -55,8 +58,9 @@ td {vertical-align:top;}
 .bookmarklet img {border: 2px dashed #ccc;}
 
 .center-pane {font-size: 90%;}
-.right-sidebar {width:250px; float:right; margin-left:-250px; text-align:right;}
-.layout-content {margin-right:250px;}
+.right-sidebar {width:249px; float:right; margin-left:-250px; text-align:right; position:relative; left:-10px; top:-100px; padding-top:100px; background-color:transparent; border-left:1px dotted #ddd;}
+.right-sidebar img {margin:0 1em;}
+.layout-content {margin-right:260px;}
 .floating-wrapper {float:left; width:100%;}
 
 .prefixed-icon {margin-right:0.25em; margin-left:-0.4em;}
@@ -120,5 +124,5 @@ td.rank {width:20px;}
 #submission_url {width:80%;}
 #submission_title {width:40%;}
 
-.pagination {font-size: 120%; margin-top:1em;}
+.pagination {margin-top:1em; margin-right:1em;}
 .pagination > span {padding-right:0.5em;}
