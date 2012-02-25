@@ -1,3 +1,4 @@
 .hide-on-tiny {display:none !important;}
 .show-on-tiny {display:inline !important;}
 td.vote-area {width:40px; padding-right:0;}
+.session-info ul {padding-left:0;}

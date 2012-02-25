@@ -52,7 +52,6 @@ GEM
       httparty (>= 0.5.2)
       oauth2 (>= 0.1.1)
     builder (2.1.2)
-    columnize (0.3.2)
     crack (0.1.8)
     daemons (1.1.0)
     devise (1.2.1)
@@ -85,7 +84,6 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
-    linecache (0.43)
     madeleine (0.7.3)
     mail (2.2.15)
       activesupport (>= 2.3.6)
@@ -176,11 +174,6 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.8.0)
-    ruby-debug (0.10.4)
-      columnize (>= 0.1)
-      ruby-debug-base (~> 0.10.4.0)
-    ruby-debug-base (0.10.4)
-      linecache (>= 0.3)
     ruby-openid (2.1.8)
     ruby-openid-apps-discovery (1.2.0)
       ruby-openid (>= 2.1.7)
@@ -227,7 +220,6 @@ DEPENDENCIES
   rails-settings!
   rcov
   rspec-rails (= 2.8)
-  ruby-debug
   ruby_parser
   sqlite3
   thin

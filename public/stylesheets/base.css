@@ -37,11 +37,11 @@ td {vertical-align:top;}
 .top-nav-bar ul.menu, .filters-menu ul, .pagination {background-color: #eee;}
 .top-nav-bar ul.menu, .pagination {border-radius:8px; box-shadow: 0px 2px 2px #aaa; clear:both;}
 .filters-menu ul {padding:0.2em;}
-.top-nav-bar ul.menu li, .filters-menu li, .session-info ul li {display:inline; float:left; margin: 0 2em 0 0; padding:0;}
+.top-nav-bar ul.menu li, .filters-menu li, .session-info ul li {display:inline; float:left; margin: 0 1.2em 0 0; padding:0;}
 .top-nav-bar ul.menu, .pagination {padding: 0.6em 1.5em 0.6em 1.5em;}
 .session-info ul li {margin:0; padding: 0 0.5em; border-left: 1px solid #ccc;}
 .session-info ul li:first-child {border-style:none;}
-.session-info ul {float:right; margin:0 1.2em 0 0;}
+.session-info ul {float:right; margin:0;}
 .session-info {margin: 0; padding: 0;}
 .session-info h1 {margin: 0; padding:0; font-size:110%; display:inline-block;}
 
@@ -58,9 +58,9 @@ td {vertical-align:top;}
 .bookmarklet img {border: 2px dashed #ccc;}
 
 .center-pane {font-size: 90%;}
-.right-sidebar {width:249px; float:right; margin-left:-250px; text-align:right; position:relative; left:-10px; top:-100px; padding-top:100px; background-color:transparent; border-left:1px dotted #ddd;}
+.right-sidebar {width:249px; float:right; margin-left:-250px; text-align:right; position:relative; top:-100px; padding-top:100px; background-color:transparent; border-left:1px dotted #ddd;}
 .right-sidebar img {margin:0 1em;}
-.layout-content {margin-right:260px;}
+.layout-content {margin-right:250px;}
 .floating-wrapper {float:left; width:100%;}
 
 .prefixed-icon {margin-right:0.25em; margin-left:-0.4em;}
@@ -123,6 +123,7 @@ td.rank {width:20px;}
 #submission_description {width:80%; height:200px;}
 #submission_url {width:80%;}
 #submission_title {width:40%;}
+#submissions-list {padding-right:1em;}
 
 .pagination {margin-top:1em; margin-right:1em;}
 .pagination > span {padding-right:0.5em;}
