@@ -95,7 +95,7 @@ td.rank {width:20px;}
 .extension-hint {margin-left:0.5em;}
 .extension-hint, .dismiss-all-link, .footer, .karma-indicator, .rank, .deletion-seal, .score, .reply-link, .comment-signature {font-weight:normal; font-size:80%;}
 .admin-links {white-space:nowrap;}
-.extension-hint, .submission-description, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#666;}
+.extension-hint, .submission-description, .posted-by, .posted-by a, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature, .admin-links a {color:#666;}
 .separator {font-weight:normal; color:#ccc;}
 .profile-text {white-space:pre-line;}
 .whole-description .submission-description {margin-top:1em; margin-bottom:1em; padding-right:1em; white-space:pre-line;}

@@ -3,27 +3,16 @@ a:hover {color: #333 !important;}
 .filters-menu a:visited, .top-nav-bar a:visited {color: #333;}
 a:visited { color: #888; }
 a:hover { background-color:#dadada;}
-a.vote-up:hover {color:none; background-color:transparent; border:1px solid #ffbb22;}
-
-#submissions-list .dim, 
-#submissions-list .dim a, 
-#submissions-list .dim a:visited,
-#submissions-list .dim .score-bracket,
-#submissions-list .dim .submission-info,
-.admin-links a {
-  color:#999;
-}
-
-#submissions-list .dim .submission-link a {color:#bbb;}
+a.vote-up:hover {color:none; background-color:transparent; border:1px solid #039;}
 .top-nav-bar ul li a:hover, .filters-menu ul li a:hover {background-color: #ddd;}
 
-.extension-hint, .submission-description, .rank, .reply-link, .comment-signature {color:#888;}
+.extension-hint, .submission-description, .posted-by, .posted-by a, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature, .admin-links a {color:#888;}
 
-a.vote-up:hover {color:none; background-color:transparent; border:1px solid #039;}
+#submissions-list .dim .submission-link a {color:#bbb;}
+
 .score-bracket {color:#039;}
 .session-info h1 {color:#003366; line-height:1.4em;}
 .bookmarklet img, .notifications-box {border-color:#039;}
-
 .rank {display:none;}
 
 #comments-list > tbody > tr, .top-nav-bar ul.menu, .filters-menu ul {background-color:#f2f2f2;}
