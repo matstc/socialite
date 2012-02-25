@@ -1,3 +1,5 @@
-= link_to user, user_path(user), :class => user.deleted? ? 'crossed-out' : ''
-%span{:class => "karma-indicator"}= "[#{user.karma}]"
+- hide_karma ||= false
 
+= link_to user, user_path(user), :class => user.deleted? ? 'crossed-out' : ''
+- if !hide_karma
+  %span{:class => "karma-indicator"}= "[#{user.karma}]"

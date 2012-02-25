@@ -31,13 +31,18 @@ td {vertical-align:top;}
 .notifications-box ul {list-style-type:none; margin:0; padding:0;}
 .notifications-box ul li {margin-bottom:1.8em;}
 .notifications-box .notification-text {font-weight:bold;}
-.top-nav-bar ul, .filters-menu ul {list-style-type: none; margin: 0 0 1em 0;}
-.top-nav-bar ul, .filters-menu ul, .pagination {background-color: #eee;}
-.top-nav-bar ul, .pagination {border-radius:12px;}
-.top-nav-bar li, .filters-menu li {display:inline; float:left; margin: 0 2em 0 0; padding:0;}
-.top-nav-bar ul, .pagination {padding: 0.6em 1.5em 0.6em 1.5em;}
-.session-info {margin-right:0.5em; float:left;}
-.session-info .ui-icon {float:left; margin-right:0.2em;}
+.top-nav-bar ul.menu, .filters-menu ul, .session-info ul {list-style-type: none; margin: 0 0 1em 0;}
+.top-nav-bar ul.menu, .filters-menu ul, .pagination {background-color: #eee;}
+.top-nav-bar ul.menu, .pagination {border-radius:12px; clear:both;}
+.top-nav-bar ul.menu li, .filters-menu li, .session-info ul li {display:inline; float:left; margin: 0 2em 0 0; padding:0;}
+.top-nav-bar ul.menu, .pagination {padding: 0.6em 1.5em 0.6em 1.5em;}
+.session-info ul li {margin:0; padding: 0 0.5em; border-left: 1px solid #ccc;}
+.session-info ul li:first-child {border-style:none;}
+.session-info ul {float:right; margin:0;}
+.session-info {margin: 0; padding: 0;}
+.session-info h1 {margin: 0; padding:0; font-size:110%; display:inline-block;}
+
+.ui-icon {float:left; margin-right:0.2em;}
 
 .comment-overview {text-align:left; padding-left:1em; border-left:1px #eee solid;}
 .comment-overview ul {list-style-type:none; margin: 0; padding-left:0;}
@@ -48,8 +53,6 @@ td {vertical-align:top;}
 .bookmarklet a:hover {text-decoration:none; color:transparent; background-color:transparent;}
 .bookmarklet img {border: 2px dashed #ccc;}
 
-.site-title {margin: 0.5em 1.5em 0 0; padding: 0; float:right;}
-.site-title h1 {margin: 0; padding:0; font-size:110%; display:inline-block;}
 .center-pane {font-size: 90%;}
 .right-sidebar {width:250px; float:right; margin-left:-250px; text-align:right;}
 .layout-content {margin-right:250px;}
@@ -82,7 +85,7 @@ ul.bulleted {list-style-type:none; padding-left:0.5em;}
 table.list td {border-bottom:1px solid #eee;}
 table.list {width:auto;}
 
-.score-bracket, .site-title h1 {color:#995522;}
+.score-bracket, .session-info h1 {color:#995522;}
 td.vote-area {white-space:nowrap; width:50px; text-align:right; padding-right:10px;}
 td.rank {width:20px;}
 .vote-up {float:left; border:1px solid transparent;}
@@ -90,9 +93,10 @@ td.rank {width:20px;}
 .center-pane {text-align:center;}
 
 .extension-hint {margin-left:0.5em;}
-.extension-hint, .dismiss-all-link, .footer, .karma-indicator, .rank, .admin-links, .deletion-seal, .score, .reply-link, .comment-signature {font-weight:normal; font-size:80%;}
+.extension-hint, .dismiss-all-link, .footer, .karma-indicator, .rank, .deletion-seal, .score, .reply-link, .comment-signature {font-weight:normal; font-size:80%;}
 .admin-links {white-space:nowrap;}
 .extension-hint, .submission-description, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature {color:#666;}
+.separator {font-weight:normal; color:#ccc;}
 .profile-text {white-space:pre-line;}
 .whole-description .submission-description {margin-top:1em; margin-bottom:1em; padding-right:1em; white-space:pre-line;}
 .whole-description {margin-bottom:2em;}
@@ -106,6 +110,7 @@ td.rank {width:20px;}
 .comment {margin-bottom:1.0em;}
 
 #post-comment-at-top {margin-bottom:1em;}
+#comment_text {margin-top:2em;}
 
 .submission-link {font-weight:bold; font-size:110%; margin-right:0.5em;}
 .submission-link a {text-decoration:none; white-space:inherit;}

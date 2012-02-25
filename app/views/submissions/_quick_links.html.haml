@@ -1,15 +1,14 @@
-%span<
-  = link_to pluralize(submission.comments.size, "comment"), submission_path(submission)
-
-- if current_user.try :admin
-  %span{:class => "admin-links"}
-    = "["
-    %span{:id => "admin-links-#{submission.id}"}
-      - if submission.is_spam?
+%span{:class => "admin-links"}
+  - if current_user.try :admin
+    - if submission.is_spam?
+      != separator
+      %span{:id => "admin-links-#{submission.id}"}
         = link_to "do not mark as spam", undo_mark_submission_as_spam_path(:id => submission.id), :method => :post, :remote => true, :class => "undo-mark-submission-as-spam-link"
-      - else
+    - else
+      != separator
+      %span{:id => "admin-links-#{submission.id}"}
         = link_to "mark as spam", mark_submission_as_spam_path(:id => submission.id), :method => :post, :remote => true, :class => "mark-submission-as-spam-link"
-    = "]"
+
     :javascript
       $(document).ready(function(){
         $('.undo-mark-submission-as-spam-link').bind('ajax:success', function(obj, data){
@@ -22,4 +21,12 @@
         });
       });
 
+  - if !current_user.nil?
+    - if submission.user == current_user || current_user_is_admin?
+      != separator
+      = link_to 'modify', edit_submission_path(submission)
+
+%span
+  != separator
+  = link_to pluralize(submission.comments.size, "comment"), submission_path(submission)
 

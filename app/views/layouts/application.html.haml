@@ -26,19 +26,34 @@
     .center-pane
       .inner-center-pane
         %div{:class => "top-nav-bar"}
-          .site-title
-            %span{:class => 'session-info'}
-              - if !current_user.nil?
-                - if current_user.has_notifications?
-                  != link_to user_path(current_user), :title => "You have notifications" do
-                    != icon 'mail-closed'
-                = render :partial => 'users/user', :locals => {:user => current_user}
+          .session-info
             %h1 
               = app_name
-          %ul{:class => "cleared"}
+
+            %ul
+              - if !current_user.nil?
+                %li
+                  - if current_user.has_notifications?
+                    != link_to user_path(current_user), :title => "You have notifications" do
+                      != icon 'mail-closed'
+                  = render :partial => 'users/user', :locals => {:user => current_user}
+
+              - if current_user.try :admin
+                %li
+                  = link_to_unless_current_action "Admin", admin_path
+              - if current_user.nil?
+                %li
+                  = link_to "Sign in", new_session_path(:user)
+                %li
+                  = link_to "Sign up", new_registration_path(:user)
+              - if !current_user.nil?
+                %li
+                  = link_to "Sign out", destroy_user_session_path
+
+          %ul{:class => "cleared menu"}
             %li
               = link_to_unless_current_action "Popular", root_path
-            %li{:class => 'hide-on-smaller'}
+            %li{:class => 'hide-on-tiny'}
               = link_to_unless_current_action 'Most recent', new_path
             %li{:class => 'show-on-tiny'}
               = link_to_unless_current_action 'Submit', new_submission_path
@@ -52,17 +67,6 @@
               = link_to_unless_current_action "Stats", statistics_path
             %li{:class => 'hide-on-smaller'}
               = link_to "RSS Feed", popular_page_rss_path
-            - if current_user.try :admin
-              %li
-                = link_to_unless_current_action "Admin", admin_path
-            - if current_user.nil?
-              %li
-                = link_to "Sign in", new_session_path(:user)
-              %li
-                = link_to "Sign up", new_registration_path(:user)
-            - if !current_user.nil?
-              %li
-                = link_to "Sign out", destroy_user_session_path
 
         .floating-wrapper
           .layout-content

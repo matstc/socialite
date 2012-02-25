@@ -11,7 +11,7 @@ describe "users/show.html.haml" do
 
     render
 
-    assert_select ".notifications-box ul>li div", :text => /spam/, :count => 2
+    assert_select ".notifications-box ul>li .notification-text", :text => /spam/, :count => 2
   end
 
   it "should indicate that the profile text was not provided" do

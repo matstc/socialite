@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def separator
+	"<span class='separator'>|</span>"
+  end
+
   def button_html
     %{<a href="#{new_submission_url}" onclick="window.location = '#{new_submission_url}?submission[url]=' + encodeURIComponent(window.location) + '&submission[title]=' + encodeURIComponent(document.title); return false"><img width="32px" src="#{root_url}images/#{AppSettings.logo_file}" alt="Submit to #{html_escape app_name}" border="0" /> </a>}
   end

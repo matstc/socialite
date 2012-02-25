@@ -15,18 +15,6 @@
     %td
       = render :partial => "submissions/body", :locals => {:submission => submission, :whole_text => whole_text}
 
-  - if whole_text and !current_user.nil?
-    %tr
-      %td{:class => 'rank'}
-      %td
-      %td
-        - if submission.user == current_user
-          .actions
-            = link_to 'Edit your submission', edit_submission_path(submission)
-        - elsif current_user_is_admin?
-          .actions
-            = link_to 'Edit this submission', edit_submission_path(submission)
-
   - if show_comment_form
     %tr
       %td{:class => 'rank'}

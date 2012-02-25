@@ -6,14 +6,16 @@
     [ spam ]
 %span{:class => "submission-link #{submission.is_spam? ? 'crossed-out' : ''}"}
   = link_to title, resolve_submission_url(submission), {:rel => 'nofollow'}
-= render :partial => "submissions/quick_links", :locals => {:submission => submission}
+
+
 /
   = "interestingness = #{submission.interestingness}"
+
 .submission-info
-  = render :partial => "users/posted_by", :locals => {:user => submission.user, :resource => submission}
   %div{:class => "submission-description"}<
     - if whole_text
       != sanitize_html submission.description
     - else 
       = truncate(strip_tags(submission.description), :length => 140)
-
+  = render :partial => "users/posted_by", :locals => {:user => submission.user, :resource => submission}
+  = render :partial => "submissions/quick_links", :locals => {:submission => submission}

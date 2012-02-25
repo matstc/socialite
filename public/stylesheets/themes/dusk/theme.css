@@ -9,7 +9,7 @@ a.vote-up:hover {color:none; background-color:transparent; border:1px solid #ffb
 #submissions-list .dim a, 
 #submissions-list .dim a:visited,
 #submissions-list .dim .score-bracket,
-#submissions-list .dim .submission-description,
+#submissions-list .dim .submission-info,
 .admin-links a {
   color:#999;
 }
@@ -21,9 +21,9 @@ a.vote-up:hover {color:none; background-color:transparent; border:1px solid #ffb
 
 a.vote-up:hover {color:none; background-color:transparent; border:1px solid #039;}
 .score-bracket {color:#039;}
-.site-title h1 {color:#003366; line-height:1.4em;}
-.bookmarklet img {border-color:#039;}
+.session-info h1 {color:#003366; line-height:1.4em;}
+.bookmarklet img, .notifications-box {border-color:#039;}
 
 .rank {display:none;}
 
-#comments-list > tbody > tr, .top-nav-bar ul, .filters-menu ul {background-color:#f2f2f2;}
+#comments-list > tbody > tr, .top-nav-bar ul.menu, .filters-menu ul {background-color:#f2f2f2;}

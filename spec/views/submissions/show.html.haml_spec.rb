@@ -11,12 +11,12 @@ describe "submissions/show.html.haml" do
       assign(:submission, @submission)
     end
 
-    it "renders attributes and an edit link" do
+    it "renders attributes and a modify link" do
       render
       rendered.should match(/#{@submission.title}/)
       rendered.should match(/#{@submission.url}/)
       rendered.should match(/#{@submission.description}/)
-      rendered.should match(/Edit your submission/)
+      rendered.should match(/modify/)
     end
 
     it "should not render a link to mark as spam submission or comment" do
