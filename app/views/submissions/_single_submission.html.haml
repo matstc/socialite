@@ -34,7 +34,11 @@
               });
 
               $('#post-comment-at-top').bind('ajax:success', function(obj, data){
-                $("#comments-list tbody").prepend(data);
-                $(this).remove();
+                var content = $(data);
+                content.hide();
+                $("#comments-list > tbody").prepend(content);
+                S.apply_theme(content);
+                $(this).find("textarea").attr("value","");
+                content.fadeIn(1000);
               });
             });

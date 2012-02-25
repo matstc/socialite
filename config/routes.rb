@@ -76,6 +76,7 @@ Socialite::Application.routes.draw do
   # keep this line below the declaration of submissions as resources to keep RSS out of pagination
   match 'submissions.rss', :to => 'submissions#index', :via => "get", :format => 'rss', :as => 'popular_page_rss'
 
+  match 'comments/recent', :controller => 'comments', :action => 'recent', :via => 'get', :as => 'recent_comments'
   resources :comments
 
   # The priority is based upon order of creation:

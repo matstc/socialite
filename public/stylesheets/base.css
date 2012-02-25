@@ -14,6 +14,7 @@ a {white-space:nowrap;}
 .crossed-out {text-decoration: line-through;}
 .code {background-color:#ddd; font-family:Courier; padding:1em;}
 .margintop {margin-top:4em;}
+.spinner {visibility:hidden;}
 
 blockquote {margin:1em; font-style:italic;}
 body { background-color: #fff; color: #111; font-size:90%;}
@@ -107,7 +108,7 @@ td.rank {width:20px;}
 #comments-list > tbody > tr > td {padding:0.2em 1em 0.4em 1em;}
 #comments-list {width:100%; border-collapse: collapse;}
 .child-comments {margin-left:1.5em; border-collapse:collapse;}
-.comment {margin-bottom:1.0em;}
+.comment {margin-bottom:1.0em; min-width:28em;}
 
 #post-comment-at-top {margin-bottom:1em;}
 #comment_text {margin-top:2em;}

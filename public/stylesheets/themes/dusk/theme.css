@@ -4,7 +4,7 @@ a:hover {color: #333 !important;}
 a:visited { color: #888; }
 a:hover { background-color:#dadada;}
 a.vote-up:hover {color:none; background-color:transparent; border:1px solid #039;}
-.top-nav-bar ul li a:hover, .filters-menu ul li a:hover {background-color: #ddd;}
+.top-nav-bar ul.menu li a:hover, .filters-menu ul li a:hover {background-color: #ddd;}
 
 .extension-hint, .submission-description, .posted-by, .posted-by a, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature, .admin-links a {color:#888;}
 

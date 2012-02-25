@@ -14,4 +14,9 @@ class CommentsController < ApplicationController
     set_html_as_content_type
   end
 
+  def recent
+    @comments = Comment.recent_comments
+    render :layout => false
+  end
+
 end

@@ -9,6 +9,15 @@ describe CommentsController do
     @mock_comment = mock_comment
   end
 
+  describe "GET recent" do
+	it "should provide most recent comments" do
+	  Comment.stub(:recent_comments) { [@mock_comment] }
+	  get :recent
+
+	  assigns(:comments).should == [@mock_comment]
+	end
+  end
+
   describe "POST create" do
     describe "with valid params" do
       it "saves a new comment to database" do

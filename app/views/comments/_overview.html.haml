@@ -1,10 +1,8 @@
-.comment-overview
-  %h3 The grapevine
-  %ul
-    - comments.each do |comment|
-      %li
-        %div= truncate(strip_tags(comment.text), :length => 100)
-        %div{:class => 'comment-signature'}
-          = "by #{comment.user} - "
-          = link_to "#{time_ago_in_words_including_ago(comment.created_at)}", link_to_comment(comment)
+%ul
+  - comments.each do |comment|
+    %li
+      %div= truncate(strip_tags(comment.text), :length => 100)
+      %div{:class => 'comment-signature'}
+        = "by #{comment.user} - "
+        = link_to "#{time_ago_in_words_including_ago(comment.created_at)}", link_to_comment(comment)
 
