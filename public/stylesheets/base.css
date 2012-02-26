@@ -32,7 +32,10 @@ td {vertical-align:top;}
 .notifications-box ul {list-style-type:none; margin:0; padding:0;}
 .notifications-box ul li {margin-bottom:1.8em;}
 .notifications-box .notification-text {font-weight:bold;}
-.top-nav-bar ul.menu, .filters-menu ul, .pagination {font-size:120%;}
+.current {text-decoration:underline;}
+.top-nav-bar ul.menu, .filters-menu ul, .pagination {font-size:130%; font-family: 'Ubuntu Condensed';}
+.top-nav-bar ul.menu a, .filters-menu ul a, .pagination a {text-decoration:none;}
+.top-nav-bar ul.menu a:hover, .filters-menu ul a:hover, .pagination a:hover {background-color:transparent; text-decoration:underline;}
 .top-nav-bar ul.menu, .filters-menu ul, .session-info ul {list-style-type: none; margin: 0 0 1em 0; z-index:5; position:relative;}
 .top-nav-bar ul.menu, .filters-menu ul, .pagination {background-color: #eee;}
 .top-nav-bar ul.menu, .pagination {border-radius:8px; box-shadow: 0px 2px 2px #aaa; clear:both;}
@@ -42,8 +45,8 @@ td {vertical-align:top;}
 .session-info ul li {margin:0; padding: 0 0.5em; border-left: 1px solid #ccc;}
 .session-info ul li:first-child {border-style:none;}
 .session-info ul {float:right; margin:0;}
-.session-info {margin: 0; padding: 0;}
-.session-info h1 {margin: 0; padding:0; font-size:110%; display:inline-block;}
+.session-info {margin: 0; padding: 0; line-height:1.6em;}
+.session-info h1, .comment-overview h3 {margin: 0; padding:0; font-size:150%; display:inline-block; font-family:'Ubuntu Condensed'; font-weight:normal;}
 
 .ui-icon {float:left; margin-right:0.2em;}
 

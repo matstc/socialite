@@ -17,6 +17,7 @@
     = stylesheet_link_tag "themes/#{theme}/theme.css"
     = csrf_meta_tag
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Ubuntu"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Ubuntu+Condensed"
     <meta name="viewport" content="width=device-width">
 
   %body
@@ -55,23 +56,23 @@
 
           %ul{:class => "cleared menu"}
             %li
-              = link_to_unless_current_action "Popular", root_path
+              != link_to_unless_current_action "Popular", root_path
             %li{:class => 'show-on-tiny'}
-              = link_to_unless_current_action 'Recent', new_path
+              != link_to_unless_current_action 'Recent', new_path
             %li{:class => 'hide-on-tiny'}
-              = link_to_unless_current_action 'Most recent', new_path
+              != link_to_unless_current_action 'Most recent', new_path
             %li{:class => 'show-on-tiny'}
-              = link_to_unless_current_action 'Submit', new_submission_path
+              != link_to_unless_current_action 'Submit', new_submission_path
             %li{:class => 'hide-on-tiny'}
-              = link_to_unless_current_action 'Submit a story', new_submission_path
+              != link_to_unless_current_action 'Submit a story', new_submission_path
             %li{:class => 'hide-on-smaller'}
-              = link_to_unless_current_action 'Best of', best_of_submissions_path
+              != link_to_unless_current_action 'Best of', best_of_submissions_path
             %li{:class => 'hide-on-smaller'}
-              = link_to_unless_current_action "About", about_path
+              != link_to_unless_current_action "About", about_path
             %li{:class => 'hide-on-smaller'}
-              = link_to_unless_current_action "Stats", statistics_path
+              != link_to_unless_current_action "Stats", statistics_path
             %li{:class => 'hide-on-smaller'}
-              = link_to "RSS", popular_page_rss_path
+              != link_to "RSS", popular_page_rss_path
 
         .floating-wrapper
           .layout-content
@@ -92,6 +93,7 @@
           .comment-overview
             .header
               = image_tag(AppSettings.logo_file)
+            %h3 The grapevine
             .updatable
               = render :partial => 'comments/overview', :locals => {:comments => Comment.recent_comments}
 

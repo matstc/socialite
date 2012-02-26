@@ -98,7 +98,7 @@ module ApplicationHelper
   def link_to_unless_current_action text, path
     options = Rails.application.routes.recognize_path(path, :method => :get)
     if options[:controller] == controller.controller_name and options[:action] == controller.action_name 
-      return text
+      return "<span class='current'>#{text}</span>"
     end
 
     link_to text, path

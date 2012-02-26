@@ -4,14 +4,13 @@ a:hover {color: #333 !important;}
 a:visited { color: #888; }
 a:hover { background-color:#e5e5e5;}
 a.vote-up:hover {color:none; background-color:transparent; border:1px solid #039;}
-.top-nav-bar ul.menu li a:hover {background-color: #d5d5ee;}
 
 .extension-hint, .submission-description, .posted-by, .posted-by a, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature, .admin-links a {color:#888;}
 
 #submissions-list .dim .submission-link a {color:#bbb;}
 
 .score-bracket {color:#039;}
-.session-info h1 {color:#003366; line-height:1.4em;}
+.session-info h1, .comment-overview h3 {color:#003366;}
 .bookmarklet img, .notifications-box {border-color:#58e;}
 .rank {display:none;}
 

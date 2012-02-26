@@ -24,7 +24,7 @@ var S = {
 };
 
 $(document).ready(function(){
-    $('h1').add('h2').not("#error_explanation h2").each(function(idx, elem){
+    $('h1').add('h2').not("#error_explanation h2").not(".session-info h1").each(function(idx, elem){
       $(elem).prepend('<span class="ui-icon ui-icon-carat-1-e float-left prefixed-icon"></span>');
     });
 
