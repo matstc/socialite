@@ -10,7 +10,7 @@ a.vote-up:hover {color:none; background-color:transparent; border:1px solid #039
 #submissions-list .dim .submission-link a {color:#bbb;}
 
 .score-bracket {color:#039;}
-.session-info h1, .comment-overview h3 {color:#003366;}
+.session-info h1, .comment-overview h3, .current {color:#003366; text-decoration:none;}
 .bookmarklet img, .notifications-box {border-color:#58e;}
 .rank {display:none;}
 

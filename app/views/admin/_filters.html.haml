@@ -1,5 +1,5 @@
 .filters-menu
   %ul{:class => 'cleared'}
-    %li= link_to_unless_current_action "Submissions", moderate_submissions_path
-    %li= link_to_unless_current_action "Comments", moderate_comments_path
+    %li!= link_to_unless_current_action "Submissions", moderate_submissions_path
+    %li!= link_to_unless_current_action "Comments", moderate_comments_path
 

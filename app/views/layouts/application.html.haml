@@ -44,7 +44,7 @@
 
               - if current_user.try :admin
                 %li
-                  = link_to_unless_current_action "Admin", admin_path
+                  = link_to "Admin", admin_path
               - if current_user.nil?
                 %li
                   = link_to "Sign in", new_session_path(:user)

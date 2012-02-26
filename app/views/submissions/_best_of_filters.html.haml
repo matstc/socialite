@@ -1,4 +1,4 @@
 .filters-menu
   %ul{:class => 'cleared'}
-    %li= link_to_unless_current_action "Submissions", best_of_submissions_path
-    %li= link_to_unless_current_action "Users", best_of_users_path
+    %li!= link_to_unless_current_action "Submissions", best_of_submissions_path
+    %li!= link_to_unless_current_action "Users", best_of_users_path
