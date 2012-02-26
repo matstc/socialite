@@ -12,6 +12,11 @@ class AdminController < ApplicationController
     @themes = Dir["#{themes_directory}/*"].map { |a| File.basename(a) }
   end
 
+  def save_meta_tags
+      AppSettings.update_settings params[:app_settings]
+      redirect_to :meta_tags, :notice => 'The meta tags were saved. See them by viewing the source of this page.'
+  end
+
   def save_twitter
       AppSettings.update_settings params[:app_settings]
       flash[:alert] = "You have to restart your app for this change to take effect."

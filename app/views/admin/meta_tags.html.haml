@@ -1,0 +1,17 @@
+= h1_and_page_title 'Meta tags'
+
+= form_for AppSettings, :url => {:controller => 'admin', :action => 'save_meta_tags'}, :method => 'post' do |f|
+  .explanation
+    Write up a description for your website.
+  .field
+    = f.label :meta_description, "Description"
+    = f.text_field :meta_description
+
+  .explanation
+    Choose a few meta tags.
+  .field
+    = f.label :meta_keywords, "Tags"
+    = f.text_field :meta_keywords
+
+  = f.submit "Save"
+

@@ -42,6 +42,9 @@ Socialite::Application.routes.draw do
   match 'admin/modify_appearance', :to => "admin#modify_appearance", :via => "get", :as => 'modify_appearance'
   match 'admin/save_appearance', :to => "admin#save_appearance", :via => "post", :as => 'save_appearance'
 
+  match 'admin/meta_tags', :to => "admin#meta_tags", :via => "get", :as => 'meta_tags'
+  match 'admin/save_meta_tags', :to => "admin#save_meta_tags", :via => "post", :as => 'save_meta_tags'
+
   match 'admin/modify_about_page', :to => "admin#modify_about_page", :via => "get", :as => 'modify_about_page'
   match 'admin/save_about_page', :to => "admin#save_about_page", :via => "post", :as => 'save_about_page'
 

@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def meta_description
+	%{<meta name="description" content="#{AppSettings.meta_description}" />}
+  end
+
+  def meta_keywords
+	%{<meta name="keywords" content="#{AppSettings.meta_keywords}" />}
+  end
+
   def separator
 	"<span class='separator'>|</span>"
   end

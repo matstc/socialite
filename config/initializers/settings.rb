@@ -17,3 +17,5 @@ AppSettings.defaults['voting_momentum'] = 5
 AppSettings.defaults['google_analytics_script'] = ''
 AppSettings.defaults['twitter_consumer_key'] = nil
 AppSettings.defaults['twitter_consumer_secret'] = nil
+AppSettings.defaults['meta_description'] = nil
+AppSettings.defaults['meta_keywords'] = nil
