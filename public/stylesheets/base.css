@@ -54,7 +54,7 @@ td {vertical-align:top;}
 .comment-overview .header {text-align:center; margin-bottom:1em;}
 .comment-overview ul {list-style-type:none; margin: 0; padding-left:0;}
 .comment-overview ul li {margin-bottom:1.5em;}
-.comment-overview h3 {margin-top:0;}
+.comment-overview h3 {margin-top:0; margin-bottom:0.5em;}
 
 .bookmarklet a {color:none; background-color:none;}
 .bookmarklet a:hover {text-decoration:none; color:transparent; background-color:transparent;}
