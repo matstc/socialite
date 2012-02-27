@@ -13,7 +13,7 @@
 
 .submission-info
   %div{:class => "submission-description"}<
-    %div{:class => "full-description #{!whole_text ? 'hidden' : ''}"}
+    %div{:class => "full-description pre-line #{!whole_text ? 'hidden' : ''}"}<
       != sanitize_html submission.description
     %div{:class => "truncated-description #{whole_text ? 'hidden' : ''}"}
       = truncate(strip_tags(submission.description), :length => 110)
