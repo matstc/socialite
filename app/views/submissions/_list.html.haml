@@ -2,4 +2,25 @@
   - submissions.each_with_index do |submission, index|
     = render :partial => 'submissions/single_submission', :locals => {:submission => submission, :index => index}
 
+:javascript
+  $(document).ready(function(){
+    var descriptions = $(".submission-description");
+
+    descriptions.hover(function(){$(this).css('cursor','pointer')});
+
+    descriptions.click(function(){
+      var description = $(this);
+        var full_description = description.find('.full-description')
+          full_description.toggle();
+          description.find('.truncated-description').toggle();
+          description.hide();
+
+          if (full_description.css('display') == 'none'){
+            description.fadeIn(400);
+          } else {
+            description.fadeIn(400);
+          }
+      });
+    });
+
 = paginate submissions

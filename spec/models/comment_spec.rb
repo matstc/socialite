@@ -65,7 +65,7 @@ describe Comment do
       all_comments << ObjectMother.create_comment(:is_spam => true)
       all_comments << ObjectMother.create_comment(:user => ObjectMother.create_user(:deleted => true))
 
-      Comment.recent_comments.should == all_comments.reverse[2,12]
+      Comment.recent_comments.should == all_comments.reverse[2,15]
     end
 
     it "should not pull up orphan comments" do
@@ -75,7 +75,7 @@ describe Comment do
       all_comments << parent
       all_comments << ObjectMother.create_comment(:parent => parent)
 
-      Comment.recent_comments.should == all_comments.reverse[2,12]
+      Comment.recent_comments.should == all_comments.reverse[2,15]
     end
   end
 

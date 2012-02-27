@@ -13,9 +13,10 @@
 
 .submission-info
   %div{:class => "submission-description"}<
-    - if whole_text
+    %div{:class => "full-description #{!whole_text ? 'hidden' : ''}"}
       != sanitize_html submission.description
-    - else 
-      = truncate(strip_tags(submission.description), :length => 140)
+    %div{:class => "truncated-description #{whole_text ? 'hidden' : ''}"}
+      = truncate(strip_tags(submission.description), :length => 110)
+
   = render :partial => "users/posted_by", :locals => {:user => submission.user, :resource => submission}
   = render :partial => "submissions/quick_links", :locals => {:submission => submission}

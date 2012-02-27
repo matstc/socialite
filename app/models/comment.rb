@@ -16,7 +16,7 @@ class Comment < ActiveRecord::Base
   scope :not_deleted_or_spam, :readonly => false, :joins => [:user,:submission], :conditions => ["(submissions.is_spam is ? OR submissions.is_spam = ?) AND (comments.is_spam is ? OR comments.is_spam = ?) AND (users.deleted is ? OR users.deleted = ?)", nil, false, nil, false, nil, false]
 
   def self.recent_comments
-    Comment.not_deleted_or_spam.limit(20).all.select{|c| !c.is_orphan?}[0,12]
+    Comment.not_deleted_or_spam.limit(20).all.select{|c| !c.is_orphan?}[0,15]
   end
 
   def trim

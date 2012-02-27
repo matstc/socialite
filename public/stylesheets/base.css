@@ -1,5 +1,6 @@
 .ui-widget, input, textarea {font-family:Ubuntu, verdana;}
-.ui-icon {margin-top:2px;}
+.ui-icon {margin-top:2px; float:left; margin-right:0.2em;}
+.vote-up .ui-icon {margin:0;}
 input, textarea {padding:0.3em 1px; border-radius:3px; font-size:100%;}
 a {white-space:nowrap;}
 
@@ -13,17 +14,18 @@ a {white-space:nowrap;}
 .show-on-tiny {display:none !important;}
 .crossed-out {text-decoration: line-through;}
 .code {background-color:#ddd; font-family:Courier; padding:1em;}
-.margintop {margin-top:4em;}
+.margintop {margin-top:2em;}
 .spinner {visibility:hidden;}
 
 blockquote {margin:1em; font-style:italic;}
-body { background-color: #fff; color: #111; font-size:90%;}
+body { background-color: #fff; color: #111;}
 body, p, ol, ul, td { font-family: Ubuntu, verdana, arial, helvetica, sans-serif;}
 img {border-style:none;}
 hr {margin-top:2em; background-color:#ddd; border-style:none;}
-h2, h1, .title {font-size:120%;}
+h1, h2, h3 {font-family: 'Ubuntu Condensed'; font-weight:normal;}
+h2, h1 {font-size:140%;}
 h3 {margin-top:2em;}
-textarea {height:100px; vertical-align:bottom; width:400px;}
+textarea {height:100px; vertical-align:bottom; width:98%; max-width:400px;}
 td {vertical-align:top;}
 
 .notifications-box {margin-right:2em; margin-bottom:2em; padding:1em 2em; border: 1px dashed #c70;}
@@ -44,13 +46,11 @@ td {vertical-align:top;}
 .top-nav-bar ul.menu, .pagination {padding: 0.6em 1.5em 0.6em 1.5em;}
 .session-info ul li {margin:0; padding: 0 0.5em; border-left: 1px solid #ccc;}
 .session-info ul li:first-child {border-style:none;}
-.session-info ul {float:right; margin:0;}
+.session-info ul {float:right; margin:0 1em 0 0;}
 .session-info {margin: 0; padding: 0; line-height:1.6em;}
 .session-info h1, .comment-overview h3 {margin: 0; padding:0; font-size:150%; display:inline-block; font-family:'Ubuntu Condensed'; font-weight:normal;}
 
-.ui-icon {float:left; margin-right:0.2em;}
-
-.comment-overview {text-align:left; padding-left:1em;}
+.comment-overview {text-align:left; padding-left:1em; padding-right:1em;}
 .comment-overview .header {text-align:center; margin-bottom:1em;}
 .comment-overview ul {list-style-type:none; margin: 0; padding-left:0;}
 .comment-overview ul li {margin-bottom:1.5em;}
@@ -61,9 +61,9 @@ td {vertical-align:top;}
 .bookmarklet img {border: 2px dashed #ccc;}
 
 .center-pane {font-size: 90%;}
-.right-sidebar {width:249px; float:right; margin-left:-250px; text-align:right; position:relative; top:-100px; padding-top:100px; background-color:transparent; border-left:1px dotted #ddd;}
+.right-sidebar {width:249px; float:right; margin-left:-250px; text-align:right; position:relative; top:-100px; padding-top:100px; background-color:transparent; border-left:1px dotted #ddd; background-image: url('/images/sidebar-bg.jpg'); position:relative; left:-1em;}
 .right-sidebar img {margin:0 1em;}
-.layout-content {margin-right:250px;}
+.layout-content {margin-right:250px; padding-right:1em;}
 .floating-wrapper {float:left; width:100%;}
 
 .prefixed-icon {margin-right:0.25em; margin-left:-0.4em;}
@@ -97,7 +97,7 @@ table.list {width:auto;}
 td.vote-area {white-space:nowrap; width:50px; text-align:right; padding-right:10px;}
 td.rank {width:20px;}
 .vote-up {float:left; border:1px solid transparent;}
-.inner-center-pane {width:90%; text-align:left; margin:auto;}
+.inner-center-pane {width:95%; text-align:left; margin:auto;}
 .center-pane {text-align:center;}
 
 .extension-hint {margin-left:0.5em;}

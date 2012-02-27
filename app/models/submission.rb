@@ -13,7 +13,7 @@ class Submission < ActiveRecord::Base
 
   after_initialize :setup_default_values
 
-  paginates_per 20
+  paginates_per 15
 
   scope :ordered_by_created_date, :order => "created_at DESC"
 

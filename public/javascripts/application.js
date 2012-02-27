@@ -28,6 +28,10 @@ $(document).ready(function(){
       $(elem).prepend('<span class="ui-icon ui-icon-carat-1-e float-left prefixed-icon"></span>');
     });
 
+	$('h3').not(".comment-overview h3").each(function(idx, elem){
+      $(elem).prepend('<span class="ui-icon ui-icon-minusthick float-left prefixed-icon"></span>');
+    });
+
     $('.collapsible a').each(function(idx, elem){
       $(elem).prepend('<span class="ui-icon ui-icon-triangle-1-e float-left prefixed-icon"></span>');
     });
@@ -68,5 +72,9 @@ $(document).ready(function(){
 		setTimeout(S.update_grapevine, 2000);
 	});
 
-	setInterval(S.update_grapevine, 60000);
+	setInterval(S.update_grapevine, 120000);
+
+	setTimeout(function(){
+		$(".notice").slideUp();
+	}, 4000);
 });

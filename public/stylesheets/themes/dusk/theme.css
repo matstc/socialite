@@ -2,7 +2,7 @@ a { color: #333; }
 a:hover {color: #333 !important;}
 .filters-menu a:visited, .pagination a:visited, .top-nav-bar a:visited {color: #333;}
 a:visited { color: #888; }
-a:hover { background-color:#e5e5e5;}
+a:hover { background-color:#eee;}
 a.vote-up:hover {color:none; background-color:transparent; border:1px solid #039;}
 
 .extension-hint, .submission-description, .posted-by, .posted-by a, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature, .admin-links a {color:#888;}
