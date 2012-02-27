@@ -28,10 +28,10 @@ gem 'madeleine'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-  gem 'rspec-rails', '2.8'
+  gem 'rspec-rails', '< 2.7.0'
   #gem 'linecache', '0.45'
   #gem 'ruby-debug'
-  gem 'rcov'
+  gem 'rcov', '~> 1.0.0'
 end
 
 gem 'haml-rails', :group => :development

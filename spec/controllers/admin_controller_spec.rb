@@ -22,6 +22,14 @@ describe AdminController do
 	end
   end
 
+  describe "save meta tags" do
+    it "should update settings with the meta tags" do
+      post :save_meta_tags, :app_settings => {:meta_description => "description", :meta_keywords => "keywords"}
+      AppSettings.meta_description.should == "description"
+      AppSettings.meta_keywords.should == "keywords"
+    end
+  end
+
   describe "save twitter" do
     it "should update settings with the twitter consumer token and secret" do
       post :save_twitter, :app_settings => {:twitter_consumer_key => "key", :twitter_consumer_secret => "secret"}
