@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   before_filter :verify_user_is_not_deleted
+  before_filter :show_elevator_pitch_if_new_session
 
   def set_html_as_content_type
     response.headers["Content-Type"] = 'text/html'
@@ -14,6 +15,13 @@ class ApplicationController < ActionController::Base
 	  flash[:alert] = "It looks like your account was deleted. You were probably mistaken for a spammer. Please contact us or register a new account."
 	  sign_out current_user
 	  redirect_to root_url
+	end
+  end
+
+  def show_elevator_pitch_if_new_session
+	if session[:new].nil?
+	  session[:new] = false
+	  flash.now[:notice] = "Welcome!<br>It looks like this is your first time here.<br>Feel free to share links and take part in the discussion.<br><br>And check out what we are #{self.class.helpers.link_to 'about', about_path}."
 	end
   end
 

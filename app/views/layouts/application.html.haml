@@ -79,9 +79,9 @@
         .floating-wrapper
           .layout-content
             %p{:class => "notice"}
-              = notice
+              != notice
             %p{:class => "alert"}
-              = alert
+              != alert
             = content_for?(:application) ? yield(:application) : yield
             :javascript
               $(document).ready(function(){
