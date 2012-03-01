@@ -1,6 +1,6 @@
 Socialite::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :sessions => "sessions" }
 
   match 'submissions/:id/vote_up', :to => 'submissions#vote_up', :via => "post", :defaults => { :format => 'js'}, :as => 'vote_up'
   match 'about', :to => "application#about", :via => "get", :as => 'about'

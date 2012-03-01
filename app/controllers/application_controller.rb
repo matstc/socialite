@@ -19,10 +19,11 @@ class ApplicationController < ActionController::Base
   end
 
   def show_elevator_pitch_if_new_session
-	if session[:new].nil?
-	  session[:new] = false
+	if session[:new].nil? and !user_signed_in?
 	  flash.now[:notice] = "Welcome!<br>It looks like this is your first time here.<br>Feel free to share links and take part in the discussion.<br><br>And check out what we are #{self.class.helpers.link_to 'about', about_path}."
 	end
+
+	session[:new] = false
   end
 
   def sign_in_then_redirect

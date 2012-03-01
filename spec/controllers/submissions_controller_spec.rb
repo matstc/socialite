@@ -10,15 +10,6 @@ describe SubmissionsController do
     Antispam.stub(:new){mock(Antispam, {:is_spam? => true}).as_null_object}
   end
 
-  describe "index" do
-    it "should show the elevator pitch on the first page load" do
-      get :index
-      flash[:notice].nil?.should == false
-      get :index
-      flash[:notice].nil?.should == true
-    end
-  end
-
   describe "most recent" do
     it "assigns submissions by calling most recent" do
       Submission.stub(:most_recent) { mock_pagination_of([@mock_submission])}
@@ -186,5 +177,4 @@ describe SubmissionsController do
       response.should redirect_to(submissions_url)
     end
   end
-
 end
