@@ -43,7 +43,7 @@ class Comment < ActiveRecord::Base
         rescue
           Rails.logger.error $!
         end
-      }.join
+      }
     rescue
       Rails.logger.error $!
     end
