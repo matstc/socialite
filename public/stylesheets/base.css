@@ -24,7 +24,7 @@ img {border-style:none;}
 hr {margin-top:2em; background-color:#ddd; border-style:none;}
 h1, h2, h3 {font-family: 'Ubuntu Condensed'; font-weight:normal;}
 h2, h1 {font-size:140%;}
-h3 {margin-top:2em;}
+h3 {margin-top:2.2em; margin-bottom:0.5em;}
 textarea {height:100px; vertical-align:bottom; width:98%;}
 td {vertical-align:top;}
 
