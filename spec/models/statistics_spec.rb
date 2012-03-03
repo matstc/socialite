@@ -16,7 +16,7 @@ describe Statistics do
 	  second_user = ObjectMother.create_user :username => 'b'
 
       stats = Statistics.load
-      stats[:time_of_last_registration].should == second_user.created_at
+      stats[:time_of_last_registration].to_i.should == second_user.created_at.to_i
     end
   end
 end

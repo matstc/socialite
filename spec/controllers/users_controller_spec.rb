@@ -146,6 +146,7 @@ describe UsersController do
         @mock_user.username.should == "original"
         @mock_user.profile_text.should == "new profile text"
       end
+
     end
 
     describe "with invalid params" do

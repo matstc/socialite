@@ -13,6 +13,15 @@
     .field
       = f.label :admin
       = f.check_box :admin
+
+  %h3 Email notifications
+  .explanation
+    = "Allow or disallow all email notifications from #{app_name}"
+  .field
+    = f.label :allow_email_notifications
+    = f.check_box :allow_email_notifications
+
+  %h3 Blurb
   .field
     .explanation You can provide a blurb of text if you want to tell other users about yourself.
     = f.label :profile_text, "Profile blurb"

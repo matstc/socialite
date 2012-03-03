@@ -1,6 +1,25 @@
 require 'spec_helper'
 
 describe "users/show.html.haml" do
+  it "should display the email notifications section if the email was enabled by the admin" do
+    user = ObjectMother.create_user
+    @view.stub(:current_user) {user}
+    assign(:user, user)
+	AppSettings.email_enabled = true
+
+    render
+    assert_select "h3", :text => /Email notifications/, :count => 1
+  end
+
+  it "should not display the email notifications section if the email was not enabled by the admin" do
+    user = ObjectMother.create_user
+    @view.stub(:current_user) {user}
+    assign(:user, user)
+
+    render
+    assert_select "h3", :text => /Email notifications/, :count => 0
+  end
+
   it "should display spam notifications to admins" do
     user = ObjectMother.create_user :admin => true
     spam_notitication1 = ObjectMother.create_spam_notification :comment => ObjectMother.create_comment

@@ -19,4 +19,5 @@ module ControllerMocking
     request.env['warden'] = mock(Warden, :authenticate => user, :authenticate! => user).as_null_object
     user
   end
+
 end

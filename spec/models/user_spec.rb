@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 describe User do
+  it "should default to allowing email notifications" do
+	user = ObjectMother.create_user
+	user.allow_email_notifications.should == true
+  end
+
+  it "should not override the flag for allowing email notifications" do
+	user = ObjectMother.create_user :allow_email_notifications => false
+	user.allow_email_notifications.should == false
+  end
+
   it "should filter out users with 0 karma when fetching the best users" do
     worst = ObjectMother.create_user :karma => 0
     best = ObjectMother.create_user :karma => 1
@@ -83,7 +93,7 @@ describe User do
 
   it "should let devise confirm users if settings say so" do
     ActionMailer::Base.default_url_options[:host] = 'localhost'
-    AppSettings.confirm_email_on_registration = true
+    AppSettings.email_enabled = true
     ObjectMother.create_user.confirmed?.should be(false)
   end
 

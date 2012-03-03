@@ -1,0 +1,8 @@
+Hello <%= @reply_notification.user %>,
+
+You received a reply to one of your posts on <%= app_name %>:
+<blockquote><%= @reply_notification.comment.text %></blockquote>
+
+<%= link_to "Click here to respond", comment_url(@reply_notification.comment) %> to this comment.
+
+Thanks for sharing!

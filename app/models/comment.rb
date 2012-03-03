@@ -28,7 +28,19 @@ class Comment < ActiveRecord::Base
   end
 
   def create_reply_notification
-    create_reply_notification_for(has_parent? ? self.parent : self.submission)
+    notification = create_reply_notification_for(has_parent? ? self.parent : self.submission)
+
+    if !notification.nil? and notification.user.allow_email_notifications and AppSettings.email_enabled
+      send_email_notification notification
+    end
+  end
+
+  def send_email_notification notification
+    begin
+      NotificationMailer.send_notification(notification).deliver
+    rescue
+      Rails.logger.error $!
+    end
   end
 
   def create_reply_notification_for resource

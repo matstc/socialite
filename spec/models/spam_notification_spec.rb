@@ -1,6 +1,12 @@
 require 'spec_helper'
 
+class FakeEmail; def deliver; end; end
+
 describe SpamNotification do
+  before(:each) do
+	NotificationMailer.stub(:send_notification){FakeEmail.new}
+  end
+
   it "should not allow saving to database if there are no comment or submission" do
     SpamNotification.new(:submission => ObjectMother.new_submission).save.should == true
     SpamNotification.new(:comment => ObjectMother.new_comment).save.should == true

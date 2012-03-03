@@ -5,11 +5,30 @@
 = render :partial => "users/filters", :locals => {:user => @user}
 
 - if current_user == @user
+  - if AppSettings.email_enabled
+    %h3 Email notifications
+
+    - if @user.allow_email_notifications
+      %p 
+        You are currently subscribed to receive email notifications.
+      .explanation
+        Occasional emails will be sent to you whenever you receive a reply to your submissions or comments.
+      %p
+        != "#{link_to 'Change your settings', edit_user_path(@user)} to disable notifications."
+    - else
+      %p 
+        You are NOT subscribed to receive email notifications.
+      .explanation
+        We will never send you emails to tell you about replies to your submissions or comments.
+      %p
+        != "#{link_to 'Change your settings', edit_user_path(@user)} in order to receive email notifications."
+
+  %h3 Profile blurb
   - if @user.profile_text.blank?
     %p You did not provide a profile blurb.
 
   %p{:class => 'profile-text'}= @user.profile_text
-  %p= link_to "Edit blurb", edit_user_path(@user)
+  %p= link_to "Modify your profile blurb", edit_user_path(@user)
 
   - if twitter_enabled?
     - if current_user.linked_to?(:twitter)

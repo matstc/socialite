@@ -5,11 +5,11 @@
 
 = form_for AppSettings, :url => {:controller => 'admin', :action => 'save_email_settings'}, :method => :post do |f|
   %p{:class => 'explanation'}
-    Enable confirmation emails by checking the following box:
+    Enable confirmation emails and email notifications by checking the following box:
 
   .field
-    = f.label :confirm_email_on_registration
-    = f.check_box :confirm_email_on_registration
+    = f.label :email_enabled, "Enable emails"
+    = f.check_box :email_enabled
 
   %p{:class => 'explanation'}
     To send emails, this application will use Gmail by default.
