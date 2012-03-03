@@ -37,7 +37,13 @@ class Comment < ActiveRecord::Base
 
   def send_email_notification notification
     begin
-      NotificationMailer.send_notification(notification).deliver
+      Thread.new {
+        begin
+          NotificationMailer.send_notification(notification).deliver
+        rescue
+          Rails.logger.error $!
+        end
+      }.join
     rescue
       Rails.logger.error $!
     end
