@@ -1,9 +1,14 @@
 <p>Hello <%= @reply_notification.user %>,</p>
 
-<p>You received a reply to one of your posts on <%= app_name %>:</p>
-<br>
-<blockquote style="white-space: pre-line;"><%= @reply_notification.comment.text %></blockquote>
+<p>You received a reply to one of your posts on <%= app_name %>.</p>
 <p><%= link_to "Click here to respond", comment_url(@reply_notification.comment) %> to this comment.</p>
+<br>
+<p><%= @reply_notification.user %> says:</p>
+<blockquote style="white-space: pre-line;"><%= @reply_notification.comment.text %></blockquote>
+<br>
 <br>
 <p>Thanks for sharing!</p>
 <br>
+<br>
+<p>--</p>
+<p><%= link_to "Change your notification settings", edit_user_url(@reply_notification.user) %> to unsubscribe to these emails.</p>
