@@ -22,15 +22,13 @@
   .actions
     = f.submit 'Save settings'
 
-%hr
-%h1 Send a test email
+%h3 Send a test email
 = form_for :test_exception_notifier, :url => {:controller => 'admin', :action => 'test_exception_notifier'}  do |f|
   %p 
     After saving the settings, you should send a test email to the recipient to make sure everything works correctly:
   = f.submit 'Send test email'
 
-%hr
-%h1 Raise a dummy error
+%h3 Raise a dummy error
 = form_for :raise_dummy_error, :url => {:controller => 'admin', :action => 'raise_dummy_error'} do |f|
   %p Finally, you can test raising a dummy error to see if you get automatic notifications.
   %p Just press the back button to come back to this page after the error was raised:

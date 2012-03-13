@@ -5,6 +5,16 @@
 = render :partial => "users/filters", :locals => {:user => @user}
 
 - if current_user == @user
+  .explanation These are your user settings. Other users can only see your profile blurb. Click the link below to modify anything.
+  = link_to 'Modify your settings', edit_user_path(@user)
+
+  %h3 Profile blurb
+  .explanation You can provide a small blurb to tell other users about yourself.
+  - if @user.profile_text.blank?
+    %p You did not provide a profile blurb.
+
+  %p{:class => 'profile-text'}= @user.profile_text
+
   - if AppSettings.email_enabled
     %h3 Email notifications
 
@@ -13,22 +23,11 @@
         You are currently subscribed to receive email notifications.
       .explanation
         Occasional emails will be sent to you whenever you receive a reply to your submissions or comments.
-      %p
-        != "#{link_to 'Change your settings', edit_user_path(@user)} to disable notifications."
     - else
       %p 
         You are NOT subscribed to receive email notifications.
       .explanation
         We will never send you emails to tell you about replies to your submissions or comments.
-      %p
-        != "#{link_to 'Change your settings', edit_user_path(@user)} in order to receive email notifications."
-
-  %h3 Profile blurb
-  - if @user.profile_text.blank?
-    %p You did not provide a profile blurb.
-
-  %p{:class => 'profile-text'}= @user.profile_text
-  %p= link_to "Modify your profile blurb", edit_user_path(@user)
 
   - if twitter_enabled?
     - if current_user.linked_to?(:twitter)

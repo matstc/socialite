@@ -1,4 +1,6 @@
 = form_for @user do |f|
+  .explanation Click the save button at the bottom of this page once you are satisfied with your changes.
+
   - if @user.errors.any?
     #error_explanation
       %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
@@ -16,16 +18,18 @@
       = f.label :admin
       = f.check_box :admin
 
+  %h3 Blurb
+  .field
+    .explanation You can provide a small blurb to tell other users about yourself.
+    = f.text_area :profile_text
+
   %h3 Email notifications
   .explanation
-    = "Allow or disallow all email notifications from #{app_name}"
+    = "Allow or disallow all email notifications from #{app_name}."
   .field
     = f.label :allow_email_notifications
     = f.check_box :allow_email_notifications
 
-  %h3 Blurb
-  .field
-    .explanation You can provide a blurb of text if you want to tell other users about yourself.
-    = f.text_area :profile_text
+  %br
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save settings'

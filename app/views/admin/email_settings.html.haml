@@ -60,8 +60,7 @@
   .actions
     = f.submit 'Save settings'
 
-%hr
-%h1 Send a test email
+%h3 Send a test email
 = form_for :test_email, :url => {:controller => 'admin', :action => 'send_test_email'} do |f|
   %p{:class => 'explanation'}
     After saving the settings, you should send a test email to your own email address to verify that everything works correctly:

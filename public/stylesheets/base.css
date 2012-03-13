@@ -1,5 +1,5 @@
 .ui-widget, input, textarea {font-family:Ubuntu, verdana;}
-.ui-icon {margin-top:2px; float:left; margin-right:0.2em;}
+.ui-icon {margin-top:0.25em; float:left; margin-right:0.2em;}
 .vote-up .ui-icon {margin:0;}
 input, textarea {padding:0.3em 1px; border-radius:3px; font-size:100%;}
 a {white-space:nowrap;}
@@ -21,10 +21,9 @@ blockquote {margin:1em; font-style:italic;}
 body { background-color: #fff; color: #111;}
 body, p, ol, ul, td { font-family: Ubuntu, verdana, arial, helvetica, sans-serif;}
 img {border-style:none;}
-hr {margin-top:2em; background-color:#ddd; border-style:none;}
 h1, h2, h3 {font-family: 'Ubuntu Condensed'; font-weight:normal;}
 h2, h1 {font-size:140%;}
-h3 {margin-top:2.2em; margin-bottom:0.5em;}
+h3 {margin-top:2.2em; margin-bottom:0.5em; border-bottom:1px solid #ddd;}
 textarea {height:100px; vertical-align:bottom; width:98%;}
 td {vertical-align:top;}
 
@@ -48,7 +47,7 @@ td {vertical-align:top;}
 .session-info ul li:first-child {border-style:none;}
 .session-info ul {float:right; margin:0 1em 0 0;}
 .session-info {margin: 0; padding: 0; line-height:1.6em;}
-.session-info h1, .comment-overview h3 {margin: 0; padding:0; font-size:150%; display:inline-block; font-family:'Ubuntu Condensed'; font-weight:normal;}
+.session-info h1, .comment-overview h3 {border-style:none; margin: 0; padding:0; font-size:150%; display:inline-block; font-family:'Ubuntu Condensed'; font-weight:normal;}
 
 .comment-overview {text-align:left; padding-left:1em; padding-right:1em;}
 .comment-overview .header {text-align:center; margin-bottom:1em;}
@@ -66,7 +65,7 @@ td {vertical-align:top;}
 .layout-content {margin-right:250px; padding-right:1em;}
 .floating-wrapper {float:left; width:100%;}
 
-.prefixed-icon {margin-right:0.25em; margin-left:-0.4em;}
+.prefixed-icon {margin-right:0.15em; margin-left:-0.2em;}
 .collapsible {margin-top:2em;}
 .collapsible-content {margin-top:1em;}
 
@@ -75,7 +74,6 @@ div.field, div.actions { margin-bottom: 18px;}
 .field_with_errors {display:inline;}
 .field_with_errors input { border:2px solid red;}
 #error_explanation { margin-bottom:2em;}
-#error_explanation h3 { font-size:100%; font-weight: bold; color: red;}
 .field label {width:200px; display:inline-block; vertical-align:top;}
 form .example, .explanation {color:#777; font-size:90%;}
 form .example {margin-top:-0.6em;}
