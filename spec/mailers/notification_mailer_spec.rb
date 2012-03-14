@@ -4,7 +4,6 @@ describe NotificationMailer do
   include ApplicationHelper
 
   it "should generate a notification email" do
-	#require File.expand_path("../../app/helpers/application_helper", __FILE__)
     ActionMailer::Base.default_url_options[:host] = 'localhost'
 	reply_notification = ObjectMother.create_reply_notification
 
