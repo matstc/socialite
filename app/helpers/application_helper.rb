@@ -47,7 +47,9 @@ module ApplicationHelper
     s
   end
 
-  def link_to_comment comment
+  def link_to_comment comment, options={}
+    return "#{submission_url(comment.submission)}#comment-#{comment.id}" if options[:absolute]
+
     "#{submission_path(comment.submission)}#comment-#{comment.id}"
   end
 

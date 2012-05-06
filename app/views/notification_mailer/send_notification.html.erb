@@ -1,7 +1,7 @@
 <p>Hello <%= @reply_notification.user %>,</p>
 
 <p>You received a reply to one of your posts on <%= app_name %>.</p>
-<p><%= link_to "Click here to respond", link_to_comment(@reply_notification.comment) %> to this comment.</p>
+<p><%= link_to "Click here to respond", link_to_comment(@reply_notification.comment, :absolute => true) %> to this comment.</p>
 <br>
 <p><%= @reply_notification.comment.user %> says:</p>
 <blockquote style="white-space: pre-line;"><%= @reply_notification.comment.text %></blockquote>
