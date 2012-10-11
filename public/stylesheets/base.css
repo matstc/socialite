@@ -91,10 +91,12 @@ ul.bulleted {list-style-type:none; padding-left:0.5em;}
 table.list td {border-bottom:1px solid #eee;}
 table.list {width:auto;}
 
-.score-bracket, .session-info h1 {color:#995522;}
+.score-bracket, .session-info h1 {color:#b74;}
+.score-bracket {margin:0 0.2em;}
 td.vote-area {white-space:nowrap; width:50px; text-align:right; padding-right:10px;}
+.score-box {margin-top:0.2em; display:inline-block;}
 td.rank {width:20px;}
-.vote-up {float:left; border:1px solid transparent;}
+.vote-up {float:left; border:1px solid transparent; font-size:120%;}
 .inner-center-pane {width:95%; text-align:left; margin:auto;}
 .center-pane {text-align:center;}
 

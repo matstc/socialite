@@ -3,13 +3,14 @@ a:hover {color: #333 !important;}
 .filters-menu a:visited, .pagination a:visited, .top-nav-bar a:visited {color: #333;}
 a:visited { color: #888; }
 a:hover { background-color:#eee;}
-a.vote-up:hover {color:none; background-color:transparent; border:1px solid #039;}
+a.vote-up {text-decoration:none;}
+a.vote-up:hover {text-decoration:underline;}
 
 .extension-hint, .submission-description, .posted-by, .posted-by a, .dim, .dim a, .dim a:visited, .rank, .dim .score-bracket, .reply-link, .comment-signature, .admin-links a {color:#888;}
 
 #submissions-list .dim .submission-link a {color:#bbb;}
 
-.score-bracket {color:#039;}
+.score-bracket {color:#bbb;}
 .session-info h1, .comment-overview h3, .current {color:#003366; text-decoration:none;}
 .bookmarklet img, .notifications-box {border-color:#58e;}
 .rank {display:none;}
