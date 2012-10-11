@@ -1,6 +1,6 @@
 - if current_user.nil? or current_user.can_vote_for(submission)
   = link_to vote_up_path(:id => submission.id), :method => :post, :remote => true, :class => "vote-up", :id => "voting-booth-#{submission.id}", :title => 'vote up' do
-    ⬆
+    &#9650;
 
 %span{:class => 'score-box'}
   %span{:class => 'score-bracket'}= "["
