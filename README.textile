@@ -40,9 +40,7 @@ Follow the instructions below. If you have any trouble installing the required g
 
 h2. Contribute
 
-Socialite has no proper documentation available but you can have a look at the tests under the spec directory. Most of the features have accompanying tests so the tests serve as documentation. If you fork this project and request a pull, please include tests along with your new patch.
-
-Have a look at "Matt's blog":http://clipboarded.blogspot.com/search/label/socialite for random bits of information about Socialite.
+Socialite has no proper documentation available but you can have a look at the tests under the spec directory. Most of the features have accompanying tests so the tests serve as documentation. If you fork this project and request a pull, please include tests along with your patch.
 
 To setup your box for development, just follow the steps above to deploy your own instance of Socialite, but make sure to run the server in development mode by omitting the @-e production@. You can also skip the step where you run @rake production:initialize@
 
